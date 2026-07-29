@@ -1,0 +1,4662 @@
+[
+  {
+    "id": "REL-ACETYL-GLUCOSAMINE-BUTYLENE-GLYCOL-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-GLUCOSAMINE",
+    "target_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CLINIQUECITY-BLOCK-PURIFYING-CHARCOAL-CLAY-MASK-SCRUB",
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN",
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-GLUCOSAMINE-CAMELLIA-SINENSIS-LEAF-EXTRACT-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-GLUCOSAMINE",
+    "target_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-GLUCOSAMINE-CITRIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-GLUCOSAMINE",
+    "target_ingredient_id": "ING-CITRIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN",
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-GLUCOSAMINE-GLYCERIN-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-GLUCOSAMINE",
+    "target_ingredient_id": "ING-GLYCERIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN",
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-GLUCOSAMINE-HYALURONIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-GLUCOSAMINE",
+    "target_ingredient_id": "ING-HYALURONIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-GLUCOSAMINE-NIACINAMIDE-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-GLUCOSAMINE",
+    "target_ingredient_id": "ING-NIACINAMIDE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-GLUCOSAMINE-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-GLUCOSAMINE",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-GLUCOSAMINE-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-GLUCOSAMINE",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-GLUCOSAMINE-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-GLUCOSAMINE",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN",
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-GLUCOSAMINE-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-GLUCOSAMINE",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-ASCORBIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-ASCORBIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-BUTYLENE-GLYCOL-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-CAMELLIA-SINENSIS-LEAF-EXTRACT-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-CERAMIDE-EOP-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-CERAMIDE-EOP",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-CITRIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-CITRIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-GLYCERIN-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-GLYCERIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-HYDROXYPROPYL-CYCLODEXTRIN-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-LACTOCOCCUS-FERMENT-LYSATE-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-LACTOCOCCUS-FERMENT-LYSATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-LINOLEIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-LINOLEIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-RETINYL-PALMITATE-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-RETINYL-PALMITATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-TETRAPEPTIDE-21-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-TETRAPEPTIDE-21",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-ACETYL-HEXAPEPTIDE-8-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-ACETYL-HEXAPEPTIDE-8",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-ARGANIA-SPINOSA-KERNEL-OIL-CAMELLIA-SINENSIS-LEAF-EXTRACT-COOCCUR",
+    "source_ingredient_id": "ING-ARGANIA-SPINOSA-KERNEL-OIL",
+    "target_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-JANUARY-LABSMOISTURE-BALANCING-LOTION-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-ARGANIA-SPINOSA-KERNEL-OIL-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-ARGANIA-SPINOSA-KERNEL-OIL",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-JANUARY-LABSMOISTURE-BALANCING-LOTION-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-ARGANIA-SPINOSA-KERNEL-OIL-SIMMONDSIA-CHINENSIS-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-ARGANIA-SPINOSA-KERNEL-OIL",
+    "target_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-JANUARY-LABSMOISTURE-BALANCING-LOTION-DISCONTINUED",
+      "YUXI-PRODUCT-TATA-HARPERNOURISHING-OIL-CLEANSER",
+      "YUXI-PRODUCT-THE-ORDINARY-B-OIL"
+    ]
+  },
+  {
+    "id": "REL-ARGANIA-SPINOSA-KERNEL-OIL-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-ARGANIA-SPINOSA-KERNEL-OIL",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARY-B-OIL"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-BUTYLENE-GLYCOL-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.8500000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-INDEED-LABSVITAMIN-C24",
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-CAMELLIA-SINENSIS-LEAF-EXTRACT-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM",
+      "YUXI-PRODUCT-YOUTH-TO-THE-PEOPLEAGE-PREVENTION-MOISTURE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-CITRIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-CITRIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-GLUCONOLACTONE-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-GLUCONOLACTONE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-ZO-SKIN-HEALTHOSSENTIAL-ADVANCED-RADICAL-NIGHT-REPAIR"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-GLYCERIN-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-GLYCERIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10",
+      "YUXI-PRODUCT-LIXIRVITAMIN-C-PASTE",
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM",
+      "YUXI-PRODUCT-YOUTH-TO-THE-PEOPLEAGE-PREVENTION-MOISTURE-CREAM",
+      "YUXI-PRODUCT-ZO-SKIN-HEALTHOSSENTIAL-ADVANCED-RADICAL-NIGHT-REPAIR"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-HYDROLYZED-HYALURONIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-HYDROLYZED-HYALURONIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-HYDROXYPROPYL-CYCLODEXTRIN-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-LACTIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-LACTIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-NIACINAMIDE-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-NIACINAMIDE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-YOUTH-TO-THE-PEOPLEAGE-PREVENTION-MOISTURE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-RETINOL-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-RETINOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-ZO-SKIN-HEALTHOSSENTIAL-ADVANCED-RADICAL-NIGHT-REPAIR"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-RETINYL-PALMITATE-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-RETINYL-PALMITATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-YOUTH-TO-THE-PEOPLEAGE-PREVENTION-MOISTURE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.8500000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-INDEED-LABSVITAMIN-C24",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10",
+      "YUXI-PRODUCT-LIXIRVITAMIN-C-PASTE",
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-DCLC-SCAPE-HIGH-POTENCY-NIGHT-BOOSTER-30",
+      "YUXI-PRODUCT-STRATIAC-C-SERUM"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-TETRAPEPTIDE-21-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-TETRAPEPTIDE-21",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-ASCORBIC-ACID-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-ASCORBIC-ACID",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.8,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10",
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-STRATIAC-C-SERUM",
+      "YUXI-PRODUCT-ZO-SKIN-HEALTHOSSENTIAL-ADVANCED-RADICAL-NIGHT-REPAIR"
+    ]
+  },
+  {
+    "id": "REL-BETA-GLUCAN-BUTYLENE-GLYCOL-COOCCUR",
+    "source_ingredient_id": "ING-BETA-GLUCAN",
+    "target_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER"
+    ]
+  },
+  {
+    "id": "REL-BETA-GLUCAN-GLYCERIN-COOCCUR",
+    "source_ingredient_id": "ING-BETA-GLUCAN",
+    "target_ingredient_id": "ING-GLYCERIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER"
+    ]
+  },
+  {
+    "id": "REL-BETA-GLUCAN-HYALURONIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-BETA-GLUCAN",
+    "target_ingredient_id": "ING-HYALURONIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER"
+    ]
+  },
+  {
+    "id": "REL-BETA-GLUCAN-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-BETA-GLUCAN",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER"
+    ]
+  },
+  {
+    "id": "REL-BETA-GLUCAN-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-BETA-GLUCAN",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER"
+    ]
+  },
+  {
+    "id": "REL-BIOSACCHARIDE-GUM-1-BUTYLENE-GLYCOL-COOCCUR",
+    "source_ingredient_id": "ING-BIOSACCHARIDE-GUM-1",
+    "target_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN"
+    ]
+  },
+  {
+    "id": "REL-BIOSACCHARIDE-GUM-1-CITRIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-BIOSACCHARIDE-GUM-1",
+    "target_ingredient_id": "ING-CITRIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-SKOON-SKINCARESUPERFLUITY-MOISTURE-GEL"
+    ]
+  },
+  {
+    "id": "REL-BIOSACCHARIDE-GUM-1-GLYCERIN-COOCCUR",
+    "source_ingredient_id": "ING-BIOSACCHARIDE-GUM-1",
+    "target_ingredient_id": "ING-GLYCERIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN",
+      "YUXI-PRODUCT-SKOON-SKINCARESUPERFLUITY-MOISTURE-GEL"
+    ]
+  },
+  {
+    "id": "REL-BIOSACCHARIDE-GUM-1-HYDROLYZED-HYALURONIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-BIOSACCHARIDE-GUM-1",
+    "target_ingredient_id": "ING-HYDROLYZED-HYALURONIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN"
+    ]
+  },
+  {
+    "id": "REL-BIOSACCHARIDE-GUM-1-NIACINAMIDE-COOCCUR",
+    "source_ingredient_id": "ING-BIOSACCHARIDE-GUM-1",
+    "target_ingredient_id": "ING-NIACINAMIDE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN"
+    ]
+  },
+  {
+    "id": "REL-BIOSACCHARIDE-GUM-1-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-BIOSACCHARIDE-GUM-1",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN",
+      "YUXI-PRODUCT-SKOON-SKINCARESUPERFLUITY-MOISTURE-GEL"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-CAMELLIA-SINENSIS-LEAF-EXTRACT-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-FIRST-AID-BEAUTYEYE-DUTY-TRIPLE-REMEDY-AM-GEL-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA",
+      "YUXI-PRODUCT-PESTLE-MORTARHYDRATE",
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM",
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-CENTELLA-ASIATICA-EXTRACT-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-CENTELLA-ASIATICA-EXTRACT",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK",
+      "YUXI-PRODUCT-NYDGULTRA-LIGHT-HYDRA-GEL",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-CERAMIDE-EOP-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-CERAMIDE-EOP",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-CITRIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-CITRIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-CLINIQUEDRAMATICALLY-DIFFERENT-HYDRATING-JELLY",
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN",
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE",
+      "YUXI-PRODUCT-DERMALOGICADERMAL-CLAY-CLEANSER",
+      "YUXI-PRODUCT-DR-JETSKE-ULTEESUNCOVER-SPF-30",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-HYLAMIDEBOOSTER-PORE-CONTROL-DISCONTINUED",
+      "YUXI-PRODUCT-MACLIGHTFUL-C-MARINE-BRIGHT-FORMULA-SOFTENING-LOTION",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER",
+      "YUXI-PRODUCT-SIMPLEKIND-TO-SKIN-PROTECTING-MOISTURE-CREAM-SPF30",
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-COPPER-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-COPPER-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-GLUCONOLACTONE-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-GLUCONOLACTONE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-NEOSTRATABIONIC-LOTION-15-BIONIC-PHA"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-GLYCERIN-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-GLYCERIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-BAREMINERALSCOMPLEXION-RESCUE-TINTED-HYDRATING-GEL-CREAM-SPF-30",
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-CERAMIDE-BOOST-ANTI-AGING-FACE-SERUM-DISCONTINUED",
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN",
+      "YUXI-PRODUCT-BOOTS-NO7LINE-CORRECTING-BOOSTER-SERUM",
+      "YUXI-PRODUCT-CAUDALIEVINOPERFECT-RADIANCE-SERUM-DISCONTINUED",
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-CLINIQUEDRAMATICALLY-DIFFERENT-HYDRATING-JELLY",
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN",
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE",
+      "YUXI-PRODUCT-CLINIQUESUPER-RESCUE-ANTIOXIDANT-NIGHT-MOISTURIZER-FOR-VERY-DRY-TO-DRY-SKIN",
+      "YUXI-PRODUCT-DR-JETSKE-ULTEESUNCOVER-SPF-30",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-FIRST-AID-BEAUTYEYE-DUTY-TRIPLE-REMEDY-AM-GEL-CREAM",
+      "YUXI-PRODUCT-GLOSSIERFUTUREDEW",
+      "YUXI-PRODUCT-HYLAMIDEBOOSTER-PORE-CONTROL-DISCONTINUED",
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER",
+      "YUXI-PRODUCT-KRAVE-BEAUTYBEET-THE-SUN-SPF50-PA-THE-BEET-SHIELD",
+      "YUXI-PRODUCT-MACLIGHTFUL-C-MARINE-BRIGHT-FORMULA-SOFTENING-LOTION",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-NEOSTRATABIONIC-LOTION-15-BIONIC-PHA",
+      "YUXI-PRODUCT-NEUTROGENAHYDRO-BOOST-SLEEPING-CREAM",
+      "YUXI-PRODUCT-NIODMODULATING-GLUCOSIDES",
+      "YUXI-PRODUCT-NYDGULTRA-LIGHT-HYDRA-GEL",
+      "YUXI-PRODUCT-OHK-BAMBOO-WATER-SHEET-MASK",
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PESTLE-MORTARHYDRATE",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-PIXIGLOW-TONIC-DISCONTINUED",
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM",
+      "YUXI-PRODUCT-PIZ-BUINULTRA-LIGHT-DRY-TOUCH-SUN-FLUID-SPF-30",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER",
+      "YUXI-PRODUCT-SIMPLEKIND-TO-SKIN-PROTECTING-MOISTURE-CREAM-SPF30",
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-TATCHAWATER-CREAM",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM",
+      "YUXI-PRODUCT-THE-INKEY-LISTZINC-OXIDE-CREAM-MOISTURISER",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-HYALURONIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-HYALURONIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-NYDGULTRA-LIGHT-HYDRA-GEL",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-HYDROLYZED-HYALURONIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-HYDROLYZED-HYALURONIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN",
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-NEUTROGENAHYDRO-BOOST-SLEEPING-CREAM",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-HYDROXYPINACOLONE-RETINOATE-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-HYDROXYPINACOLONE-RETINOATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-HYDROXYPROPYL-CYCLODEXTRIN-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-LACTIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-LACTIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.75,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-CERAMIDE-BOOST-ANTI-AGING-FACE-SERUM-DISCONTINUED",
+      "YUXI-PRODUCT-DR-JETSKE-ULTEESUNCOVER-SPF-30",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA",
+      "YUXI-PRODUCT-SIMPLEKIND-TO-SKIN-PROTECTING-MOISTURE-CREAM-SPF30"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-LACTOCOCCUS-FERMENT-LYSATE-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-LACTOCOCCUS-FERMENT-LYSATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-LINOLEIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-LINOLEIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CLINIQUESUPER-RESCUE-ANTIOXIDANT-NIGHT-MOISTURIZER-FOR-VERY-DRY-TO-DRY-SKIN"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-NIACINAMIDE-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-NIACINAMIDE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN",
+      "YUXI-PRODUCT-CLINIQUESUPER-RESCUE-ANTIOXIDANT-NIGHT-MOISTURIZER-FOR-VERY-DRY-TO-DRY-SKIN",
+      "YUXI-PRODUCT-DR-JETSKE-ULTEESUNCOVER-SPF-30",
+      "YUXI-PRODUCT-HYLAMIDEBOOSTER-PORE-CONTROL-DISCONTINUED",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-SIMPLEKIND-TO-SKIN-PROTECTING-MOISTURE-CREAM-SPF30",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-OPUNTIA-FICUS-INDICA-EXTRACT-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-OPUNTIA-FICUS-INDICA-EXTRACT",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BOOTS-NO7LINE-CORRECTING-BOOSTER-SERUM",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-FIRST-AID-BEAUTYEYE-DUTY-TRIPLE-REMEDY-AM-GEL-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BOOTS-NO7LINE-CORRECTING-BOOSTER-SERUM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-HYLAMIDEBOOSTER-PORE-CONTROL-DISCONTINUED",
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER",
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PAULA-S-CHOICESKIN-PERFECTING-8-AHA-GEL-EXFOLIANT",
+      "YUXI-PRODUCT-PIXIGLOW-TONIC-DISCONTINUED",
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-RETINOL-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-RETINOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-CERAMIDE-BOOST-ANTI-AGING-FACE-SERUM-DISCONTINUED",
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-RETINYL-PALMITATE-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-RETINYL-PALMITATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-ROSA-DAMASCENA-FLOWER-OIL-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-ROSA-DAMASCENA-FLOWER-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-MACLIGHTFUL-C-MARINE-BRIGHT-FORMULA-SOFTENING-LOTION",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-SIMMONDSIA-CHINENSIS-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-GLOSSIERFUTUREDEW",
+      "YUXI-PRODUCT-PESTLE-MORTARHYDRATE",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-BAREMINERALSCOMPLEXION-RESCUE-TINTED-HYDRATING-GEL-CREAM-SPF-30",
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-CERAMIDE-BOOST-ANTI-AGING-FACE-SERUM-DISCONTINUED",
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CLINIQUEDRAMATICALLY-DIFFERENT-HYDRATING-JELLY",
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN",
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE",
+      "YUXI-PRODUCT-CLINIQUESUPER-RESCUE-ANTIOXIDANT-NIGHT-MOISTURIZER-FOR-VERY-DRY-TO-DRY-SKIN",
+      "YUXI-PRODUCT-EST-E-LAUDERADVANCED-NIGHT-REPAIR-SYNCHRONIZED-RECOVERY-COMPLEX-II",
+      "YUXI-PRODUCT-FIRST-AID-BEAUTYEYE-DUTY-TRIPLE-REMEDY-AM-GEL-CREAM",
+      "YUXI-PRODUCT-GLOSSIERFUTUREDEW",
+      "YUXI-PRODUCT-INDEED-LABSVITAMIN-C24",
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER",
+      "YUXI-PRODUCT-MACLIGHTFUL-C-MARINE-BRIGHT-FORMULA-SOFTENING-LOTION",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-NEUTROGENAHYDRO-BOOST-SLEEPING-CREAM",
+      "YUXI-PRODUCT-NYDGULTRA-LIGHT-HYDRA-GEL",
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PAULA-S-CHOICESKIN-PERFECTING-8-AHA-GEL-EXFOLIANT",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-TATCHAWATER-CREAM",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM",
+      "YUXI-PRODUCT-THE-INKEY-LISTZINC-OXIDE-CREAM-MOISTURISER",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE",
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-TETRAPEPTIDE-21-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-TETRAPEPTIDE-21",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-BUTYLENE-GLYCOL-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-BUTYLENE-GLYCOL",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN",
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-DERMALOGICADERMAL-CLAY-CLEANSER",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-NIODMODULATING-GLUCOSIDES",
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-PESTLE-MORTARHYDRATE",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-CENTELLA-ASIATICA-EXTRACT-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-CENTELLA-ASIATICA-EXTRACT",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-HOLY-SNAILSSNOWBANG-ESSENCE",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-CERAMIDE-EOP-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-CERAMIDE-EOP",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-CITRIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-CITRIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-COPPER-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-COPPER-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-GLUCONOLACTONE-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-GLUCONOLACTONE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-SILK-NATURALSSUPER-DEFENSE-SERUM"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-GLYCERIN-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-GLYCERIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN",
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-FIRST-AID-BEAUTYEYE-DUTY-TRIPLE-REMEDY-AM-GEL-CREAM",
+      "YUXI-PRODUCT-HOLY-SNAILSSNOWBANG-ESSENCE",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-YOUTH-EXTENDING-DAILY-HYDRATING-FLUID-SPF-50",
+      "YUXI-PRODUCT-PESTLE-MORTARHYDRATE",
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM",
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER",
+      "YUXI-PRODUCT-SILK-NATURALSSUPER-DEFENSE-SERUM",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD",
+      "YUXI-PRODUCT-YOUTH-TO-THE-PEOPLEAGE-PREVENTION-MOISTURE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-HYALURONIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-HYALURONIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-HYDROXYPROPYL-CYCLODEXTRIN-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-LACTIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-LACTIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-LINOLEIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-LINOLEIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-NIACINAMIDE-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-NIACINAMIDE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-SILK-NATURALSSUPER-DEFENSE-SERUM",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-OPUNTIA-FICUS-INDICA-EXTRACT-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-OPUNTIA-FICUS-INDICA-EXTRACT",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-ELIZABETH-ARDENRETINOL-CERAMIDE-CAPSULES",
+      "YUXI-PRODUCT-FIRST-AID-BEAUTYEYE-DUTY-TRIPLE-REMEDY-AM-GEL-CREAM",
+      "YUXI-PRODUCT-JANUARY-LABSMOISTURE-BALANCING-LOTION-DISCONTINUED",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-ELIZABETH-ARDENRETINOL-CERAMIDE-CAPSULES",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.8,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-SILK-NATURALSSUPER-DEFENSE-SERUM",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD",
+      "YUXI-PRODUCT-YOUTH-TO-THE-PEOPLEAGE-PREVENTION-MOISTURE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-RETINOL-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-RETINOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ELIZABETH-ARDENRETINOL-CERAMIDE-CAPSULES"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-RETINYL-PALMITATE-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-RETINYL-PALMITATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL",
+      "YUXI-PRODUCT-YOUTH-TO-THE-PEOPLEAGE-PREVENTION-MOISTURE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-ROSA-RUBIGINOSA-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-ROSA-RUBIGINOSA-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-SIMMONDSIA-CHINENSIS-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL",
+      "YUXI-PRODUCT-JANUARY-LABSMOISTURE-BALANCING-LOTION-DISCONTINUED",
+      "YUXI-PRODUCT-PESTLE-MORTARHYDRATE"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.8,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN",
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL",
+      "YUXI-PRODUCT-FIRST-AID-BEAUTYEYE-DUTY-TRIPLE-REMEDY-AM-GEL-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-CAMELLIA-SINENSIS-LEAF-EXTRACT-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-CAMELLIA-SINENSIS-LEAF-EXTRACT",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-YOUTH-EXTENDING-DAILY-HYDRATING-FLUID-SPF-50",
+      "YUXI-PRODUCT-PESTLE-MORTARHYDRATE",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD",
+      "YUXI-PRODUCT-TATCHAPURE-ONE-STEP-CAMELLIA-CLEANSING-OIL"
+    ]
+  },
+  {
+    "id": "REL-CENTELLA-ASIATICA-EXTRACT-CITRIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CENTELLA-ASIATICA-EXTRACT",
+    "target_ingredient_id": "ING-CITRIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-CENTELLA-ASIATICA-EXTRACT-COPPER-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-CENTELLA-ASIATICA-EXTRACT",
+    "target_ingredient_id": "ING-COPPER-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER"
+    ]
+  },
+  {
+    "id": "REL-CENTELLA-ASIATICA-EXTRACT-GLYCERIN-COOCCUR",
+    "source_ingredient_id": "ING-CENTELLA-ASIATICA-EXTRACT",
+    "target_ingredient_id": "ING-GLYCERIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.75,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK",
+      "YUXI-PRODUCT-HOLY-SNAILSSNOWBANG-ESSENCE",
+      "YUXI-PRODUCT-NYDGULTRA-LIGHT-HYDRA-GEL",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-CENTELLA-ASIATICA-EXTRACT-HYALURONIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CENTELLA-ASIATICA-EXTRACT",
+    "target_ingredient_id": "ING-HYALURONIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-NYDGULTRA-LIGHT-HYDRA-GEL"
+    ]
+  },
+  {
+    "id": "REL-CENTELLA-ASIATICA-EXTRACT-HYDROLYZED-HYALURONIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CENTELLA-ASIATICA-EXTRACT",
+    "target_ingredient_id": "ING-HYDROLYZED-HYALURONIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK"
+    ]
+  },
+  {
+    "id": "REL-CENTELLA-ASIATICA-EXTRACT-NIACINAMIDE-COOCCUR",
+    "source_ingredient_id": "ING-CENTELLA-ASIATICA-EXTRACT",
+    "target_ingredient_id": "ING-NIACINAMIDE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-CENTELLA-ASIATICA-EXTRACT-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-CENTELLA-ASIATICA-EXTRACT",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER"
+    ]
+  },
+  {
+    "id": "REL-CENTELLA-ASIATICA-EXTRACT-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CENTELLA-ASIATICA-EXTRACT",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER"
+    ]
+  },
+  {
+    "id": "REL-CENTELLA-ASIATICA-EXTRACT-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-CENTELLA-ASIATICA-EXTRACT",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK",
+      "YUXI-PRODUCT-NYDGULTRA-LIGHT-HYDRA-GEL",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-CENTELLA-ASIATICA-EXTRACT-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-CENTELLA-ASIATICA-EXTRACT",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-CITRIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-CITRIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-GLYCERIN-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-GLYCERIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-HYDROXYPINACOLONE-RETINOATE-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-HYDROXYPINACOLONE-RETINOATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-HYDROXYPROPYL-CYCLODEXTRIN-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-LINOLEIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-LINOLEIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-LINOLENIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-LINOLENIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-NIACINAMIDE-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-NIACINAMIDE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-RETINOL-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-RETINOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-ROSA-RUBIGINOSA-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-ROSA-RUBIGINOSA-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM"
+    ]
+  },
+  {
+    "id": "REL-CERAMIDE-EOP-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-CERAMIDE-EOP",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-COPPER-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-COPPER-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-GLUCONOLACTONE-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-GLUCONOLACTONE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-W"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-GLYCERIN-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-GLYCERIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-W",
+      "YUXI-PRODUCT-CAUDALIEINSTANT-FOAMING-CLEANSER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-CLINIQUEDRAMATICALLY-DIFFERENT-HYDRATING-JELLY",
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN",
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE",
+      "YUXI-PRODUCT-DR-JETSKE-ULTEESUNCOVER-SPF-30",
+      "YUXI-PRODUCT-DR-SAM-BUNTING-SKINCAREFLAWLESS-MOISTURISER",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTLALA-RETRO-WHIPPED-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-GLOSSIERROSEWATER-SPRAY-DISCONTINUED",
+      "YUXI-PRODUCT-HYLAMIDEBOOSTER-PORE-CONTROL-DISCONTINUED",
+      "YUXI-PRODUCT-KYPRISCLEANSER-CONCENTRATE",
+      "YUXI-PRODUCT-KYPRISPOT-OF-SHADE-HELITROPIC-SPF-30",
+      "YUXI-PRODUCT-MACLIGHTFUL-C-MARINE-BRIGHT-FORMULA-SOFTENING-LOTION",
+      "YUXI-PRODUCT-MAKE-P-REMCOMFORT-ME-MOSS-CALMING-MASK",
+      "YUXI-PRODUCT-NIODHYDRATION-VACCINE-DISCONTINUED",
+      "YUXI-PRODUCT-NIODMULTI-MOLECULAR-HYALURONIC-COMPLEX-2-MMHC2",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER",
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER",
+      "YUXI-PRODUCT-SIMPLEKIND-TO-SKIN-PROTECTING-MOISTURE-CREAM-SPF30",
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED",
+      "YUXI-PRODUCT-SKOON-SKINCARESUPERFLUITY-MOISTURE-GEL",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-THE-CHEMISTRY-BRANDGLOW-OIL",
+      "YUXI-PRODUCT-THE-ORDINARYAHA-30-BHA-2-PEELING-SOLUTION-DISCONTINUED",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-HYALURONIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-HYALURONIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-NIODMULTI-MOLECULAR-HYALURONIC-COMPLEX-2-MMHC2",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-HYDROXYPROPYL-CYCLODEXTRIN-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-LACTIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-LACTIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.75,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-W",
+      "YUXI-PRODUCT-DR-JETSKE-ULTEESUNCOVER-SPF-30",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-SIMPLEKIND-TO-SKIN-PROTECTING-MOISTURE-CREAM-SPF30",
+      "YUXI-PRODUCT-THE-ORDINARYAHA-30-BHA-2-PEELING-SOLUTION-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-LACTOCOCCUS-FERMENT-LYSATE-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-LACTOCOCCUS-FERMENT-LYSATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-LINOLEIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-LINOLEIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-LINOLENIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-LINOLENIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-NIACINAMIDE-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-NIACINAMIDE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.8500000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-W",
+      "YUXI-PRODUCT-DR-JETSKE-ULTEESUNCOVER-SPF-30",
+      "YUXI-PRODUCT-DR-SAM-BUNTING-SKINCAREFLAWLESS-MOISTURISER",
+      "YUXI-PRODUCT-HYLAMIDEBOOSTER-PORE-CONTROL-DISCONTINUED",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-SIMPLEKIND-TO-SKIN-PROTECTING-MOISTURE-CREAM-SPF30",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-OLEIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-OLEIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-OPUNTIA-FICUS-INDICA-EXTRACT-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-OPUNTIA-FICUS-INDICA-EXTRACT",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.8500000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DR-SAM-BUNTING-SKINCAREFLAWLESS-MOISTURISER",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-HYLAMIDEBOOSTER-PORE-CONTROL-DISCONTINUED",
+      "YUXI-PRODUCT-MAKE-P-REMCOMFORT-ME-MOSS-CALMING-MASK",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER",
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED",
+      "YUXI-PRODUCT-THE-ORDINARYAHA-30-BHA-2-PEELING-SOLUTION-DISCONTINUED",
+      "YUXI-PRODUCT-THE-ORDINARYAMINO-ACIDS-B5"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-RETINOL-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-RETINOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-ROSA-DAMASCENA-FLOWER-OIL-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-ROSA-DAMASCENA-FLOWER-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.75,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-MACLIGHTFUL-C-MARINE-BRIGHT-FORMULA-SOFTENING-LOTION",
+      "YUXI-PRODUCT-MAYBELLINE-NEW-YORKFIT-ME-MICROSCOPIC-CONCEALER",
+      "YUXI-PRODUCT-THE-ORDINARYAHA-30-BHA-2-PEELING-SOLUTION-DISCONTINUED",
+      "YUXI-PRODUCT-THE-ORDINARYSALICYLIC-ACID-2-SOLUTION"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-SIMMONDSIA-CHINENSIS-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CLINIQUEDRAMATICALLY-DIFFERENT-HYDRATING-JELLY",
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN",
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE",
+      "YUXI-PRODUCT-DR-SAM-BUNTING-SKINCAREFLAWLESS-MOISTURISER",
+      "YUXI-PRODUCT-KYPRISPOT-OF-SHADE-HELITROPIC-SPF-30",
+      "YUXI-PRODUCT-MACLIGHTFUL-C-MARINE-BRIGHT-FORMULA-SOFTENING-LOTION",
+      "YUXI-PRODUCT-NIODMULTI-MOLECULAR-HYALURONIC-COMPLEX-2-MMHC2",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-DERMALOGICADERMAL-CLAY-CLEANSER",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTLALA-RETRO-WHIPPED-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-KYPRISPOT-OF-SHADE-HELITROPIC-SPF-30",
+      "YUXI-PRODUCT-MAYBELLINE-NEW-YORKFIT-ME-MICROSCOPIC-CONCEALER",
+      "YUXI-PRODUCT-NIODHYDRATION-VACCINE-DISCONTINUED",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER",
+      "YUXI-PRODUCT-SKOON-SKINCARESUPERFLUITY-MOISTURE-GEL",
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-CITRIC-ACID-TRIOLEIN-COOCCUR",
+    "source_ingredient_id": "ING-CITRIC-ACID",
+    "target_ingredient_id": "ING-TRIOLEIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-COPPER-TRIPEPTIDE-1-GLYCERIN-COOCCUR",
+    "source_ingredient_id": "ING-COPPER-TRIPEPTIDE-1",
+    "target_ingredient_id": "ING-GLYCERIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PYUNKANG-YULACNE-FACIAL-CLEANSER"
+    ]
+  },
+  {
+    "id": "REL-GLUCONOLACTONE-GLYCERIN-COOCCUR",
+    "source_ingredient_id": "ING-GLUCONOLACTONE",
+    "target_ingredient_id": "ING-GLYCERIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-W",
+      "YUXI-PRODUCT-NEOSTRATABIONIC-LOTION-15-BIONIC-PHA",
+      "YUXI-PRODUCT-SILK-NATURALSSUPER-DEFENSE-SERUM",
+      "YUXI-PRODUCT-ZO-SKIN-HEALTHOSSENTIAL-ADVANCED-RADICAL-NIGHT-REPAIR"
+    ]
+  },
+  {
+    "id": "REL-GLUCONOLACTONE-LACTIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-GLUCONOLACTONE",
+    "target_ingredient_id": "ING-LACTIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-W"
+    ]
+  },
+  {
+    "id": "REL-GLUCONOLACTONE-NIACINAMIDE-COOCCUR",
+    "source_ingredient_id": "ING-GLUCONOLACTONE",
+    "target_ingredient_id": "ING-NIACINAMIDE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-W",
+      "YUXI-PRODUCT-SILK-NATURALSSUPER-DEFENSE-SERUM"
+    ]
+  },
+  {
+    "id": "REL-GLUCONOLACTONE-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-GLUCONOLACTONE",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-SILK-NATURALSSUPER-DEFENSE-SERUM"
+    ]
+  },
+  {
+    "id": "REL-GLUCONOLACTONE-RETINOL-COOCCUR",
+    "source_ingredient_id": "ING-GLUCONOLACTONE",
+    "target_ingredient_id": "ING-RETINOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ZO-SKIN-HEALTHOSSENTIAL-ADVANCED-RADICAL-NIGHT-REPAIR"
+    ]
+  },
+  {
+    "id": "REL-GLUCONOLACTONE-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-GLUCONOLACTONE",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400"
+    ]
+  },
+  {
+    "id": "REL-GLUCONOLACTONE-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-GLUCONOLACTONE",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ZO-SKIN-HEALTHOSSENTIAL-ADVANCED-RADICAL-NIGHT-REPAIR"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-HYALURONIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-HYALURONIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-CUTICURADERMACARE-ULTRA-HYDRATE",
+      "YUXI-PRODUCT-IS-CLINICALWHITE-LIGHTENING-COMPLEX",
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-NIODMULTI-MOLECULAR-HYALURONIC-COMPLEX-2-MMHC2",
+      "YUXI-PRODUCT-NYDGULTRA-LIGHT-HYDRA-GEL",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-HYDROLYZED-HYALURONIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-HYDROLYZED-HYALURONIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.75,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN",
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-NEUTROGENAHYDRO-BOOST-SLEEPING-CREAM",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-HYDROXYPINACOLONE-RETINOATE-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-HYDROXYPINACOLONE-RETINOATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-HYDROXYPROPYL-CYCLODEXTRIN-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-LACTIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-LACTIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-CERAMIDE-BOOST-ANTI-AGING-FACE-SERUM-DISCONTINUED",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-W",
+      "YUXI-PRODUCT-DR-JETSKE-ULTEESUNCOVER-SPF-30",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA",
+      "YUXI-PRODUCT-SIMPLEKIND-TO-SKIN-PROTECTING-MOISTURE-CREAM-SPF30",
+      "YUXI-PRODUCT-THE-ORDINARYAHA-30-BHA-2-PEELING-SOLUTION-DISCONTINUED",
+      "YUXI-PRODUCT-THE-ORDINARYLACTIC-ACID-10-HA"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-LACTOCOCCUS-FERMENT-LYSATE-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-LACTOCOCCUS-FERMENT-LYSATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-LINOLEIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-LINOLEIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CLINIQUESUPER-RESCUE-ANTIOXIDANT-NIGHT-MOISTURIZER-FOR-VERY-DRY-TO-DRY-SKIN",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL",
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-LINOLENIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-LINOLENIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-NIACINAMIDE-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-NIACINAMIDE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-W",
+      "YUXI-PRODUCT-CLINIQUESUPER-RESCUE-ANTIOXIDANT-NIGHT-MOISTURIZER-FOR-VERY-DRY-TO-DRY-SKIN",
+      "YUXI-PRODUCT-DR-JETSKE-ULTEESUNCOVER-SPF-30",
+      "YUXI-PRODUCT-DR-SAM-BUNTING-SKINCAREFLAWLESS-MOISTURISER",
+      "YUXI-PRODUCT-HYLAMIDEBOOSTER-PORE-CONTROL-DISCONTINUED",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYANTHELIOS-ANTI-IMPERFECTIONS-GEL-SPF-50",
+      "YUXI-PRODUCT-MARCELLESKINCARING-INNER-GLOW-SERUM-FOUNDATION",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-SILK-NATURALSSUPER-DEFENSE-SERUM",
+      "YUXI-PRODUCT-SIMPLEKIND-TO-SKIN-PROTECTING-MOISTURE-CREAM-SPF30",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD",
+      "YUXI-PRODUCT-UNCOVERMOISTURIZER"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-OLEIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-OLEIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-OPUNTIA-FICUS-INDICA-EXTRACT-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-OPUNTIA-FICUS-INDICA-EXTRACT",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BOOTS-NO7LINE-CORRECTING-BOOSTER-SERUM",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CLINIQUE-FITWORKOUT-MAKEUP-BROAD-SPECTRUM-SPF-40",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-FIRST-AID-BEAUTYEYE-DUTY-TRIPLE-REMEDY-AM-GEL-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BOOTS-NO7LINE-CORRECTING-BOOSTER-SERUM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL",
+      "YUXI-PRODUCT-DR-SAM-BUNTING-SKINCAREFLAWLESS-MOISTURISER",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-HYLAMIDEBOOSTER-PORE-CONTROL-DISCONTINUED",
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER",
+      "YUXI-PRODUCT-MAKE-P-REMCOMFORT-ME-MOSS-CALMING-MASK",
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER",
+      "YUXI-PRODUCT-PIXIGLOW-TONIC-DISCONTINUED",
+      "YUXI-PRODUCT-SILK-NATURALSSUPER-DEFENSE-SERUM",
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD",
+      "YUXI-PRODUCT-THE-ORDINARYAHA-30-BHA-2-PEELING-SOLUTION-DISCONTINUED",
+      "YUXI-PRODUCT-YOUTH-TO-THE-PEOPLEAGE-PREVENTION-MOISTURE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-RETINOL-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-RETINOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-CERAMIDE-BOOST-ANTI-AGING-FACE-SERUM-DISCONTINUED",
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYREDERMIC-R-ANTI-AGING-CONCENTRATE-INTENSIVE",
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER",
+      "YUXI-PRODUCT-SKINCEUTICALSRETINOL-0-3",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM",
+      "YUXI-PRODUCT-ZO-SKIN-HEALTHOSSENTIAL-ADVANCED-RADICAL-NIGHT-REPAIR"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-RETINYL-PALMITATE-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-RETINYL-PALMITATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.75,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL",
+      "YUXI-PRODUCT-IS-CLINICALCLEANSING-COMPLEX",
+      "YUXI-PRODUCT-OSKIARENAISSANCE-CLEANSING-GEL-DISCONTINUED",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-YOUTH-TO-THE-PEOPLEAGE-PREVENTION-MOISTURE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-ROSA-DAMASCENA-FLOWER-OIL-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-ROSA-DAMASCENA-FLOWER-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-ROSA-RUBIGINOSA-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-ROSA-RUBIGINOSA-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYANTHELIOS-ANTI-IMPERFECTIONS-GEL-SPF-50",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10",
+      "YUXI-PRODUCT-MACLIGHTFUL-C-MARINE-BRIGHT-FORMULA-SOFTENING-LOTION",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA",
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL",
+      "YUXI-PRODUCT-THE-ORDINARYAHA-30-BHA-2-PEELING-SOLUTION-DISCONTINUED",
+      "YUXI-PRODUCT-THE-ORDINARYSALICYLIC-ACID-2-MASQUE"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-SIMMONDSIA-CHINENSIS-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.8,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL",
+      "YUXI-PRODUCT-GLOSSIERFUTUREDEW",
+      "YUXI-PRODUCT-MARCELLESKINCARING-INNER-GLOW-SERUM-FOUNDATION",
+      "YUXI-PRODUCT-PESTLE-MORTARHYDRATE",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-BAREMINERALSCOMPLEXION-RESCUE-TINTED-HYDRATING-GEL-CREAM-SPF-30",
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-CERAMIDE-BOOST-ANTI-AGING-FACE-SERUM-DISCONTINUED",
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CLINIQUE-FITWORKOUT-MAKEUP-BROAD-SPECTRUM-SPF-40",
+      "YUXI-PRODUCT-CLINIQUEDRAMATICALLY-DIFFERENT-HYDRATING-JELLY",
+      "YUXI-PRODUCT-CLINIQUEEVEN-BETTER-ESSENCE-LOTION-COMBO-OILY-SKIN",
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE",
+      "YUXI-PRODUCT-CLINIQUESUPER-RESCUE-ANTIOXIDANT-NIGHT-MOISTURIZER-FOR-VERY-DRY-TO-DRY-SKIN",
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL",
+      "YUXI-PRODUCT-DR-SAM-BUNTING-SKINCAREFLAWLESS-MOISTURISER",
+      "YUXI-PRODUCT-FIRST-AID-BEAUTYEYE-DUTY-TRIPLE-REMEDY-AM-GEL-CREAM",
+      "YUXI-PRODUCT-GLOSSIERFUTUREDEW",
+      "YUXI-PRODUCT-HYLAMIDEBOOSTER-LOW-MOLECULAR-HA",
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER",
+      "YUXI-PRODUCT-KYPRISPOT-OF-SHADE-HELITROPIC-SPF-30",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYREDERMIC-R-ANTI-AGING-CONCENTRATE-INTENSIVE",
+      "YUXI-PRODUCT-LIXIRUNIVERSAL-EMULSION-DISCONTINUED",
+      "YUXI-PRODUCT-LIXIRVITAMIN-C-PASTE",
+      "YUXI-PRODUCT-MACLIGHTFUL-C-MARINE-BRIGHT-FORMULA-SOFTENING-LOTION",
+      "YUXI-PRODUCT-MARCELLESKINCARING-INNER-GLOW-SERUM-FOUNDATION",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-NEUTROGENAHYDRO-BOOST-SLEEPING-CREAM",
+      "YUXI-PRODUCT-NIODMULTI-MOLECULAR-HYALURONIC-COMPLEX-2-MMHC2",
+      "YUXI-PRODUCT-NYDGULTRA-LIGHT-HYDRA-GEL",
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-PIXIPIXI-CAROLINE-HIRONS-DOUBLE-CLEANSE-CREAM",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-SKINCEUTICALSRETINOL-0-3",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD",
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL",
+      "YUXI-PRODUCT-TATCHAWATER-CREAM",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM",
+      "YUXI-PRODUCT-THE-INKEY-LISTZINC-OXIDE-CREAM-MOISTURISER",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA",
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA",
+      "YUXI-PRODUCT-UNCOVERMOISTURIZER"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-IS-CLINICALWHITE-LIGHTENING-COMPLEX",
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-ULTRASUNANTI-AGE-SPF-50",
+      "YUXI-PRODUCT-UNCOVERMOISTURIZER"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-TETRAPEPTIDE-21-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-TETRAPEPTIDE-21",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN",
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTLALA-RETRO-WHIPPED-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTSLAAI-MAKEUP-MELTING-BUTTER-CLEANSER",
+      "YUXI-PRODUCT-KYPRISPOT-OF-SHADE-HELITROPIC-SPF-30",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYANTHELIOS-ANTI-IMPERFECTIONS-GEL-SPF-50",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYANTHELIOS-XL-SPF-50-DRY-TOUCH-GEL-CREAM-ANTI-SHINE",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10",
+      "YUXI-PRODUCT-LIXIRUNIVERSAL-EMULSION-DISCONTINUED",
+      "YUXI-PRODUCT-LOVEASUN-LOTION-TAHITI-MONOI-SPF50",
+      "YUXI-PRODUCT-LOVEASUN-SPRAY-TAHITI-MONOI-SPF50",
+      "YUXI-PRODUCT-MARCELLESKINCARING-INNER-GLOW-SERUM-FOUNDATION",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-NIODHYDRATION-VACCINE-DISCONTINUED",
+      "YUXI-PRODUCT-NIODMODULATING-GLUCOSIDES",
+      "YUXI-PRODUCT-OSKIAPERFECT-CLEANSER",
+      "YUXI-PRODUCT-OSKIARENAISSANCE-CLEANSING-GEL-DISCONTINUED",
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-YOUTH-EXTENDING-DAILY-HYDRATING-FLUID-SPF-50",
+      "YUXI-PRODUCT-PESTLE-MORTARHYDRATE",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-SKOON-SKINCARESUPERFLUITY-MOISTURE-GEL",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD",
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM",
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA",
+      "YUXI-PRODUCT-ULTRASUNANTI-AGE-SPF-50",
+      "YUXI-PRODUCT-UNCOVERMOISTURIZER",
+      "YUXI-PRODUCT-ZO-SKIN-HEALTHOSSENTIAL-ADVANCED-RADICAL-NIGHT-REPAIR"
+    ]
+  },
+  {
+    "id": "REL-GLYCERIN-TRIOLEIN-COOCCUR",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-TRIOLEIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-HYALURONIC-ACID-HYDROLYZED-HYALURONIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-HYDROLYZED-HYALURONIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK"
+    ]
+  },
+  {
+    "id": "REL-HYALURONIC-ACID-HYDROXYPINACOLONE-RETINOATE-COOCCUR",
+    "source_ingredient_id": "ING-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-HYDROXYPINACOLONE-RETINOATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-HYALURONIC-ACID-LACTIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-LACTIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM"
+    ]
+  },
+  {
+    "id": "REL-HYALURONIC-ACID-NIACINAMIDE-COOCCUR",
+    "source_ingredient_id": "ING-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-NIACINAMIDE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK"
+    ]
+  },
+  {
+    "id": "REL-HYALURONIC-ACID-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-HYALURONIC-ACID-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-HYALURONIC-ACID-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER"
+    ]
+  },
+  {
+    "id": "REL-HYALURONIC-ACID-RETINOL-COOCCUR",
+    "source_ingredient_id": "ING-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-RETINOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-HYALURONIC-ACID-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM"
+    ]
+  },
+  {
+    "id": "REL-HYALURONIC-ACID-SIMMONDSIA-CHINENSIS-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK"
+    ]
+  },
+  {
+    "id": "REL-HYALURONIC-ACID-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.8500000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-NIODMULTI-MOLECULAR-HYALURONIC-COMPLEX-2-MMHC2",
+      "YUXI-PRODUCT-NYDGULTRA-LIGHT-HYDRA-GEL",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM"
+    ]
+  },
+  {
+    "id": "REL-HYALURONIC-ACID-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-IS-CLINICALWHITE-LIGHTENING-COMPLEX"
+    ]
+  },
+  {
+    "id": "REL-HYALURONIC-ACID-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-HYDROLYZED-HYALURONIC-ACID-NIACINAMIDE-COOCCUR",
+    "source_ingredient_id": "ING-HYDROLYZED-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-NIACINAMIDE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK"
+    ]
+  },
+  {
+    "id": "REL-HYDROLYZED-HYALURONIC-ACID-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-HYDROLYZED-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10"
+    ]
+  },
+  {
+    "id": "REL-HYDROLYZED-HYALURONIC-ACID-SIMMONDSIA-CHINENSIS-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-HYDROLYZED-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK"
+    ]
+  },
+  {
+    "id": "REL-HYDROLYZED-HYALURONIC-ACID-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-HYDROLYZED-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-NEUTROGENAHYDRO-BOOST-SLEEPING-CREAM",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK"
+    ]
+  },
+  {
+    "id": "REL-HYDROLYZED-HYALURONIC-ACID-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-HYDROLYZED-HYALURONIC-ACID",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN",
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPINACOLONE-RETINOATE-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPINACOLONE-RETINOATE",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPINACOLONE-RETINOATE-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPINACOLONE-RETINOATE",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPINACOLONE-RETINOATE-RETINOL-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPINACOLONE-RETINOATE",
+    "target_ingredient_id": "ING-RETINOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPINACOLONE-RETINOATE-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPINACOLONE-RETINOATE",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPINACOLONE-RETINOATE-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPINACOLONE-RETINOATE",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPROPYL-CYCLODEXTRIN-LACTOCOCCUS-FERMENT-LYSATE-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "target_ingredient_id": "ING-LACTOCOCCUS-FERMENT-LYSATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPROPYL-CYCLODEXTRIN-LINOLEIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "target_ingredient_id": "ING-LINOLEIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPROPYL-CYCLODEXTRIN-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPROPYL-CYCLODEXTRIN-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPROPYL-CYCLODEXTRIN-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPROPYL-CYCLODEXTRIN-RETINOL-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "target_ingredient_id": "ING-RETINOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPROPYL-CYCLODEXTRIN-RETINYL-PALMITATE-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "target_ingredient_id": "ING-RETINYL-PALMITATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPROPYL-CYCLODEXTRIN-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPROPYL-CYCLODEXTRIN-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPROPYL-CYCLODEXTRIN-TETRAPEPTIDE-21-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "target_ingredient_id": "ING-TETRAPEPTIDE-21",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-HYDROXYPROPYL-CYCLODEXTRIN-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-HYDROXYPROPYL-CYCLODEXTRIN",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-LACTIC-ACID-NIACINAMIDE-COOCCUR",
+    "source_ingredient_id": "ING-LACTIC-ACID",
+    "target_ingredient_id": "ING-NIACINAMIDE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-W",
+      "YUXI-PRODUCT-DR-JETSKE-ULTEESUNCOVER-SPF-30",
+      "YUXI-PRODUCT-SIMPLEKIND-TO-SKIN-PROTECTING-MOISTURE-CREAM-SPF30"
+    ]
+  },
+  {
+    "id": "REL-LACTIC-ACID-OPUNTIA-FICUS-INDICA-EXTRACT-COOCCUR",
+    "source_ingredient_id": "ING-LACTIC-ACID",
+    "target_ingredient_id": "ING-OPUNTIA-FICUS-INDICA-EXTRACT",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM"
+    ]
+  },
+  {
+    "id": "REL-LACTIC-ACID-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-LACTIC-ACID",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA"
+    ]
+  },
+  {
+    "id": "REL-LACTIC-ACID-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-LACTIC-ACID",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA"
+    ]
+  },
+  {
+    "id": "REL-LACTIC-ACID-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-LACTIC-ACID",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-THE-ORDINARYAHA-30-BHA-2-PEELING-SOLUTION-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-LACTIC-ACID-RETINOL-COOCCUR",
+    "source_ingredient_id": "ING-LACTIC-ACID",
+    "target_ingredient_id": "ING-RETINOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-CERAMIDE-BOOST-ANTI-AGING-FACE-SERUM-DISCONTINUED",
+      "YUXI-PRODUCT-SARAH-CHAPMANSKINESIS-OVERNIGHT-EXFOLIATING-BOOSTER"
+    ]
+  },
+  {
+    "id": "REL-LACTIC-ACID-ROSA-DAMASCENA-FLOWER-OIL-COOCCUR",
+    "source_ingredient_id": "ING-LACTIC-ACID",
+    "target_ingredient_id": "ING-ROSA-DAMASCENA-FLOWER-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-SARAH-CHAPMANSKINESIS-OVERNIGHT-EXFOLIATING-BOOSTER"
+    ]
+  },
+  {
+    "id": "REL-LACTIC-ACID-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-LACTIC-ACID",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA",
+      "YUXI-PRODUCT-THE-ORDINARYAHA-30-BHA-2-PEELING-SOLUTION-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-LACTIC-ACID-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-LACTIC-ACID",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-CERAMIDE-BOOST-ANTI-AGING-FACE-SERUM-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-LACTOCOCCUS-FERMENT-LYSATE-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-LACTOCOCCUS-FERMENT-LYSATE",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-LACTOCOCCUS-FERMENT-LYSATE-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-LACTOCOCCUS-FERMENT-LYSATE",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-LACTOCOCCUS-FERMENT-LYSATE-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-LACTOCOCCUS-FERMENT-LYSATE",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET"
+    ]
+  },
+  {
+    "id": "REL-LINOLEIC-ACID-LINOLENIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-LINOLEIC-ACID",
+    "target_ingredient_id": "ING-LINOLENIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL"
+    ]
+  },
+  {
+    "id": "REL-LINOLEIC-ACID-NIACINAMIDE-COOCCUR",
+    "source_ingredient_id": "ING-LINOLEIC-ACID",
+    "target_ingredient_id": "ING-NIACINAMIDE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CLINIQUESUPER-RESCUE-ANTIOXIDANT-NIGHT-MOISTURIZER-FOR-VERY-DRY-TO-DRY-SKIN"
+    ]
+  },
+  {
+    "id": "REL-LINOLEIC-ACID-OLEIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-LINOLEIC-ACID",
+    "target_ingredient_id": "ING-OLEIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-LINOLEIC-ACID-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-LINOLEIC-ACID",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-LINOLEIC-ACID-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-LINOLEIC-ACID",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-LINOLEIC-ACID-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-LINOLEIC-ACID",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-LINOLEIC-ACID-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-LINOLEIC-ACID",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL"
+    ]
+  },
+  {
+    "id": "REL-LINOLEIC-ACID-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-LINOLEIC-ACID",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CLINIQUESUPER-RESCUE-ANTIOXIDANT-NIGHT-MOISTURIZER-FOR-VERY-DRY-TO-DRY-SKIN",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL",
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-LINOLEIC-ACID-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-LINOLEIC-ACID",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM"
+    ]
+  },
+  {
+    "id": "REL-LINOLEIC-ACID-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-LINOLEIC-ACID",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL",
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-LINOLEIC-ACID-TRIOLEIN-COOCCUR",
+    "source_ingredient_id": "ING-LINOLEIC-ACID",
+    "target_ingredient_id": "ING-TRIOLEIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-LINOLENIC-ACID-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-LINOLENIC-ACID",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL"
+    ]
+  },
+  {
+    "id": "REL-LINOLENIC-ACID-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-LINOLENIC-ACID",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL"
+    ]
+  },
+  {
+    "id": "REL-LINOLENIC-ACID-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-LINOLENIC-ACID",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM"
+    ]
+  },
+  {
+    "id": "REL-LINOLENIC-ACID-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-LINOLENIC-ACID",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL"
+    ]
+  },
+  {
+    "id": "REL-NIACINAMIDE-PALMITOYL-TETRAPEPTIDE-7-COOCCUR",
+    "source_ingredient_id": "ING-NIACINAMIDE",
+    "target_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT"
+    ]
+  },
+  {
+    "id": "REL-NIACINAMIDE-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-NIACINAMIDE",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT"
+    ]
+  },
+  {
+    "id": "REL-NIACINAMIDE-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-NIACINAMIDE",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.75,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-DR-SAM-BUNTING-SKINCAREFLAWLESS-MOISTURISER",
+      "YUXI-PRODUCT-HYLAMIDEBOOSTER-PORE-CONTROL-DISCONTINUED",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-SILK-NATURALSSUPER-DEFENSE-SERUM",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-NIACINAMIDE-ROSA-RUBIGINOSA-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-NIACINAMIDE",
+    "target_ingredient_id": "ING-ROSA-RUBIGINOSA-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-NIACINAMIDE-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-NIACINAMIDE",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-BIOLOGIQUE-RECHERCHELOTION-P50-PIGM-400",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYANTHELIOS-ANTI-IMPERFECTIONS-GEL-SPF-50",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER"
+    ]
+  },
+  {
+    "id": "REL-NIACINAMIDE-SIMMONDSIA-CHINENSIS-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-NIACINAMIDE",
+    "target_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-MARCELLESKINCARING-INNER-GLOW-SERUM-FOUNDATION",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK"
+    ]
+  },
+  {
+    "id": "REL-NIACINAMIDE-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-NIACINAMIDE",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-CLINIQUESUPER-RESCUE-ANTIOXIDANT-NIGHT-MOISTURIZER-FOR-VERY-DRY-TO-DRY-SKIN",
+      "YUXI-PRODUCT-DR-SAM-BUNTING-SKINCAREFLAWLESS-MOISTURISER",
+      "YUXI-PRODUCT-MARCELLESKINCARING-INNER-GLOW-SERUM-FOUNDATION",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-SOME-BY-MIAHA-BHA-PHA-TEA-TREE-30-DAYS-MIRACLE-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD",
+      "YUXI-PRODUCT-UNCOVERMOISTURIZER",
+      "YUXI-PRODUCT-ZELENSZ-LUMIOUS-BRIGHTENING-SERUM"
+    ]
+  },
+  {
+    "id": "REL-NIACINAMIDE-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-NIACINAMIDE",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-UNCOVERMOISTURIZER"
+    ]
+  },
+  {
+    "id": "REL-NIACINAMIDE-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-NIACINAMIDE",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.8,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEPLAINMUNG-BEAN-COOLING-MOISTURE-SUNSCREEN",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYANTHELIOS-ANTI-IMPERFECTIONS-GEL-SPF-50",
+      "YUXI-PRODUCT-MARCELLESKINCARING-INNER-GLOW-SERUM-FOUNDATION",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD",
+      "YUXI-PRODUCT-UNCOVERMOISTURIZER"
+    ]
+  },
+  {
+    "id": "REL-OLEIC-ACID-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-OLEIC-ACID",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-OLEIC-ACID-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-OLEIC-ACID",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-OLEIC-ACID-TRIOLEIN-COOCCUR",
+    "source_ingredient_id": "ING-OLEIC-ACID",
+    "target_ingredient_id": "ING-TRIOLEIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-OPUNTIA-FICUS-INDICA-EXTRACT-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-OPUNTIA-FICUS-INDICA-EXTRACT",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTT-L-C-FRAMBOOS-GLYCOLIC-NIGHT-SERUM"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TETRAPEPTIDE-7-PALMITOYL-TRIPEPTIDE-1-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "target_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BOOTS-NO7LINE-CORRECTING-BOOSTER-SERUM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-ELIZABETH-ARDENRETINOL-CERAMIDE-CAPSULES",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TETRAPEPTIDE-7-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TETRAPEPTIDE-7-RETINOL-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "target_ingredient_id": "ING-RETINOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ELIZABETH-ARDENRETINOL-CERAMIDE-CAPSULES",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TETRAPEPTIDE-7-RETINYL-PALMITATE-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "target_ingredient_id": "ING-RETINYL-PALMITATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TETRAPEPTIDE-7-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TETRAPEPTIDE-7-SIMMONDSIA-CHINENSIS-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "target_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-JANUARY-LABSMOISTURE-BALANCING-LOTION-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TETRAPEPTIDE-7-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-CLINIQUE-FITWORKOUT-MAKEUP-BROAD-SPECTRUM-SPF-40",
+      "YUXI-PRODUCT-FIRST-AID-BEAUTYEYE-DUTY-TRIPLE-REMEDY-AM-GEL-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TETRAPEPTIDE-7-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TETRAPEPTIDE-7-TETRAPEPTIDE-21-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "target_ingredient_id": "ING-TETRAPEPTIDE-21",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TETRAPEPTIDE-7-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TETRAPEPTIDE-7",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TRIPEPTIDE-1-PANTHENOL-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TRIPEPTIDE-1-RETINOL-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "target_ingredient_id": "ING-RETINOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ELIZABETH-ARDENRETINOL-CERAMIDE-CAPSULES",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TRIPEPTIDE-1-RETINYL-PALMITATE-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "target_ingredient_id": "ING-RETINYL-PALMITATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TRIPEPTIDE-1-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-ADVANCED-SMOOTHING-TREATMENT-10-AHA"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TRIPEPTIDE-1-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.75,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-BRIGHTENING-ESSENCE-TREATMENT",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION",
+      "YUXI-PRODUCT-THE-INKEY-LISTHYALURONIC-ACID-SERUM",
+      "YUXI-PRODUCT-THE-ORDINARYBUFFET",
+      "YUXI-PRODUCT-THE-ORDINARYMATRIXYL-10-HA"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TRIPEPTIDE-1-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TRIPEPTIDE-1-TETRAPEPTIDE-21-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "target_ingredient_id": "ING-TETRAPEPTIDE-21",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-PALMITOYL-TRIPEPTIDE-1-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-PALMITOYL-TRIPEPTIDE-1",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM"
+    ]
+  },
+  {
+    "id": "REL-PANTHENOL-RETINOL-COOCCUR",
+    "source_ingredient_id": "ING-PANTHENOL",
+    "target_ingredient_id": "ING-RETINOL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER"
+    ]
+  },
+  {
+    "id": "REL-PANTHENOL-RETINYL-PALMITATE-COOCCUR",
+    "source_ingredient_id": "ING-PANTHENOL",
+    "target_ingredient_id": "ING-RETINYL-PALMITATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL",
+      "YUXI-PRODUCT-YOUTH-TO-THE-PEOPLEAGE-PREVENTION-MOISTURE-CREAM"
+    ]
+  },
+  {
+    "id": "REL-PANTHENOL-ROSA-DAMASCENA-FLOWER-OIL-COOCCUR",
+    "source_ingredient_id": "ING-PANTHENOL",
+    "target_ingredient_id": "ING-ROSA-DAMASCENA-FLOWER-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-PANTHENOL-ROSA-RUBIGINOSA-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-PANTHENOL",
+    "target_ingredient_id": "ING-ROSA-RUBIGINOSA-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-PANTHENOL-SALICYLIC-ACID-COOCCUR",
+    "source_ingredient_id": "ING-PANTHENOL",
+    "target_ingredient_id": "ING-SALICYLIC-ACID",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMANDELIC-PIGMENTATION-CORRECTOR-NIGHT-SERUM",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-THE-ORDINARYAHA-30-BHA-2-PEELING-SOLUTION-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-PANTHENOL-SIMMONDSIA-CHINENSIS-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-PANTHENOL",
+    "target_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL",
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-PANTHENOL-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-PANTHENOL",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.8500000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL",
+      "YUXI-PRODUCT-DR-SAM-BUNTING-SKINCAREFLAWLESS-MOISTURISER",
+      "YUXI-PRODUCT-ISNTREEHYALURONIC-ACID-TONER",
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-PAULA-S-CHOICESKIN-PERFECTING-8-AHA-GEL-EXFOLIANT",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-PANTHENOL-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-PANTHENOL",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.55,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-PANTHENOL-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-PANTHENOL",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-RETINOL-ROSA-DAMASCENA-FLOWER-OIL-COOCCUR",
+    "source_ingredient_id": "ING-RETINOL",
+    "target_ingredient_id": "ING-ROSA-DAMASCENA-FLOWER-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-SARAH-CHAPMANSKINESIS-OVERNIGHT-EXFOLIATING-BOOSTER"
+    ]
+  },
+  {
+    "id": "REL-RETINOL-SIMMONDSIA-CHINENSIS-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-RETINOL",
+    "target_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-MEDIK8RETINOL-3-TR"
+    ]
+  },
+  {
+    "id": "REL-RETINOL-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-RETINOL",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-CERAMIDE-BOOST-ANTI-AGING-FACE-SERUM-DISCONTINUED",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYREDERMIC-R-ANTI-AGING-CONCENTRATE-INTENSIVE",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER",
+      "YUXI-PRODUCT-SKINCEUTICALSRETINOL-0-3"
+    ]
+  },
+  {
+    "id": "REL-RETINOL-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-RETINOL",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICECLINICAL-CERAMIDE-ENRICHED-FIRMING-MOISTURIZER-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-RETINOL-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-RETINOL",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER",
+      "YUXI-PRODUCT-THE-INKEY-LISTRETINOL-SERUM",
+      "YUXI-PRODUCT-ZO-SKIN-HEALTHOSSENTIAL-ADVANCED-RADICAL-NIGHT-REPAIR"
+    ]
+  },
+  {
+    "id": "REL-RETINYL-PALMITATE-SIMMONDSIA-CHINENSIS-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-RETINYL-PALMITATE",
+    "target_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL"
+    ]
+  },
+  {
+    "id": "REL-RETINYL-PALMITATE-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-RETINYL-PALMITATE",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPEPTIDE-21-WRINKLE-RESIST-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-RETINYL-PALMITATE-TETRAPEPTIDE-21-COOCCUR",
+    "source_ingredient_id": "ING-RETINYL-PALMITATE",
+    "target_ingredient_id": "ING-TETRAPEPTIDE-21",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-RETINYL-PALMITATE-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-RETINYL-PALMITATE",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-OSKIARENAISSANCE-CLEANSING-GEL-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-ROSA-DAMASCENA-FLOWER-OIL-SIMMONDSIA-CHINENSIS-SEED-OIL-COOCCUR",
+    "source_ingredient_id": "ING-ROSA-DAMASCENA-FLOWER-OIL",
+    "target_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-SISLEYBLACK-ROSE-CREAM-MASK-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-ROSA-RUBIGINOSA-SEED-OIL-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-ROSA-RUBIGINOSA-SEED-OIL",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-ROSA-RUBIGINOSA-SEED-OIL-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-ROSA-RUBIGINOSA-SEED-OIL",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-STRATIALIPID-GOLD"
+    ]
+  },
+  {
+    "id": "REL-SALICYLIC-ACID-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-SALICYLIC-ACID",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10",
+      "YUXI-PRODUCT-MACLIGHTFUL-C-MARINE-BRIGHT-FORMULA-SOFTENING-LOTION",
+      "YUXI-PRODUCT-PAULA-S-CHOICEDEFENSE-ANTIOXIDANT-PORE-PURIFIER",
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL"
+    ]
+  },
+  {
+    "id": "REL-SALICYLIC-ACID-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-SALICYLIC-ACID",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.65,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-LA-ROCHE-POSAYANTHELIOS-ANTI-IMPERFECTIONS-GEL-SPF-50",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10",
+      "YUXI-PRODUCT-MAYBELLINE-NEW-YORKFIT-ME-MICROSCOPIC-CONCEALER",
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL"
+    ]
+  },
+  {
+    "id": "REL-SIMMONDSIA-CHINENSIS-SEED-OIL-SODIUM-HYALURONATE-COOCCUR",
+    "source_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.7,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-ALLIES-OF-SKINMOLECULAR-MULTI-NUTRIENT-DAY-CREAM",
+      "YUXI-PRODUCT-DERMA-EHYDRATING-EYE-CR-ME-WITH-HYALURONIC-ACID-AND-PYCNOGENOL",
+      "YUXI-PRODUCT-GLOSSIERFUTUREDEW",
+      "YUXI-PRODUCT-MARCELLESKINCARING-INNER-GLOW-SERUM-FOUNDATION",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK"
+    ]
+  },
+  {
+    "id": "REL-SIMMONDSIA-CHINENSIS-SEED-OIL-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-SIMMONDSIA-CHINENSIS-SEED-OIL",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.8,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CAUDALIEPREMIER-CRU-THE-ELIXIR",
+      "YUXI-PRODUCT-HYLAMIDEHIGH-EFFICIENCY-FACE-CLEANER",
+      "YUXI-PRODUCT-MARCELLESKINCARING-INNER-GLOW-SERUM-FOUNDATION",
+      "YUXI-PRODUCT-PESTLE-MORTARHYDRATE",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-THE-ORDINARY-B-OIL",
+      "YUXI-PRODUCT-THE-ORGANIC-PHARMACYCARROT-BUTTER-CLEANSER-DISCONTINUED"
+    ]
+  },
+  {
+    "id": "REL-SODIUM-HYALURONATE-TETRAHEXYLDECYL-ASCORBATE-COOCCUR",
+    "source_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "target_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.6000000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CLINIQUEMOISTURE-SURGE-HYDRATING-SUPERCHARGED-CONCENTRATE",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-UNCOVERMOISTURIZER"
+    ]
+  },
+  {
+    "id": "REL-SODIUM-HYALURONATE-TETRAPEPTIDE-21-COOCCUR",
+    "source_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "target_ingredient_id": "ING-TETRAPEPTIDE-21",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHUN-WRINKLE-TURBO-LINE-SMOOTHING-TONING-LOTION"
+    ]
+  },
+  {
+    "id": "REL-SODIUM-HYALURONATE-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.9,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-CELIMAXHYDRATING-CALMING-CICA-SERUM-MASK",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYCHARLOTTE-S-MAGIC-CREAM-DISCONTINUED",
+      "YUXI-PRODUCT-KYPRISPOT-OF-SHADE-HELITROPIC-SPF-30",
+      "YUXI-PRODUCT-LA-ROCHE-POSAYPURE-VITAMIN-C10",
+      "YUXI-PRODUCT-LIXIRUNIVERSAL-EMULSION-DISCONTINUED",
+      "YUXI-PRODUCT-MARCELLESKINCARING-INNER-GLOW-SERUM-FOUNDATION",
+      "YUXI-PRODUCT-MAYBELLINEGRIPPY-MIST-SETTING-SPRAY",
+      "YUXI-PRODUCT-PAULA-S-CHOICEBOOST-C15-SUPER-BOOSTER",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHPROFESSIONAL-STRENGTH-3-RETINOID-PLUS",
+      "YUXI-PRODUCT-PETER-THOMAS-ROTHRETINOL-FUSION-PM-MOISTURIZER",
+      "YUXI-PRODUCT-PURITO-SEOULMULTI-PDRN-COLLAGEN-REAL-GLOW-MASK",
+      "YUXI-PRODUCT-STRATIALIPID-GOLD",
+      "YUXI-PRODUCT-SU-MANPURIFYING-CLEANSING-GEL-OIL",
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA",
+      "YUXI-PRODUCT-UNCOVERMOISTURIZER"
+    ]
+  },
+  {
+    "id": "REL-SODIUM-HYALURONATE-TRIOLEIN-COOCCUR",
+    "source_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "target_ingredient_id": "ING-TRIOLEIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  },
+  {
+    "id": "REL-TETRAHEXYLDECYL-ASCORBATE-TOCOPHEROL-COOCCUR",
+    "source_ingredient_id": "ING-TETRAHEXYLDECYL-ASCORBATE",
+    "target_ingredient_id": "ING-TOCOPHEROL",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.8500000000000001,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-BEAUTY-PIESUPER-RETINOL-VITAMIN-C-NIGHT-RENEWAL-MOISTURIZER",
+      "YUXI-PRODUCT-CHARLOTTE-TILBURYMAGIC-NIGHT-CREAM",
+      "YUXI-PRODUCT-DRUNK-ELEPHANTC-TANGO-MULTIVITAMIN-EYE-CREAM",
+      "YUXI-PRODUCT-PAULA-S-CHOICERESIST-OMEGA-COMPLEX-SERUM",
+      "YUXI-PRODUCT-STRATIAC-C-SERUM",
+      "YUXI-PRODUCT-SUNDAY-RILEYC-E-O-RAPID-FLASH-BRIGHTENING-SERUM-DISCONTINUED",
+      "YUXI-PRODUCT-ULTRASUNANTI-AGE-SPF-50",
+      "YUXI-PRODUCT-UNCOVERMOISTURIZER"
+    ]
+  },
+  {
+    "id": "REL-TOCOPHEROL-TRIOLEIN-COOCCUR",
+    "source_ingredient_id": "ING-TOCOPHEROL",
+    "target_ingredient_id": "ING-TRIOLEIN",
+    "relation_type": "synergy",
+    "description": "Yuxi 产品数据中共同出现，作为候选协同关系进入配方推荐图谱。",
+    "strength": 0.5,
+    "feedback_weight": 0.0,
+    "evidence_ids": [
+      "YUXI-PRODUCT-THE-ORDINARYNATURAL-MOISTURIZING-FACTORS-HA"
+    ]
+  }
+]

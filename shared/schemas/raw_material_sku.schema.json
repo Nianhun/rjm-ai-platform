@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RawMaterialSku",
+  "type": "object",
+  "required": [
+    "id",
+    "ingredient_id",
+    "supplier_id",
+    "specification",
+    "price",
+    "moq_kg",
+    "lead_time_days",
+    "qualification_files",
+    "sample_status",
+    "quality_rating"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^SKU-[A-Z0-9-]+$"
+    },
+    "ingredient_id": {
+      "type": "string",
+      "pattern": "^ING-[A-Z0-9-]+$"
+    },
+    "supplier_id": {
+      "type": "string",
+      "pattern": "^SUP-[A-Z0-9-]+$"
+    },
+    "specification": {
+      "type": "string"
+    },
+    "price": {
+      "type": "object",
+      "required": [
+        "currency",
+        "amount_per_kg"
+      ],
+      "properties": {
+        "currency": {
+          "type": "string"
+        },
+        "amount_per_kg": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "moq_kg": {
+      "type": "number",
+      "minimum": 0
+    },
+    "lead_time_days": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "qualification_files": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sample_status": {
+      "type": "string",
+      "enum": [
+        "available",
+        "unavailable",
+        "unknown"
+      ]
+    },
+    "quality_rating": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    }
+  }
+}

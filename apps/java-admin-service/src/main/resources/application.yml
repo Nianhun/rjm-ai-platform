@@ -1,0 +1,13 @@
+spring:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+rjm:
+  ai-service:
+    mode: mock
+  python-ai:
+    base-url: http://127.0.0.1:8000
+  security:
+    api-token:
+      enabled: false
+      value: ""

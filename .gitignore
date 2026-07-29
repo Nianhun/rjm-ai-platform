@@ -1,0 +1,25 @@
+.superpowers/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Java / Maven
+target/
+
+# Runtime outputs
+data/runtime/
+data/outputs/
+
+# Local environment
+.env
+
+# Local Windows compatibility junctions created during restructuring
+/prototype/rjm_formula_ai/
+/prototype/tests/
+/java-management/management-service/
+/java-management/api-contract/
+/java-management/database/
+/ui/engineer-console/
+/schemas/

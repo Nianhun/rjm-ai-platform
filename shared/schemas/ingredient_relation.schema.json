@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IngredientRelation",
+  "type": "object",
+  "required": [
+    "id",
+    "source_ingredient_id",
+    "target_ingredient_id",
+    "relation_type",
+    "description",
+    "strength",
+    "feedback_weight",
+    "evidence_ids"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^REL-[A-Z0-9-]+$"
+    },
+    "source_ingredient_id": {
+      "type": "string",
+      "pattern": "^ING-[A-Z0-9-]+$"
+    },
+    "target_ingredient_id": {
+      "type": "string",
+      "pattern": "^ING-[A-Z0-9-]+$"
+    },
+    "relation_type": {
+      "type": "string",
+      "enum": [
+        "synergy",
+        "conflict",
+        "substitute",
+        "enhance",
+        "risk",
+        "supply"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "strength": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "feedback_weight": {
+      "type": "number",
+      "minimum": -0.3,
+      "maximum": 0.3
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

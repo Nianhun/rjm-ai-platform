@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExperimentFeedback",
+  "type": "object",
+  "required": [
+    "id",
+    "formula_id",
+    "batch_no",
+    "result",
+    "metrics",
+    "issues",
+    "engineer_conclusion",
+    "created_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^EXP-[A-Z0-9-]+$"
+    },
+    "formula_id": {
+      "type": "string",
+      "pattern": "^FORM-[A-Z0-9-]+$"
+    },
+    "batch_no": {
+      "type": "string"
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "needs_adjustment"
+      ]
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "engineer_conclusion": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

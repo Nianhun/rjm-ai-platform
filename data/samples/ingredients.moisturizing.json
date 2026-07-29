@@ -1,0 +1,107 @@
+[
+  {
+    "id": "ING-GLYCERIN",
+    "name_cn": "甘油",
+    "name_en": "Glycerin",
+    "inci_name": "GLYCERIN",
+    "category": "humectant",
+    "functions": ["保湿", "溶剂"],
+    "properties": {
+      "water_soluble": true,
+      "oil_soluble": false,
+      "skin_feel": "略粘"
+    },
+    "usage_range": {
+      "min_percent": 1.0,
+      "max_percent": 10.0,
+      "typical_percent": 5.0
+    },
+    "regulatory_limits": [],
+    "risk_tags": ["高用量可能粘腻"],
+    "evidence_ids": ["DOC-MOIST-001"]
+  },
+  {
+    "id": "ING-SODIUM-HYALURONATE",
+    "name_cn": "透明质酸钠",
+    "name_en": "Sodium Hyaluronate",
+    "inci_name": "SODIUM HYALURONATE",
+    "category": "humectant",
+    "functions": ["保湿", "长效锁水"],
+    "properties": {
+      "water_soluble": true,
+      "oil_soluble": false,
+      "skin_feel": "润滑"
+    },
+    "usage_range": {
+      "min_percent": 0.01,
+      "max_percent": 0.3,
+      "typical_percent": 0.1
+    },
+    "regulatory_limits": [],
+    "risk_tags": ["高分子量体系需关注溶解和肤感"],
+    "evidence_ids": ["DOC-MOIST-002"]
+  },
+  {
+    "id": "ING-PANTHENOL",
+    "name_cn": "泛醇",
+    "name_en": "Panthenol",
+    "inci_name": "PANTHENOL",
+    "category": "active",
+    "functions": ["保湿", "舒缓", "屏障修护"],
+    "properties": {
+      "water_soluble": true,
+      "oil_soluble": false,
+      "skin_feel": "柔润"
+    },
+    "usage_range": {
+      "min_percent": 0.5,
+      "max_percent": 5.0,
+      "typical_percent": 2.0
+    },
+    "regulatory_limits": [],
+    "risk_tags": [],
+    "evidence_ids": ["DOC-MOIST-003"]
+  },
+  {
+    "id": "ING-BETAINE",
+    "name_cn": "甜菜碱",
+    "name_en": "Betaine",
+    "inci_name": "BETAINE",
+    "category": "humectant",
+    "functions": ["保湿", "降低刺激感"],
+    "properties": {
+      "water_soluble": true,
+      "oil_soluble": false,
+      "skin_feel": "清爽"
+    },
+    "usage_range": {
+      "min_percent": 1.0,
+      "max_percent": 5.0,
+      "typical_percent": 3.0
+    },
+    "regulatory_limits": [],
+    "risk_tags": [],
+    "evidence_ids": ["DOC-MOIST-004"]
+  },
+  {
+    "id": "ING-CERAMIDE-NP",
+    "name_cn": "神经酰胺NP",
+    "name_en": "Ceramide NP",
+    "inci_name": "CERAMIDE NP",
+    "category": "barrier_active",
+    "functions": ["屏障修护", "保湿"],
+    "properties": {
+      "water_soluble": false,
+      "oil_soluble": true,
+      "skin_feel": "滋润"
+    },
+    "usage_range": {
+      "min_percent": 0.01,
+      "max_percent": 0.2,
+      "typical_percent": 0.05
+    },
+    "regulatory_limits": [],
+    "risk_tags": ["需要关注分散和体系稳定性"],
+    "evidence_ids": ["DOC-MOIST-005"]
+  }
+]

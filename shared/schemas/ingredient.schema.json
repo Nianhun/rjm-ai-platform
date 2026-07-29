@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ingredient",
+  "type": "object",
+  "required": [
+    "id",
+    "name_cn",
+    "inci_name",
+    "category",
+    "functions",
+    "properties",
+    "usage_range",
+    "risk_tags",
+    "evidence_ids"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^ING-[A-Z0-9-]+$"
+    },
+    "name_cn": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "inci_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string"
+    },
+    "functions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "properties": {
+      "type": "object"
+    },
+    "usage_range": {
+      "type": "object",
+      "required": [
+        "min_percent",
+        "max_percent",
+        "typical_percent"
+      ],
+      "properties": {
+        "min_percent": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max_percent": {
+          "type": "number",
+          "minimum": 0
+        },
+        "typical_percent": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "regulatory_limits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risk_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

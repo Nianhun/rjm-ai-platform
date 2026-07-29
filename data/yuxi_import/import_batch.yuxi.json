@@ -1,0 +1,22 @@
+{
+  "batch_id": "YUXI-IMPORT-20260728T084637Z",
+  "imported_at": "2026-07-28T08:46:37.296826+00:00",
+  "source_files": {
+    "ingredients_full_csv": "F:\\zky\\Yuxi-main\\output\\ingredients_full.csv",
+    "products_json": "F:\\zky\\Yuxi-main\\output\\products.json"
+  },
+  "output_files": {
+    "ingredients_path": "F:\\zky\\RJM\\data\\yuxi_import\\ingredients.yuxi.json",
+    "relations_path": "F:\\zky\\RJM\\data\\yuxi_import\\ingredient_relations.yuxi.json",
+    "evidence_path": "F:\\zky\\RJM\\data\\yuxi_import\\evidence.yuxi.json"
+  },
+  "counts": {
+    "ingredient_count": 46,
+    "relation_count": 316,
+    "evidence_count": 185
+  },
+  "governance_notes": [
+    "Product co-occurrence relations are candidate graph hints.",
+    "Evidence IDs should resolve through evidence.yuxi.json before recommendations cite them."
+  ]
+}

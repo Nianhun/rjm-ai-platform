@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FormulaRequest",
+  "type": "object",
+  "required": [
+    "id",
+    "goal",
+    "dosage_form",
+    "constraints"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^REQ-[A-Z0-9-]+$"
+    },
+    "goal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dosage_form": {
+      "type": "string"
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "max_cost_level": {
+          "type": "string"
+        },
+        "preferred_skin_feel": {
+          "type": "string"
+        },
+        "blocked_ingredient_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "required_claims": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "market": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

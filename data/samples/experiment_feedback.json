@@ -1,0 +1,17 @@
+[
+  {
+    "id": "EXP-MOIST-001",
+    "formula_id": "FORM-MOIST-001",
+    "batch_no": "BATCH-MOIST-001",
+    "result": "pass",
+    "metrics": {
+      "stability": "pass",
+      "skin_feel": "slightly_sticky",
+      "moisturizing_score": 0.84,
+      "cost_level": "medium"
+    },
+    "issues": ["肤感略粘"],
+    "engineer_conclusion": "保湿效果可以，建议降低甘油或增加清爽肤感调节原料。",
+    "created_at": "2026-07-27T16:00:00+08:00"
+  }
+]

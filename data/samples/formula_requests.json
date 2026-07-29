@@ -1,0 +1,14 @@
+[
+  {
+    "id": "REQ-MOIST-001",
+    "goal": "保湿",
+    "dosage_form": "乳液",
+    "constraints": {
+      "max_cost_level": "medium",
+      "preferred_skin_feel": "清爽不粘",
+      "blocked_ingredient_ids": [],
+      "required_claims": ["长效保湿", "屏障修护"],
+      "market": "中国"
+    }
+  }
+]

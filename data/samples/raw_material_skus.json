@@ -1,0 +1,47 @@
+[
+  {
+    "id": "SKU-GLYCERIN-SUP-A",
+    "ingredient_id": "ING-GLYCERIN",
+    "supplier_id": "SUP-A",
+    "specification": "化妆品级，99.5%",
+    "price": {
+      "currency": "CNY",
+      "amount_per_kg": 12.5
+    },
+    "moq_kg": 25,
+    "lead_time_days": 7,
+    "qualification_files": ["COA", "MSDS"],
+    "sample_status": "available",
+    "quality_rating": 0.86
+  },
+  {
+    "id": "SKU-HA-SUP-B",
+    "ingredient_id": "ING-SODIUM-HYALURONATE",
+    "supplier_id": "SUP-B",
+    "specification": "透明质酸钠，低分子量",
+    "price": {
+      "currency": "CNY",
+      "amount_per_kg": 880.0
+    },
+    "moq_kg": 1,
+    "lead_time_days": 10,
+    "qualification_files": ["COA", "MSDS"],
+    "sample_status": "available",
+    "quality_rating": 0.82
+  },
+  {
+    "id": "SKU-PANTHENOL-SUP-C",
+    "ingredient_id": "ING-PANTHENOL",
+    "supplier_id": "SUP-C",
+    "specification": "D-泛醇，化妆品级",
+    "price": {
+      "currency": "CNY",
+      "amount_per_kg": 145.0
+    },
+    "moq_kg": 5,
+    "lead_time_days": 5,
+    "qualification_files": ["COA", "MSDS"],
+    "sample_status": "available",
+    "quality_rating": 0.9
+  }
+]

@@ -1,0 +1,1235 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "RJM Formula AI Management API",
+    "version": "0.1.0",
+    "description": "API contract for the Java management system that fronts the Python formula AI prototype."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Java management service"
+    }
+  ],
+  "paths": {
+    "/api/health": {
+      "get": {
+        "summary": "Health check",
+        "operationId": "getHealth",
+        "responses": {
+          "200": {
+            "description": "Service is available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/formulas/recommend": {
+      "post": {
+        "summary": "Recommend formula candidates",
+        "operationId": "recommendFormulas",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormulaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Formula candidates ranked by AI score",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormulaRecommendationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/formulas/{formulaId}": {
+      "get": {
+        "summary": "Get latest archived formula candidate",
+        "operationId": "getArchivedFormula",
+        "parameters": [
+          {
+            "name": "formulaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Latest archived formula candidate snapshot",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArchivedFormulaResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Formula candidate was not found"
+          }
+        }
+      }
+    },
+    "/api/formulas/{formulaId}/screenings": {
+      "get": {
+        "summary": "List engineer screenings for a formula",
+        "operationId": "listFormulaScreenings",
+        "parameters": [
+          {
+            "name": "formulaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Screening records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScreeningListResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Record engineer screening",
+        "operationId": "recordFormulaScreening",
+        "parameters": [
+          {
+            "name": "formulaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormulaScreeningRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Screening was recorded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScreeningStoredResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/experiments/feedback": {
+      "post": {
+        "summary": "Record lab experiment feedback",
+        "operationId": "recordExperimentFeedback",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExperimentFeedbackRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Experiment feedback was recorded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackStoredResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/experiments/batches": {
+      "get": {
+        "summary": "List experiment batches for a formula",
+        "operationId": "listExperimentBatches",
+        "parameters": [
+          {
+            "name": "formula_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Experiment batches for one formula",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExperimentBatchListResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create an experiment batch",
+        "operationId": "createExperimentBatch",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExperimentBatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created experiment batch",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExperimentBatchResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/procurement/recommend": {
+      "post": {
+        "summary": "Recommend suppliers and raw material SKUs for a formula",
+        "operationId": "recommendProcurement",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProcurementRecommendationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Procurement recommendation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProcurementRecommendationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/procurement/recommendations/{formulaId}": {
+      "get": {
+        "summary": "List saved procurement recommendations for a formula",
+        "operationId": "listProcurementRecommendations",
+        "parameters": [
+          {
+            "name": "formulaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Saved procurement recommendation rows",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProcurementRecommendationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/procurement/recommendations/{formulaId}/{ingredientId}/status": {
+      "patch": {
+        "summary": "Update procurement status for one formula ingredient",
+        "operationId": "updateProcurementStatus",
+        "parameters": [
+          {
+            "name": "formulaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ingredientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProcurementStatusUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Procurement status update result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProcurementStatusUpdateResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reports/feedback-impact": {
+      "post": {
+        "summary": "Compare rankings before and after learned feedback",
+        "operationId": "buildFeedbackImpactReport",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormulaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Feedback impact report",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackImpactReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/learning/weights": {
+      "get": {
+        "summary": "List auditable learned weights",
+        "operationId": "listLearnedWeights",
+        "parameters": [
+          {
+            "name": "goal",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "target_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["formula", "ingredient", "ingredient_pair"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Learned weights derived from passing experiment feedback",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearnedWeightResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/formulas/{formulaId}/explanation": {
+      "get": {
+        "summary": "Explain learned feedback influences for an archived formula",
+        "operationId": "explainFormulaLearning",
+        "parameters": [
+          {
+            "name": "formulaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "goal",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Formula-specific learned weight influences",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormulaLearningExplanationResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Formula candidate was not found"
+          }
+        }
+      }
+    },
+    "/api/knowledge/status": {
+      "get": {
+        "summary": "Get loaded knowledge source status",
+        "operationId": "getKnowledgeStatus",
+        "responses": {
+          "200": {
+            "description": "Loaded knowledge source status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KnowledgeStatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/knowledge/governance": {
+      "get": {
+        "summary": "Get knowledge governance and traceability quality summary",
+        "operationId": "getKnowledgeGovernance",
+        "responses": {
+          "200": {
+            "description": "Knowledge governance summary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KnowledgeGovernanceResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/evidence/{evidenceId}": {
+      "get": {
+        "summary": "Get traceable evidence by evidence ID",
+        "operationId": "getEvidence",
+        "parameters": [
+          {
+            "name": "evidenceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Traceable evidence record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvidenceResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Evidence ID was not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiTokenAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-RJM-API-Token",
+        "description": "Optional Java management API token gate for local or intranet deployments. Disabled by default and enabled with rjm.security.api-token.enabled=true."
+      }
+    },
+    "schemas": {
+      "HealthResponse": {
+        "type": "object",
+        "required": ["status"],
+        "properties": {
+          "status": {
+            "type": "string",
+            "examples": ["ok"]
+          }
+        }
+      },
+      "FormulaRequest": {
+        "type": "object",
+        "required": ["id", "goal"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "goal": {
+            "type": "string",
+            "examples": ["保湿"]
+          },
+          "dosage_form": {
+            "type": "string",
+            "examples": ["乳液"]
+          },
+          "constraints": {
+            "type": "object",
+            "description": "Free-form request constraints. Use constraints.strategy to select baseline, learned_weight, or exploration recommendation behavior.",
+            "additionalProperties": true
+          }
+        }
+      },
+      "FormulaRecommendationResponse": {
+        "type": "object",
+        "required": ["request_id", "goal", "formulas"],
+        "properties": {
+          "request_id": {
+            "type": "string"
+          },
+          "goal": {
+            "type": "string"
+          },
+          "strategy": {
+            "type": "string",
+            "enum": ["baseline", "learned_weight", "exploration"],
+            "description": "Recommendation strategy selected from request constraints.strategy, with unknown values falling back to baseline."
+          },
+          "knowledge_source": {
+            "type": "string",
+            "description": "Knowledge source used for this recommendation: yuxi_graph_online, snapshot_fallback, or local_snapshot."
+          },
+          "yuxi_graph": {
+            "type": "object",
+            "description": "Online Yuxi graph status and counts when graph mode is enabled.",
+            "additionalProperties": true
+          },
+          "formulas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FormulaCandidate"
+            }
+          }
+        }
+      },
+      "ArchivedFormulaResponse": {
+        "type": "object",
+        "required": ["formula_id", "request_id", "goal", "stored_at", "formula"],
+        "properties": {
+          "formula_id": {
+            "type": "string"
+          },
+          "request_id": {
+            "type": "string"
+          },
+          "goal": {
+            "type": "string"
+          },
+          "stored_at": {
+            "type": "string"
+          },
+          "formula": {
+            "$ref": "#/components/schemas/FormulaCandidate"
+          }
+        }
+      },
+      "FormulaCandidate": {
+        "type": "object",
+        "required": ["id", "ingredients", "score", "status"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "request_id": {
+            "type": "string"
+          },
+          "goal": {
+            "type": "string"
+          },
+          "strategy": {
+            "type": "string",
+            "enum": ["baseline", "learned_weight", "exploration"]
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FormulaIngredient"
+            }
+          },
+          "recommendation_reason": {
+            "type": "string"
+          },
+          "risk_notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "score": {
+            "$ref": "#/components/schemas/FormulaScore"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "FormulaIngredient": {
+        "type": "object",
+        "required": ["ingredient_id"],
+        "properties": {
+          "ingredient_id": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "suggested_percent_min": {
+            "type": "number"
+          },
+          "suggested_percent_max": {
+            "type": "number"
+          }
+        }
+      },
+      "FormulaScore": {
+        "type": "object",
+        "properties": {
+          "efficacy": {
+            "type": "number"
+          },
+          "stability": {
+            "type": "number"
+          },
+          "skin_feel": {
+            "type": "number"
+          },
+          "cost": {
+            "type": "number"
+          },
+          "supply": {
+            "type": "number"
+          },
+          "overall": {
+            "type": "number"
+          }
+        }
+      },
+      "FormulaScreeningRequest": {
+        "type": "object",
+        "required": ["engineer", "decision", "reason"],
+        "properties": {
+          "engineer": {
+            "type": "string"
+          },
+          "decision": {
+            "type": "string",
+            "enum": ["keep", "reject", "modify"]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "modified_ingredients": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FormulaIngredient"
+            }
+          }
+        }
+      },
+      "ScreeningRecord": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/FormulaScreeningRequest"
+          },
+          {
+            "type": "object",
+            "required": ["formula_id"],
+            "properties": {
+              "formula_id": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "ScreeningStoredResponse": {
+        "type": "object",
+        "required": ["stored", "screening_count"],
+        "properties": {
+          "stored": {
+            "type": "boolean"
+          },
+          "screening_count": {
+            "type": "integer"
+          }
+        }
+      },
+      "ScreeningListResponse": {
+        "type": "object",
+        "required": ["formula_id", "records"],
+        "properties": {
+          "formula_id": {
+            "type": "string"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScreeningRecord"
+            }
+          }
+        }
+      },
+      "ExperimentFeedbackRequest": {
+        "type": "object",
+        "required": ["formula_id", "batch_no", "result", "ingredient_ids"],
+        "properties": {
+          "formula_id": {
+            "type": "string"
+          },
+          "batch_no": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string",
+            "enum": ["pass", "fail", "partial"]
+          },
+          "ingredient_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "metrics": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "engineer_conclusion": {
+            "type": "string"
+          },
+          "engineer": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "FeedbackStoredResponse": {
+        "type": "object",
+        "required": ["stored", "feedback_count"],
+        "properties": {
+          "stored": {
+            "type": "boolean"
+          },
+          "feedback_count": {
+            "type": "integer"
+          }
+        }
+      },
+      "ExperimentBatchRequest": {
+        "type": "object",
+        "required": ["batch_no", "formula_id", "stage", "owner"],
+        "properties": {
+          "batch_no": {
+            "type": "string"
+          },
+          "formula_id": {
+            "type": "string"
+          },
+          "stage": {
+            "type": "string",
+            "enum": ["lab_trial", "pilot", "stability"]
+          },
+          "owner": {
+            "type": "string"
+          },
+          "metrics": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "conclusion": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["planned", "running", "pass", "fail", "partial", "cancelled"]
+          }
+        }
+      },
+      "ExperimentBatchResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ExperimentBatchRequest"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "created_at": {
+                "type": ["string", "null"]
+              }
+            }
+          }
+        ]
+      },
+      "ExperimentBatchListResponse": {
+        "type": "object",
+        "required": ["formula_id", "batches"],
+        "properties": {
+          "formula_id": {
+            "type": "string"
+          },
+          "batches": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExperimentBatchResponse"
+            }
+          }
+        }
+      },
+      "ProcurementRecommendationRequest": {
+        "type": "object",
+        "required": ["formula"],
+        "properties": {
+          "formula": {
+            "$ref": "#/components/schemas/FormulaCandidate"
+          }
+        }
+      },
+      "ProcurementRecommendationResponse": {
+        "type": "object",
+        "required": ["formula_id", "items"],
+        "properties": {
+          "formula_id": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProcurementItem"
+            }
+          }
+        }
+      },
+      "ProcurementItem": {
+        "type": "object",
+        "required": ["ingredient_id", "status", "recommended_skus"],
+        "properties": {
+          "ingredient_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["matched", "sample_requested", "sample_received", "approved", "rejected", "missing_supplier"]
+          },
+          "recommended_skus": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RawMaterialSkuRecommendation"
+            }
+          }
+        }
+      },
+      "RawMaterialSkuRecommendation": {
+        "type": "object",
+        "properties": {
+          "sku_id": {
+            "type": "string"
+          },
+          "supplier_id": {
+            "type": "string"
+          },
+          "specification": {
+            "type": "string"
+          },
+          "price": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "moq_kg": {
+            "type": "number"
+          },
+          "lead_time_days": {
+            "type": "integer"
+          },
+          "qualification_files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sample_status": {
+            "type": "string"
+          },
+          "quality_rating": {
+            "type": "number"
+          },
+          "procurement_score": {
+            "type": "number"
+          }
+        }
+      },
+      "ProcurementStatusUpdateRequest": {
+        "type": "object",
+        "required": ["status"],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["matched", "sample_requested", "sample_received", "approved", "rejected", "missing_supplier"]
+          }
+        }
+      },
+      "ProcurementStatusUpdateResponse": {
+        "type": "object",
+        "required": ["updated", "formula_id", "ingredient_id", "status"],
+        "properties": {
+          "updated": {
+            "type": "boolean"
+          },
+          "formula_id": {
+            "type": "string"
+          },
+          "ingredient_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "FeedbackImpactReport": {
+        "type": "object",
+        "required": ["request_id", "goal", "feedback_count", "rows"],
+        "properties": {
+          "request_id": {
+            "type": "string"
+          },
+          "goal": {
+            "type": "string"
+          },
+          "feedback_count": {
+            "type": "integer"
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FeedbackImpactRow"
+            }
+          }
+        }
+      },
+      "FeedbackImpactRow": {
+        "type": "object",
+        "properties": {
+          "formula_id": {
+            "type": "string"
+          },
+          "baseline_rank": {
+            "type": ["integer", "null"]
+          },
+          "learned_rank": {
+            "type": ["integer", "null"]
+          },
+          "baseline_score": {
+            "type": ["number", "null"]
+          },
+          "learned_score": {
+            "type": ["number", "null"]
+          },
+          "score_delta": {
+            "type": "number"
+          },
+          "ingredient_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "LearnedWeightResponse": {
+        "type": "object",
+        "required": ["goal", "weights"],
+        "properties": {
+          "goal": {
+            "type": "string"
+          },
+          "target_type": {
+            "type": ["string", "null"],
+            "enum": ["formula", "ingredient", "ingredient_pair", null]
+          },
+          "weights": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LearnedWeightRow"
+            }
+          }
+        }
+      },
+      "FormulaLearningExplanationResponse": {
+        "type": "object",
+        "required": ["formula_id", "goal", "influences"],
+        "properties": {
+          "formula_id": {
+            "type": "string"
+          },
+          "goal": {
+            "type": "string"
+          },
+          "influences": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LearnedWeightRow"
+            }
+          }
+        }
+      },
+      "LearnedWeightRow": {
+        "type": "object",
+        "required": ["goal", "target_type", "target_key", "weight", "evidence_count", "source"],
+        "properties": {
+          "goal": {
+            "type": "string"
+          },
+          "target_type": {
+            "type": "string",
+            "enum": ["formula", "ingredient", "ingredient_pair"]
+          },
+          "target_key": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "number"
+          },
+          "evidence_count": {
+            "type": "integer"
+          },
+          "source": {
+            "type": "string"
+          },
+          "calculation_note": {
+            "type": "string"
+          }
+        }
+      },
+      "EvidenceResponse": {
+        "type": "object",
+        "required": ["id", "source_type", "title", "summary", "source_url", "metadata"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "source_type": {
+            "type": "string",
+            "examples": ["ingredient_profile", "product_cooccurrence"]
+          },
+          "title": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "source_url": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      },
+      "KnowledgeStatusResponse": {
+        "type": "object",
+        "required": ["ingredient_count", "relation_count", "raw_material_sku_count", "evidence_count", "source_paths", "evidence_prefix_counts"],
+        "properties": {
+          "ingredient_count": {
+            "type": "integer"
+          },
+          "relation_count": {
+            "type": "integer"
+          },
+          "raw_material_sku_count": {
+            "type": "integer"
+          },
+          "evidence_count": {
+            "type": "integer"
+          },
+          "knowledge_source": {
+            "type": "string",
+            "description": "Current recommendation knowledge mode: yuxi_graph_online, snapshot_fallback, or local_snapshot."
+          },
+          "yuxi_graph": {
+            "type": "object",
+            "description": "Online Yuxi graph status including entity, relationship, and chunk counts.",
+            "additionalProperties": true
+          },
+          "source_paths": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "evidence_prefix_counts": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "KnowledgeGovernanceResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/KnowledgeStatusResponse"
+          },
+          {
+            "type": "object",
+            "required": [
+              "evidence_source_type_counts",
+              "relation_type_counts",
+              "relation_confidence_counts",
+              "ingredient_alias_count",
+              "missing_evidence_ids",
+              "warning_count",
+              "warnings",
+              "governance_notes"
+            ],
+            "properties": {
+              "evidence_source_type_counts": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              },
+              "relation_type_counts": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              },
+              "relation_confidence_counts": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              },
+              "ingredient_alias_count": {
+                "type": "integer"
+              },
+              "missing_evidence_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "warning_count": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "governance_notes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

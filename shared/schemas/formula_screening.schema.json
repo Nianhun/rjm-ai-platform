@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FormulaScreening",
+  "type": "object",
+  "required": [
+    "id",
+    "formula_id",
+    "engineer",
+    "decision",
+    "modified_ingredients",
+    "reason",
+    "created_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^SCREEN-[A-Z0-9-]+$"
+    },
+    "formula_id": {
+      "type": "string",
+      "pattern": "^FORM-[A-Z0-9-]+$"
+    },
+    "engineer": {
+      "type": "string"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "keep",
+        "reject",
+        "modify"
+      ]
+    },
+    "modified_ingredients": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "reason": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

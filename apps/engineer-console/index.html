@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>瑞吉明配方研发工作台</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="research-os">
+      <nav class="rail-nav" aria-label="工作区导航">
+        <div class="rail-mark" aria-label="瑞吉明配方 AI">RJ</div>
+        <button class="rail-item active" type="button" data-target="workspaceCore" aria-label="配方推荐" title="配方推荐">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l3 5-7 13L5 8l3-5Z"/><path d="M5 8h14"/><path d="M9 8l3 13 3-13"/></svg>
+        </button>
+        <button class="rail-item" type="button" data-target="inspectorExperiment" aria-label="实验管理" title="实验管理">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6A2 2 0 0 0 19 18l-5-9V3"/><path d="M8 15h8"/></svg>
+        </button>
+        <button class="rail-item" type="button" data-target="inspectorEvidence" aria-label="知识与证据" title="知识与证据">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M8 9h8"/><path d="M8 13h5"/><path d="M16 17l4 4"/></svg>
+        </button>
+        <button class="rail-item" type="button" data-target="inspectorLearning" aria-label="学习分析" title="学习分析">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 3-4 3 2 5-7"/></svg>
+        </button>
+        <button class="rail-item" type="button" data-target="inspectorProcurement" aria-label="采购管理" title="采购管理">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h15l-2 8H8L6 3H3"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        </button>
+        <button class="rail-item" type="button" data-target="systemSettings" aria-label="系统设置" title="系统设置">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><path d="M3 12h2"/><path d="M19 12h2"/><path d="m5.6 5.6 1.4 1.4"/><path d="m17 17 1.4 1.4"/><path d="m18.4 5.6-1.4 1.4"/><path d="m7 17-1.4 1.4"/></svg>
+        </button>
+      </nav>
+
+      <main class="os-main">
+        <header class="workbar">
+          <div class="workbar-title">
+            <div class="brand-lockup">
+              <span class="brand-sigil">RJM</span>
+              <span>瑞吉明配方 AI</span>
+            </div>
+            <div>
+              <h1>配方研发工作台</h1>
+              <span class="compat-copy" aria-hidden="true">配方工程师工作台</span>
+              <p id="taskName">保湿乳液候选方案</p>
+            </div>
+          </div>
+          <div class="workbar-status" aria-label="系统状态">
+            <span class="status-dot" id="apiStatusLabel">API 待检测</span>
+            <span class="status-dot" id="connectionState">离线样例</span>
+            <span class="metric-chip"><span id="ingredientCount">46</span> 原料</span>
+            <span class="metric-chip"><span id="relationCount">316</span> 关系</span>
+            <span class="metric-chip" id="evidenceSummary">YUXI 46</span>
+            <span class="strategy-chip" id="currentStrategyLabel">baseline</span>
+            <button id="refreshKnowledge" class="icon-button" type="button" aria-label="刷新知识源" title="刷新知识源">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v6h-6"/></svg>
+            </button>
+            <button id="loadKnowledgeGovernance" class="icon-button" type="button" aria-label="知识治理" title="知识治理">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7v6c0 4 3 7 8 8 5-1 8-4 8-8V7l-8-4Z"/><path d="m9 12 2 2 4-5"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <div id="operationStatus" class="operation-status" role="status" aria-live="polite">等待操作。AI 推荐仅作为研发辅助，最终结论必须由配方工程师审核。</div>
+
+        <section id="workspaceCore" class="workspace-core">
+          <aside class="parameter-panel" aria-labelledby="requestTitle">
+            <form>
+              <section class="parameter-section">
+                <p class="section-label">配方任务</p>
+                <h2 id="requestTitle">推荐参数</h2>
+                <label for="goal">
+                  <span>目标功效</span>
+                  <input id="goal" value="保湿" aria-describedby="goalHint">
+                </label>
+                <p id="goalHint" class="field-hint">工程目标，例如保湿、舒缓、屏障修护。</p>
+                <label for="dosageForm">
+                  <span>剂型</span>
+                  <input id="dosageForm" value="乳液">
+                </label>
+                <label for="strategy">
+                  <span>推荐策略</span>
+                  <select id="strategy">
+                    <option value="baseline">baseline - 基线排序</option>
+                    <option value="learned_weight">learned_weight - 实验反馈加权</option>
+                    <option value="exploration">exploration - 低风险探索</option>
+                  </select>
+                </label>
+              </section>
+
+              <details class="parameter-section constraint-section">
+                <summary>约束条件</summary>
+                <label for="skinFeel">
+                  <span>肤感偏好</span>
+                  <input id="skinFeel" value="清爽不粘">
+                </label>
+                <label for="blockedIngredients">
+                  <span>禁用原料 ID</span>
+                  <input id="blockedIngredients" placeholder="ING-XXX,ING-YYY" autocomplete="off">
+                </label>
+              </details>
+
+              <section id="systemSettings" class="parameter-section system-settings">
+                <p class="section-label">系统设置</p>
+                <label for="apiBase">
+                  <span>Java API</span>
+                  <input id="apiBase" value="http://127.0.0.1:8090" autocomplete="off" inputmode="url">
+                </label>
+                <label for="apiToken">
+                  <span>API Token</span>
+                  <input id="apiToken" type="password" placeholder="本地演示可留空" autocomplete="off">
+                </label>
+              </section>
+
+              <div class="parameter-actions">
+                <button id="recommendButton" class="primary" type="button">生成候选配方</button>
+                <button id="loadOffline" class="secondary" type="button">载入离线示例</button>
+              </div>
+            </form>
+          </aside>
+
+          <section class="decision-board" aria-labelledby="candidateTitle">
+            <div class="board-head">
+              <div>
+                <p class="section-label">推荐决策</p>
+                <h2 id="candidateTitle">保湿乳液候选方案</h2>
+                <p class="board-meta"><span id="boardStrategy">baseline 策略</span> · <span id="candidateCount">0 套候选</span> · <span id="generatedAt">等待生成</span> · <span id="knowledgeMode">使用本地快照</span></p>
+              </div>
+              <div class="board-tools">
+                <button id="regenerateButton" type="button">重新生成</button>
+                <button id="compareModeButton" type="button" aria-pressed="false">对比模式</button>
+                <label class="sort-control" for="sortMode">
+                  <span>排序</span>
+                  <select id="sortMode">
+                    <option value="overall">综合评分</option>
+                    <option value="risk">风险优先</option>
+                    <option value="evidence">证据数量</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            <div id="formulaList" class="candidate-list" aria-live="polite"></div>
+          </section>
+
+          <aside class="inspector" aria-labelledby="inspectorTitle">
+            <input id="selectedFormulaId" type="hidden" value="">
+            <header class="inspector-head">
+              <div>
+                <p class="section-label">Formula Inspector</p>
+                <h2 id="inspectorTitle">尚未选择配方</h2>
+                <p id="selectedFormulaSummary" class="formula-summary">尚未选择配方</p>
+              </div>
+              <div class="score-stamp">
+                <span id="inspectorScore">--</span>
+                <small id="selectedRank">未选择</small>
+              </div>
+            </header>
+
+            <div class="inspector-tabs" role="tablist" aria-label="配方详情标签">
+              <button class="inspector-tab active" type="button" role="tab" aria-selected="true" data-tab="overview">概览</button>
+              <button class="inspector-tab" type="button" role="tab" aria-selected="false" data-tab="formula">配方</button>
+              <button id="inspectorEvidence" class="inspector-tab" type="button" role="tab" aria-selected="false" data-tab="evidence">证据</button>
+              <button id="inspectorExperiment" class="inspector-tab" type="button" role="tab" aria-selected="false" data-tab="experiment">实验</button>
+              <button id="inspectorLearning" class="inspector-tab" type="button" role="tab" aria-selected="false" data-tab="learning">学习</button>
+              <button id="inspectorProcurement" class="inspector-tab" type="button" role="tab" aria-selected="false" data-tab="procurement">采购</button>
+            </div>
+
+            <div id="formulaDetail" class="inspector-body empty-state">选择一套候选方案后查看详情。</div>
+
+            <div class="screening-fields">
+              <label for="engineer">
+                <span>工程师</span>
+                <input id="engineer" value="formula_engineer">
+              </label>
+              <label for="decision">
+                <span>筛选决定</span>
+                <select id="decision">
+                  <option value="keep">保留</option>
+                  <option value="modify">要求修改</option>
+                  <option value="reject">剔除</option>
+                </select>
+              </label>
+              <label for="screeningReason">
+                <span>审核意见</span>
+                <textarea id="screeningReason">进入小试，关注肤感和稳定性。</textarea>
+              </label>
+            </div>
+
+            <div class="inspector-actionbar">
+              <button id="rejectFormula" class="ghost-danger" type="button">剔除</button>
+              <button id="modifyFormula" class="secondary" type="button">要求修改</button>
+              <button id="submitScreening" class="primary" type="button">保留并进入实验</button>
+            </div>
+          </aside>
+        </section>
+
+        <div class="action-proxies" hidden>
+          <button id="submitFeedback" type="button">提交通过结果</button>
+          <button id="createExperimentBatch" type="button">创建实验批次</button>
+          <button id="loadExperimentBatches" type="button">查看实验批次</button>
+          <button id="loadReport" type="button">反馈影响</button>
+          <button id="loadProcurement" type="button">采购建议</button>
+          <button id="loadSavedProcurement" type="button">已存采购</button>
+          <button id="requestProcurementSample" type="button">申请样品</button>
+          <button id="loadLearningExplanation" type="button">学习解释</button>
+          <button id="loadLearnedWeights" type="button">学习权重</button>
+        </div>
+
+        <section class="output-dock" aria-labelledby="structuredTitle">
+          <div class="dock-head">
+            <div>
+              <p class="section-label">业务输出</p>
+              <h2 id="structuredTitle">结构化响应</h2>
+            </div>
+            <span id="outputSummary" class="metric-chip">等待数据</span>
+          </div>
+          <div id="structuredOutput" class="structured-output empty-state">实验、学习、采购与证据响应会在这里转为表格或摘要。</div>
+          <details class="debug-drawer">
+            <summary>接口响应 / 调试信息</summary>
+            <div class="debug-actions">
+              <button id="copyDebug" type="button">复制 JSON</button>
+              <button id="clearDebug" type="button">清空</button>
+            </div>
+            <pre id="actionOutput" class="output-panel">{}</pre>
+          </details>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

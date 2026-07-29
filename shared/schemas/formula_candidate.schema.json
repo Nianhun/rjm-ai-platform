@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FormulaCandidate",
+  "type": "object",
+  "required": [
+    "id",
+    "request_id",
+    "goal",
+    "ingredients",
+    "recommendation_reason",
+    "risk_notes",
+    "evidence_ids",
+    "score",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^FORM-[A-Z0-9-]+$"
+    },
+    "request_id": {
+      "type": "string",
+      "pattern": "^REQ-[A-Z0-9-]+$"
+    },
+    "goal": {
+      "type": "string"
+    },
+    "ingredients": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "ingredient_id",
+          "role",
+          "suggested_percent_min",
+          "suggested_percent_max"
+        ],
+        "properties": {
+          "ingredient_id": {
+            "type": "string",
+            "pattern": "^ING-[A-Z0-9-]+$"
+          },
+          "role": {
+            "type": "string"
+          },
+          "suggested_percent_min": {
+            "type": "number",
+            "minimum": 0
+          },
+          "suggested_percent_max": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "recommendation_reason": {
+      "type": "string"
+    },
+    "risk_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "score": {
+      "type": "object",
+      "required": [
+        "efficacy",
+        "stability",
+        "skin_feel",
+        "cost",
+        "supply",
+        "overall"
+      ],
+      "properties": {
+        "efficacy": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "stability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "skin_feel": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "cost": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "supply": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "overall": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ai_recommended",
+        "engineer_kept",
+        "engineer_rejected",
+        "experimenting",
+        "passed",
+        "failed"
+      ]
+    }
+  }
+}

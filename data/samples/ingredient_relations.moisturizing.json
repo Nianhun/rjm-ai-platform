@@ -1,0 +1,42 @@
+[
+  {
+    "id": "REL-GLYCERIN-HA-SYNERGY",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-SODIUM-HYALURONATE",
+    "relation_type": "synergy",
+    "description": "基础吸湿与长效保水组合。",
+    "strength": 0.72,
+    "feedback_weight": 0.0,
+    "evidence_ids": ["DOC-MOIST-001"]
+  },
+  {
+    "id": "REL-PANTHENOL-BETAINE-SYNERGY",
+    "source_ingredient_id": "ING-PANTHENOL",
+    "target_ingredient_id": "ING-BETAINE",
+    "relation_type": "synergy",
+    "description": "舒缓修护与清爽保湿组合。",
+    "strength": 0.68,
+    "feedback_weight": 0.0,
+    "evidence_ids": ["DOC-MOIST-004"]
+  },
+  {
+    "id": "REL-CERAMIDE-PANTHENOL-ENHANCE",
+    "source_ingredient_id": "ING-CERAMIDE-NP",
+    "target_ingredient_id": "ING-PANTHENOL",
+    "relation_type": "enhance",
+    "description": "屏障脂质与泛醇组合用于屏障修护型保湿。",
+    "strength": 0.63,
+    "feedback_weight": 0.0,
+    "evidence_ids": ["DOC-MOIST-005"]
+  },
+  {
+    "id": "REL-GLYCERIN-BETAINE-SUBSTITUTE",
+    "source_ingredient_id": "ING-GLYCERIN",
+    "target_ingredient_id": "ING-BETAINE",
+    "relation_type": "substitute",
+    "description": "甜菜碱可在清爽肤感方案中替代部分甘油。",
+    "strength": 0.52,
+    "feedback_weight": 0.0,
+    "evidence_ids": ["EXP-MOIST-001"]
+  }
+]

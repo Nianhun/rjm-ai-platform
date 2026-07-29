@@ -1,0 +1,9 @@
+rjm:
+  ai-service:
+    mode: db
+  local-db:
+    enabled: true
+    url: jdbc:h2:file:./data/runtime/java-db/rjm_formula_ai;AUTO_SERVER=TRUE
+    username: sa
+    password:
+    schema-path: ../../infrastructure/database/java-management/schema.h2.sql
