@@ -12,6 +12,21 @@ from .service import FormulaAIService
 from .yuxi_graph_client import HttpYuxiGateway, YuxiGraphClient
 
 
+LOCAL_ENV_OVERRIDE_KEYS = {
+    "RJM_YUXI_GRAPH_ENABLED",
+    "RJM_YUXI_API_BASE",
+    "RJM_YUXI_KB_ID",
+    "RJM_YUXI_API_TOKEN",
+    "RJM_YUXI_TIMEOUT_SECONDS",
+    "RJM_AI_BASE_URL",
+    "RJM_AI_API_KEY",
+    "RJM_AI_MODEL",
+    "RJM_AI_TIMEOUT_SECONDS",
+    "RJM_AI_CHAT_COMPLETIONS_PATH",
+    "RJM_AI_HTTP_CLIENT",
+}
+
+
 class FormulaAIHandler(BaseHTTPRequestHandler):
     service: FormulaAIService | None = None
 
@@ -22,10 +37,20 @@ class FormulaAIHandler(BaseHTTPRequestHandler):
         if self.path == "/knowledge/status":
             self._send_json(200, self._service().knowledge_status())
             return
+        if self.path == "/knowledge/entity-names":
+            self._send_json(200, self._service().yuxi_entity_names())
+            return
         if self.path == "/knowledge/governance":
             self._send_json(200, self._service().knowledge_governance())
             return
+        if self.path == "/debug/config":
+            self._send_json(200, runtime_config_diagnostics(_project_root_from_module()))
+            return
         parsed = urlparse(self.path)
+        if parsed.path.startswith("/knowledge/elements/") and parsed.path.endswith("/graph"):
+            element_id = unquote(parsed.path[len("/knowledge/elements/") : -len("/graph")])
+            self._send_json(200, self._service().element_graph(element_id))
+            return
         if parsed.path.startswith("/evidence/"):
             evidence_id = unquote(parsed.path[len("/evidence/") :])
             evidence = self._service().get_evidence(evidence_id)
@@ -108,6 +133,7 @@ class FormulaAIHandler(BaseHTTPRequestHandler):
 
 
 def build_service_from_environment(project_root: Path) -> FormulaAIService:
+    _load_local_env_file(project_root)
     ingredients_path = _optional_path(os.environ.get("RJM_INGREDIENTS_PATH"))
     relations_path = _optional_path(os.environ.get("RJM_RELATIONS_PATH"))
     raw_material_skus_path = _optional_path(os.environ.get("RJM_RAW_MATERIAL_SKUS_PATH"))
@@ -138,8 +164,43 @@ def _project_root_from_module() -> Path:
     return Path(__file__).resolve().parents[4]
 
 
+def _load_local_env_file(project_root: Path) -> None:
+    env_file = project_root / ".env.local"
+    if not env_file.exists():
+        return
+    for raw_line in env_file.read_text(encoding="utf-8-sig").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip().strip('"').strip("'")
+        if key and (key in LOCAL_ENV_OVERRIDE_KEYS or not os.environ.get(key)):
+            os.environ[key] = value
+
+
 def _optional_path(value: str | None) -> Path | None:
     return Path(value) if value else None
+
+
+def runtime_config_diagnostics(project_root: Path) -> dict[str, Any]:
+    _load_local_env_file(project_root)
+    env_file = project_root / ".env.local"
+    return {
+        "project_root": str(project_root),
+        "env_file_exists": env_file.exists(),
+        "http_host": os.environ.get("RJM_HTTP_HOST", "127.0.0.1"),
+        "http_port": int(os.environ.get("RJM_HTTP_PORT", "8000")),
+        "yuxi_graph_enabled": os.environ.get("RJM_YUXI_GRAPH_ENABLED", "").lower() in {"1", "true", "yes", "on"},
+        "yuxi_api_base": os.environ.get("RJM_YUXI_API_BASE", ""),
+        "yuxi_kb_id": os.environ.get("RJM_YUXI_KB_ID", ""),
+        "yuxi_api_token_configured": bool(os.environ.get("RJM_YUXI_API_TOKEN")),
+        "ai_provider_configured": bool(
+            os.environ.get("RJM_AI_BASE_URL")
+            and os.environ.get("RJM_AI_API_KEY")
+            and os.environ.get("RJM_AI_MODEL")
+        ),
+    }
 
 
 def _yuxi_graph_client_from_environment() -> YuxiGraphClient | None:
@@ -161,7 +222,7 @@ def _ai_analyzer_from_environment() -> OpenAICompatibleFormulaAnalyzer | None:
         return None
     timeout_seconds = float(os.environ.get("RJM_AI_TIMEOUT_SECONDS", "30"))
     chat_path = os.environ.get("RJM_AI_CHAT_COMPLETIONS_PATH", "/chat/completions")
-    http_client = os.environ.get("RJM_AI_HTTP_CLIENT", "python")
+    http_client = _ai_http_client_from_environment()
     return OpenAICompatibleFormulaAnalyzer(
         base_url,
         api_key=api_key,
@@ -172,13 +233,18 @@ def _ai_analyzer_from_environment() -> OpenAICompatibleFormulaAnalyzer | None:
     )
 
 
+def _ai_http_client_from_environment() -> str:
+    return os.environ.get("RJM_AI_HTTP_CLIENT") or ("curl" if os.name == "nt" else "python")
+
+
 def server_config_from_environment() -> tuple[str, int]:
+    _load_local_env_file(_project_root_from_module())
     host = os.environ.get("RJM_HTTP_HOST", "127.0.0.1")
-    port = int(os.environ.get("RJM_HTTP_PORT", "8787"))
+    port = int(os.environ.get("RJM_HTTP_PORT", "8000"))
     return host, port
 
 
-def run_server(host: str = "127.0.0.1", port: int = 8787) -> ThreadingHTTPServer:
+def run_server(host: str = "127.0.0.1", port: int = 8000) -> ThreadingHTTPServer:
     return ThreadingHTTPServer((host, port), FormulaAIHandler)
 
 
@@ -187,6 +253,7 @@ def main() -> None:
     server = run_server(host, port)
     print(f"RJM Formula AI HTTP service listening on http://{host}:{port}")
     print("GET /knowledge/status")
+    print("GET /knowledge/entity-names")
     print("GET /knowledge/governance")
     print("GET /evidence/{evidence_id}")
     print("GET /formulas/{formula_id}")

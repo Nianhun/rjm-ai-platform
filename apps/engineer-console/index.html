@@ -10,10 +10,10 @@
     <section id="authShell" class="auth-shell" aria-labelledby="authTitle">
       <div class="auth-card">
         <div class="auth-brand">
-          <span class="brand-sigil">RJM</span>
+          <span class="brand-logo-frame"><img src="./assets/brand/rjm-logo.png" alt="瑞吉明官网"></span>
           <div>
             <h1 id="authTitle">瑞吉明配方 AI</h1>
-            <p>请先登录后进入配方研发工作台</p>
+            <p>再生医学美学原料研发与配方方案工作台</p>
           </div>
         </div>
         <div class="auth-tabs" role="tablist" aria-label="认证方式">
@@ -66,32 +66,37 @@
 
     <div id="appShell" class="research-os is-auth-hidden">
       <nav class="rail-nav" aria-label="工作区导航">
-        <div class="rail-mark" aria-label="瑞吉明配方 AI">RJ</div>
-        <button class="rail-item active" type="button" data-view="workspaceCore" aria-label="配方推荐" title="配方推荐">
+        <div class="rail-mark" aria-label="瑞吉明配方 AI">
+          <img src="./assets/brand/rjm-mark.png" alt="">
+        </div>
+        <button class="rail-item active" type="button" data-view="workspaceCore" data-route="/console/formulas" aria-label="配方推荐" title="配方推荐">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l3 5-7 13L5 8l3-5Z"/><path d="M5 8h14"/><path d="M9 8l3 13 3-13"/></svg>
         </button>
-        <button class="rail-item" type="button" data-view="chatPage" aria-label="AI 知识问答" title="AI 知识问答">
+        <button class="rail-item" type="button" data-view="chatPage" data-route="/console/chat" aria-label="AI 知识问答" title="AI 知识问答">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg>
         </button>
-        <button class="rail-item" type="button" data-view="historyPage" aria-label="历史记录" title="历史记录">
+        <button class="rail-item" type="button" data-view="elementGraphPage" data-route="/console/elements" aria-label="配方元素解析" title="配方元素解析">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="17" r="2"/><path d="m7 7.5 3 3"/><path d="m14.5 10 3-2"/><path d="m9.5 14.5-2 2"/><path d="m14.5 14 2 2"/></svg>
+        </button>
+        <button class="rail-item" type="button" data-view="historyPage" data-route="/console/history" aria-label="历史记录" title="历史记录">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/><path d="M12 7v5l3 2"/></svg>
         </button>
-        <button class="rail-item" type="button" data-view="invitePage" aria-label="邀请码管理" title="邀请码管理">
+        <button class="rail-item" type="button" data-view="invitePage" data-route="/console/invites" aria-label="邀请码管理" title="邀请码管理">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 7a4 4 0 1 1 2 3.5L10 18H7v-3l7.5-7.5"/><path d="M16 7h.01"/></svg>
         </button>
-        <button class="rail-item" type="button" data-view="experimentPage" aria-label="实验管理" title="实验管理">
+        <button class="rail-item" type="button" data-view="experimentPage" data-route="/console/experiments" aria-label="实验管理" title="实验管理">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6A2 2 0 0 0 19 18l-5-9V3"/><path d="M8 15h8"/></svg>
         </button>
-        <button class="rail-item" type="button" data-view="learningPage" aria-label="学习分析" title="学习分析">
+        <button class="rail-item" type="button" data-view="learningPage" data-route="/console/learning" aria-label="学习分析" title="学习分析">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 3-4 3 2 5-7"/></svg>
         </button>
-        <button class="rail-item" type="button" data-view="procurementPage" aria-label="采购管理" title="采购管理">
+        <button class="rail-item" type="button" data-view="procurementPage" data-route="/console/procurement" aria-label="采购管理" title="采购管理">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h15l-2 8H8L6 3H3"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
         </button>
-        <button class="rail-item" type="button" data-view="outputPage" aria-label="业务输出" title="业务输出">
+        <button class="rail-item" type="button" data-view="outputPage" data-route="/console/output" aria-label="业务输出" title="业务输出">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/></svg>
         </button>
-        <button class="rail-item" type="button" data-view="settingsPage" aria-label="系统设置" title="系统设置">
+        <button class="rail-item" type="button" data-view="settingsPage" data-route="/console/settings" aria-label="系统设置" title="系统设置">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><path d="M3 12h2"/><path d="M19 12h2"/><path d="m5.6 5.6 1.4 1.4"/><path d="m17 17 1.4 1.4"/><path d="m18.4 5.6-1.4 1.4"/><path d="m7 17-1.4 1.4"/></svg>
         </button>
       </nav>
@@ -100,13 +105,13 @@
         <header class="workbar">
           <div class="workbar-title">
             <div class="brand-lockup">
-              <span class="brand-sigil">RJM</span>
+              <span class="brand-logo-frame compact"><img src="./assets/brand/rjm-logo.png" alt="瑞吉明官网"></span>
               <span>瑞吉明配方 AI</span>
             </div>
             <div>
               <h1>配方研发工作台</h1>
               <span class="compat-copy" aria-hidden="true">配方工程师工作台</span>
-              <p id="taskName">配方候选方案</p>
+              <p id="taskName">PDRN / PN 原料知识图谱驱动的候选方案</p>
             </div>
           </div>
           <div class="workbar-status" aria-label="系统状态">
@@ -122,10 +127,33 @@
             <button id="loadKnowledgeGovernance" class="icon-button" type="button" aria-label="知识治理" title="知识治理">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7v6c0 4 3 7 8 8 5-1 8-4 8-8V7l-8-4Z"/><path d="m9 12 2 2 4-5"/></svg>
             </button>
+            <button id="logoutButton" class="logout-button" type="button">退出登录</button>
           </div>
         </header>
 
         <div id="operationStatus" class="operation-status" role="status" aria-live="polite">等待操作。AI 推荐仅作为研发辅助，最终结论必须由配方工程师审核。</div>
+
+        <section class="company-signal" aria-label="瑞吉明公司能力与产品线">
+          <div class="company-signal-copy">
+            <span class="section-label">瑞吉明生物</span>
+            <strong>专注再生医学美学原料研发生产</strong>
+          </div>
+          <div class="company-metrics" aria-label="公司能力指标">
+            <span><strong>2020</strong>创立</span>
+            <span><strong>40+</strong>研发人员</span>
+            <span><strong>20+</strong>产品矩阵</span>
+            <span><strong>8 吨</strong>年产能</span>
+            <span><strong>30+</strong>发明专利</span>
+          </div>
+          <div class="product-tags" aria-label="瑞吉明产品元素">
+            <span>PDRN</span>
+            <span>PN</span>
+            <span>植物 PDRN</span>
+            <span>生物合成 PDRN</span>
+            <span>三文鱼系列</span>
+            <span>核酸系列</span>
+          </div>
+        </section>
 
         <section id="workspaceCore" class="app-view workspace-core active">
           <aside class="parameter-panel" aria-labelledby="requestTitle">
@@ -243,6 +271,34 @@
               <button id="submitScreening" class="primary" type="button">保留并进入实验</button>
             </div>
           </aside>
+        </section>
+
+        <section id="formulaDetailPage" class="app-view formula-detail-page" aria-labelledby="formulaDetailPageTitle">
+          <div class="page-head formula-detail-page-head">
+            <div>
+              <p class="section-label">配方详情</p>
+              <h2 id="formulaDetailPageTitle">尚未选择配方</h2>
+              <p id="formulaDetailPageSummary" class="formula-summary">从候选配方列表进入后查看完整明细、评分和证据链路。</p>
+            </div>
+            <div class="formula-detail-head-actions">
+              <span id="formulaDetailPageRank" class="metric-chip">未选择</span>
+              <button id="backToFormulaList" class="secondary" type="button">返回候选列表</button>
+            </div>
+          </div>
+          <div class="formula-detail-shell">
+            <section class="formula-detail-main-panel">
+              <div class="formula-detail-hero">
+                <div>
+                  <p class="section-label">推荐方案</p>
+                  <h3 id="formulaDetailHeroTitle">选择配方后查看详情</h3>
+                  <p id="formulaDetailHeroText">完整配方信息会在这里展示。</p>
+                </div>
+                <div id="formulaDetailPageScore" class="score-ring" style="--score:0"><span>--</span></div>
+              </div>
+              <div id="formulaDetailPageBody" class="formula-detail-page-body empty-state">选择一套候选方案后查看详情。</div>
+            </section>
+            <aside id="formulaDetailReviewPanel" class="formula-detail-review-panel empty-state">选择一套候选方案后进行工程师审核。</aside>
+          </div>
         </section>
 
         <section id="experimentPage" class="app-view workflow-page" aria-labelledby="experimentTitle">
@@ -394,6 +450,29 @@
             </label>
             <button id="sendChat" class="primary" type="button">发送</button>
           </form>
+        </section>
+
+        <section id="elementGraphPage" class="app-view element-graph-page" aria-labelledby="elementGraphTitle">
+          <div class="page-head">
+            <div>
+              <p class="section-label">Yuxi 知识图谱</p>
+              <h2 id="elementGraphTitle">配方元素解析</h2>
+            </div>
+            <span id="elementGraphStats" class="metric-chip">等待解析</span>
+          </div>
+          <div class="element-graph-shell">
+            <section class="element-graph-workspace">
+              <form class="element-graph-search">
+                <label for="elementGraphInput">
+                  <span>元素名 / Yuxi ID</span>
+                  <input id="elementGraphInput" autocomplete="off" placeholder="例如：YUXI-A0F1011EC3C6A15ED4DB23D0BD8575A5">
+                </label>
+                <button id="loadElementGraph" class="primary" type="button">解析图谱</button>
+              </form>
+              <div id="elementGraphCanvas" class="element-graph-canvas empty-state">输入元素名或 Yuxi ID 后查看一层知识图谱。</div>
+            </section>
+            <aside id="elementGraphDetail" class="element-graph-detail empty-state">选择节点查看详情。</aside>
+          </div>
         </section>
 
         <section id="historyPage" class="app-view history-page" aria-labelledby="historyTitle">

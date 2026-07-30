@@ -27,6 +27,7 @@ import com.rjm.formulaai.management.dto.ScreeningStoredResponse;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
@@ -55,6 +56,27 @@ class PythonFormulaAiClientTests {
         assertEquals("CHAT-JAVA-CLIENT", response.getMessageId());
         assertEquals("yuxi_graph_online", response.getKnowledgeSource());
         assertEquals("优先调整油相和增稠体系。", response.getAnswer());
+        fixture.server.verify();
+    }
+
+    @Test
+    void chatPreservesKnowledgeGraphFromPythonResponse() {
+        RestClientFixture fixture = fixture();
+        PythonFormulaAiClient client = new PythonFormulaAiClient(fixture.restTemplate, "http://127.0.0.1:8000");
+        AiChatRequest request = new AiChatRequest();
+        request.setId("CHAT-GRAPH");
+        request.setMessage("What is Phenoxyethanol?");
+
+        fixture.server.expect(requestTo("http://127.0.0.1:8000/chat"))
+                .andExpect(method(HttpMethod.POST))
+                .andExpect(content().json("{\"id\":\"CHAT-GRAPH\",\"message\":\"What is Phenoxyethanol?\",\"history\":[],\"context\":{}}"))
+                .andRespond(withSuccess("{\"message_id\":\"CHAT-GRAPH\",\"knowledge_source\":\"yuxi_graph_online\",\"answer\":\"Phenoxyethanol is present in the recalled Yuxi graph.\",\"ingredient_ids\":[\"YUXI-ING\"],\"evidence_ids\":[\"YUXI-GRAPH-ING\"],\"knowledge_graph\":{\"nodes\":[{\"id\":\"YUXI-ING\",\"label\":\"Phenoxyethanol\"}],\"edges\":[{\"source\":\"PRODUCT-1\",\"target\":\"YUXI-ING\",\"label\":\"CONTAINS\"}],\"stats\":{\"node_count\":2,\"edge_count\":1}}}", MediaType.APPLICATION_JSON));
+
+        AiChatResponse response = client.chat(request);
+
+        Map<String, Object> graph = response.getKnowledgeGraph();
+        Map<String, Object> stats = (Map<String, Object>) graph.get("stats");
+        assertEquals(1, stats.get("edge_count"));
         fixture.server.verify();
     }
 
@@ -210,6 +232,37 @@ class PythonFormulaAiClientTests {
         assertEquals(46, response.getIngredientCount());
         assertEquals(316, response.getRelationTypeCounts().get("synergy"));
         assertEquals(1, response.getWarningCount());
+        fixture.server.verify();
+    }
+
+    @Test
+    void elementGraphGetsPythonElementGraphEndpoint() {
+        RestClientFixture fixture = fixture();
+        PythonFormulaAiClient client = new PythonFormulaAiClient(fixture.restTemplate, "http://127.0.0.1:8000");
+
+        fixture.server.expect(requestTo("http://127.0.0.1:8000/knowledge/elements/YUXI-ENT-GLYCERIN/graph"))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withSuccess("{\"query\":\"YUXI-ENT-GLYCERIN\",\"center\":{\"id\":\"YUXI-ENT-GLYCERIN\",\"label\":\"Glycerin\"},\"nodes\":[{\"id\":\"YUXI-ENT-GLYCERIN\",\"label\":\"Glycerin\"}],\"edges\":[],\"stats\":{\"node_count\":1,\"edge_count\":0,\"truncated\":false}}", MediaType.APPLICATION_JSON));
+
+        java.util.Map response = client.getElementGraph("YUXI-ENT-GLYCERIN");
+
+        java.util.Map center = (java.util.Map) response.get("center");
+        assertEquals("Glycerin", center.get("label"));
+        fixture.server.verify();
+    }
+
+    @Test
+    void elementGraphEncodesElementNamesOnce() {
+        RestClientFixture fixture = fixture();
+        PythonFormulaAiClient client = new PythonFormulaAiClient(fixture.restTemplate, "http://127.0.0.1:8000");
+
+        fixture.server.expect(requestTo("http://127.0.0.1:8000/knowledge/elements/Camellia%20Sinensis%20Leaf%20Extract/graph"))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withSuccess("{\"query\":\"Camellia Sinensis Leaf Extract\",\"center\":{\"id\":\"YUXI-CAMELLIA\",\"label\":\"Camellia Sinensis Leaf Extract\"},\"nodes\":[{\"id\":\"YUXI-CAMELLIA\",\"label\":\"Camellia Sinensis Leaf Extract\"}],\"edges\":[],\"stats\":{\"node_count\":1,\"edge_count\":0,\"truncated\":false}}", MediaType.APPLICATION_JSON));
+
+        java.util.Map response = client.getElementGraph("Camellia Sinensis Leaf Extract");
+
+        assertEquals("Camellia Sinensis Leaf Extract", response.get("query"));
         fixture.server.verify();
     }
 

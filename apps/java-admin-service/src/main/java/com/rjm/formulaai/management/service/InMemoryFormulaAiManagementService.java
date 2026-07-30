@@ -167,6 +167,18 @@ public class InMemoryFormulaAiManagementService implements FormulaAiManagementSe
     }
 
     @Override
+    public Map getYuxiEntityNames() {
+        Map<String, String> names = new LinkedHashMap<String, String>();
+        names.put("YUXI-ENT-GLYCERIN", "Glycerin");
+        names.put("YUXI-ENT-PANTHENOL", "Panthenol");
+        Map<String, Object> response = new LinkedHashMap<String, Object>();
+        response.put("entity_names", names);
+        response.put("count", names.size());
+        response.put("source", "mock");
+        return response;
+    }
+
+    @Override
     public KnowledgeGovernanceResponse getKnowledgeGovernance() {
         KnowledgeStatusResponse status = getKnowledgeStatus();
         Map<String, Integer> evidenceSourceTypeCounts = new LinkedHashMap<String, Integer>();
@@ -197,6 +209,41 @@ public class InMemoryFormulaAiManagementService implements FormulaAiManagementSe
                 Arrays.asList(
                         "Use Yuxi import batches as immutable knowledge snapshots.",
                         "Promote only engineer-reviewed evidence into production recommendation policies."));
+    }
+
+    @Override
+    public Map getElementGraph(String elementId) {
+        Map<String, Object> center = new LinkedHashMap<String, Object>();
+        center.put("id", elementId);
+        center.put("label", "Glycerin");
+        center.put("type", "Ingredient");
+        center.put("description", "Mock one-hop graph center.");
+
+        Map<String, Object> neighbor = new LinkedHashMap<String, Object>();
+        neighbor.put("id", "MOCK-PANTHENOL");
+        neighbor.put("label", "Panthenol");
+        neighbor.put("type", "Ingredient");
+        neighbor.put("description", "Mock barrier support neighbor.");
+
+        Map<String, Object> edge = new LinkedHashMap<String, Object>();
+        edge.put("id", "MOCK-REL-1");
+        edge.put("source", elementId);
+        edge.put("target", "MOCK-PANTHENOL");
+        edge.put("label", "synergy");
+        edge.put("type", "synergy");
+
+        Map<String, Object> stats = new LinkedHashMap<String, Object>();
+        stats.put("node_count", 2);
+        stats.put("edge_count", 1);
+        stats.put("truncated", false);
+
+        Map<String, Object> response = new LinkedHashMap<String, Object>();
+        response.put("query", elementId);
+        response.put("center", center);
+        response.put("nodes", Arrays.asList(center, neighbor));
+        response.put("edges", Arrays.asList(edge));
+        response.put("stats", stats);
+        return response;
     }
 
     @Override

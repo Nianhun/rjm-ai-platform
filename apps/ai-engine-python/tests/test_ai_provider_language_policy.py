@@ -1,6 +1,6 @@
 import unittest
 
-from rjm_formula_ai.ai_provider import OpenAICompatibleFormulaAnalyzer
+from rjm_formula_ai.ai_provider import OpenAICompatibleFormulaAnalyzer, normalize_ai_chat
 from rjm_formula_ai.models import FormulaRequest, Ingredient, IngredientRelation, UsageRange
 from rjm_formula_ai.yuxi_graph_client import FormulaKnowledge
 
@@ -305,6 +305,34 @@ class AiProviderLanguagePolicyTest(unittest.TestCase):
         self.assertIn("answer", output_contract)
         self.assertIn("follow_up_questions", output_contract)
         self.assertIn("Simplified Chinese", output_contract)
+
+    def test_chat_preserves_structured_formula_graph_fields(self):
+        result = normalize_ai_chat(
+            {
+                "answer": "建议使用一个美白精华配方，并按功效分类展示。",
+                "formula_ingredients": [
+                    {
+                        "ingredient_id": "YUXI-GLYCERIN",
+                        "name": "Glycerin",
+                        "concentration": "5%",
+                        "function_group": "保湿",
+                        "core_effect": "补水",
+                    }
+                ],
+                "function_groups": [{"name": "保湿", "ingredient_ids": ["YUXI-GLYCERIN"]}],
+                "relation_edges": [{"source": "保湿", "target": "YUXI-GLYCERIN", "label": "功效证据"}],
+                "core_path": ["保湿：Glycerin 补水"],
+                "ingredient_ids": ["YUXI-GLYCERIN"],
+                "evidence_ids": ["YUXI-GRAPH-GLYCERIN"],
+            },
+            ["YUXI-GLYCERIN"],
+            ["YUXI-GRAPH-GLYCERIN"],
+        )
+
+        self.assertEqual(result["formula_ingredients"][0]["name"], "Glycerin")
+        self.assertEqual(result["function_groups"][0]["name"], "保湿")
+        self.assertEqual(result["relation_edges"][0]["label"], "功效证据")
+        self.assertEqual(result["core_path"], ["保湿：Glycerin 补水"])
 
     def test_recommendation_retries_once_when_explanatory_text_is_english(self):
         analyzer = RetryLanguageAnalyzer()

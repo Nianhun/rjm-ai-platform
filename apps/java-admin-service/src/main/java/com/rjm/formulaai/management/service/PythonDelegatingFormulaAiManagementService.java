@@ -98,8 +98,18 @@ public class PythonDelegatingFormulaAiManagementService implements FormulaAiMana
     }
 
     @Override
+    public Map getYuxiEntityNames() {
+        return client.getYuxiEntityNames();
+    }
+
+    @Override
     public KnowledgeGovernanceResponse getKnowledgeGovernance() {
         return client.getKnowledgeGovernance();
+    }
+
+    @Override
+    public Map getElementGraph(String elementId) {
+        return client.getElementGraph(elementId);
     }
 
     @Override

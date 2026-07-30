@@ -9,6 +9,7 @@ public class AiChatResponse {
     private String messageId;
     private String knowledgeSource;
     private Map<String, Object> yuxiGraph = new LinkedHashMap<String, Object>();
+    private Map<String, Object> knowledgeGraph = new LinkedHashMap<String, Object>();
     private String answer;
     private List<String> followUpQuestions = new ArrayList<String>();
     private List<String> ingredientIds = new ArrayList<String>();
@@ -36,6 +37,14 @@ public class AiChatResponse {
 
     public void setYuxiGraph(Map<String, Object> yuxiGraph) {
         this.yuxiGraph = yuxiGraph;
+    }
+
+    public Map<String, Object> getKnowledgeGraph() {
+        return knowledgeGraph;
+    }
+
+    public void setKnowledgeGraph(Map<String, Object> knowledgeGraph) {
+        this.knowledgeGraph = knowledgeGraph;
     }
 
     public String getAnswer() {

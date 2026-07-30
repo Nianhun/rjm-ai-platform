@@ -87,6 +87,28 @@ class EngineerConsoleUiTest(unittest.TestCase):
         self.assertIn(".operation-status", styles)
         self.assertIn(".formula-summary", styles)
 
+    def test_console_initializes_candidate_empty_prompt(self):
+        script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
+        styles = (UI_ROOT / "styles.css").read_text(encoding="utf-8")
+
+        self.assertIn("renderCandidatePrompt();", script)
+        self.assertIn("function renderCandidatePrompt", script)
+        self.assertIn("等待生成候选配方", script)
+        self.assertIn("candidate-empty-prompt", script)
+        self.assertIn(".candidate-empty-prompt", styles)
+        self.assertIn("brand-loader", script)
+        self.assertIn(".brand-loader", styles)
+        self.assertIn("@keyframes brand-loader-pulse", styles)
+
+    def test_loading_candidate_cards_hide_score_loader_images(self):
+        script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
+
+        skeleton = script.split("function renderSkeletonCandidates()", 1)[1].split("function renderCandidatePrompt", 1)[0]
+        self.assertIn('<div class="brand-loader" aria-hidden="true"></div>', skeleton)
+        self.assertIn("候选方案生成中...", skeleton)
+        self.assertNotIn("brand-loader small", skeleton)
+        self.assertNotIn("candidate-score", skeleton)
+
     def test_console_preserves_header_icon_buttons_during_actions(self):
         script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
 
@@ -97,8 +119,38 @@ class EngineerConsoleUiTest(unittest.TestCase):
     def test_console_rail_background_covers_long_pages(self):
         styles = (UI_ROOT / "styles.css").read_text(encoding="utf-8")
 
-        self.assertIn("background: linear-gradient(90deg, var(--primary-900) 0 72px, var(--bg-app) 72px 100%);", styles)
+        self.assertIn("--rail-width: 100px;", styles)
+        self.assertIn("linear-gradient(90deg, var(--brand-ink) 0 var(--rail-width), transparent var(--rail-width) 100%)", styles)
         self.assertIn("background: var(--bg-app);", styles)
+
+    def test_console_uses_rjm_brand_assets_and_company_signals(self):
+        html = (UI_ROOT / "index.html").read_text(encoding="utf-8")
+        styles = (UI_ROOT / "styles.css").read_text(encoding="utf-8")
+
+        self.assertIn("./assets/brand/rjm-logo.png", html)
+        self.assertIn("./assets/brand/rjm-mark.png", html)
+        self.assertIn('class="company-signal"', html)
+        self.assertIn("专注再生医学美学原料研发生产", html)
+        self.assertIn("PDRN", html)
+        self.assertIn("生物合成 PDRN", html)
+        self.assertIn('url("./assets/brand/rjm-hero-bg.jpg")', styles)
+        self.assertIn('--brand-logo-url: url("./assets/brand/rjm-mark.png");', styles)
+        self.assertIn(".research-os::before", styles)
+        self.assertIn(".brand-logo-frame", styles)
+
+    def test_console_uses_lightweight_motion_background_without_video(self):
+        styles = (UI_ROOT / "styles.css").read_text(encoding="utf-8")
+
+        self.assertIn("--ambient-biotech-motion", styles)
+        self.assertIn(".research-os::after", styles)
+        self.assertIn(".auth-shell::after", styles)
+        self.assertIn("@keyframes ambient-biotech-drift", styles)
+        self.assertIn("pointer-events: none;", styles)
+        self.assertIn("mix-blend-mode: screen;", styles)
+        self.assertIn("prefers-reduced-motion: reduce", styles)
+        self.assertIn("--ambient-biotech-motion: none;", styles)
+        self.assertNotIn("<video", styles)
+        self.assertNotIn(".fullscreen-video", styles)
 
     def test_console_uses_single_screen_views(self):
         html = (UI_ROOT / "index.html").read_text(encoding="utf-8")
@@ -121,6 +173,65 @@ class EngineerConsoleUiTest(unittest.TestCase):
         self.assertIn("/api/ai/chat", script)
         self.assertIn("selected_formula: state.selectedFormula", script)
 
+    def test_console_has_independent_formula_element_graph_page(self):
+        html = (UI_ROOT / "index.html").read_text(encoding="utf-8")
+        script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
+        styles = (UI_ROOT / "styles.css").read_text(encoding="utf-8")
+
+        self.assertIn('data-view="elementGraphPage"', html)
+        self.assertIn('id="elementGraphPage" class="app-view element-graph-page"', html)
+        self.assertIn('id="elementGraphInput"', html)
+        self.assertIn('id="loadElementGraph"', html)
+        self.assertIn('id="elementGraphCanvas"', html)
+        self.assertIn('id="elementGraphDetail"', html)
+        self.assertIn("/api/knowledge/elements/${encodeURIComponent(elementId)}/graph", script)
+        self.assertIn("renderElementGraph", script)
+        self.assertIn("renderElementGraphSvg", script)
+        self.assertIn("selectElementGraphNode", script)
+        self.assertIn(".element-graph-page.active", styles)
+        self.assertIn(".element-graph-canvas", styles)
+        self.assertIn(".element-graph-svg", styles)
+
+    def test_formula_cards_use_display_names_not_internal_yuxi_ids(self):
+        script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
+
+        self.assertIn("formulaDisplayName", script)
+        self.assertIn("ingredientDisplayName", script)
+        self.assertIn("ingredientNameByYuxiId", script)
+        self.assertIn("/api/knowledge/entity-names", script)
+        self.assertIn("applyYuxiEntityNames", script)
+        self.assertIn("normalizeYuxiPublicId", script)
+        self.assertIn('"YUXI-0E2DBAF04E4EBAF378F5866FC0887323": "Water"', script)
+        self.assertIn('"YUXI-9E0989EDE09E665C91365EEB437A3F98": "Glycerin"', script)
+        self.assertIn('"YUXI-0260B25EDFD72EA3CFEF0C4F39932414": "Butylene Glycol"', script)
+        self.assertIn("Camellia Sinensis Leaf Extract", script)
+        self.assertIn("compactYuxiId(ingredientId)", script)
+        self.assertIn("formula?.name || formula?.title || formula?.formula_name || formula?.display_name", script)
+        self.assertIn("formulaDisplayName(formula, index)", script)
+        self.assertIn("const name = ingredientDisplayName(item);", script)
+        self.assertIn("rangeText(item)", script)
+        self.assertNotIn('${ingredientId ? `<code title="${escapeAttr(ingredientId)}">${escapeHtml(compactYuxiId(ingredientId))}</code>` : ""}', script)
+        self.assertNotIn("return readable || item?.role || item?.ingredient_id || \"-\";", script)
+        self.assertNotIn("<h3 title=\"${escapeAttr(formula.id)}\">${escapeHtml(formula.id)}</h3>", script)
+
+    def test_ai_chat_renders_structured_formula_and_yuxi_graph(self):
+        script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
+        styles = (UI_ROOT / "styles.css").read_text(encoding="utf-8")
+
+        self.assertIn("renderStructuredChatAnswer", script)
+        self.assertIn("chat-formula-table", script)
+        self.assertIn("chat-function-graph", script)
+        self.assertIn("extractFormulaRows", script)
+        self.assertIn("buildChatKnowledgeGraph", script)
+        self.assertIn("normalizeChatKnowledgeGraph", script)
+        self.assertIn("payload.knowledge_graph", script)
+        self.assertNotIn('label: "Yuxi 召回"', script)
+        self.assertIn(".chat-formula-table", styles)
+        self.assertIn(".chat-function-graph", styles)
+        self.assertIn(".chat-relation-map", styles)
+        self.assertIn(".dynamic-graph line", styles)
+        self.assertIn("@keyframes graph-flow", styles)
+
     def test_console_requires_login_and_validates_registration_inputs(self):
         html = (UI_ROOT / "index.html").read_text(encoding="utf-8")
         script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
@@ -136,6 +247,34 @@ class EngineerConsoleUiTest(unittest.TestCase):
         self.assertIn("当前 Java 服务尚未加载登录接口，请重启 Java Admin 服务后刷新页面。", script)
         self.assertIn("validateAuthField", script)
         self.assertIn(".field-error", styles)
+
+    def test_console_can_logout_and_switch_accounts(self):
+        html = (UI_ROOT / "index.html").read_text(encoding="utf-8")
+        script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
+        styles = (UI_ROOT / "styles.css").read_text(encoding="utf-8")
+
+        self.assertIn('id="logoutButton"', html)
+        self.assertIn("/api/auth/logout", script)
+        self.assertIn("function logout()", script)
+        self.assertIn("clearSession", script)
+        self.assertIn('localStorage.removeItem("rjm_session_token")', script)
+        self.assertIn("退出登录", script)
+        self.assertIn(".logout-button", styles)
+
+    def test_console_has_route_map_for_dedicated_page_urls(self):
+        html = (UI_ROOT / "index.html").read_text(encoding="utf-8")
+        script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
+
+        self.assertIn('data-route="/console/formulas"', html)
+        self.assertIn('data-route="/console/chat"', html)
+        self.assertIn('data-route="/console/history"', html)
+        self.assertIn('data-route="/console/settings"', html)
+        self.assertIn("const viewRoutes", script)
+        self.assertIn('workspaceCore: "/console/formulas"', script)
+        self.assertIn('chatPage: "/console/chat"', script)
+        self.assertIn("viewForCurrentRoute", script)
+        self.assertIn("history.pushState", script)
+        self.assertIn('window.addEventListener("popstate"', script)
 
     def test_console_has_history_and_invite_pages(self):
         html = (UI_ROOT / "index.html").read_text(encoding="utf-8")
@@ -230,14 +369,35 @@ class EngineerConsoleUiTest(unittest.TestCase):
         self.assertIn(".inspector-tabs", styles)
         self.assertIn("position: sticky;", styles)
 
-    def test_inspector_formula_table_wraps_long_yuxi_ids_inside_column(self):
+    def test_inspector_formula_detail_uses_compact_rows_for_long_yuxi_ids(self):
+        script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
         styles = (UI_ROOT / "styles.css").read_text(encoding="utf-8")
 
-        self.assertIn(".mini-table-wrap table", styles)
-        self.assertIn("table-layout: fixed;", styles)
-        self.assertIn(".mini-table-wrap th:nth-child(1)", styles)
+        self.assertIn("function compactEvidenceId", script)
+        self.assertIn("formula-detail-list", script)
+        self.assertIn("formula-evidence-refs", script)
+        self.assertIn(".formula-detail-list", styles)
+        self.assertIn(".formula-detail-row", styles)
+        self.assertIn(".formula-evidence-refs", styles)
+        self.assertIn("grid-column: 1 / -1;", styles)
         self.assertIn("overflow-wrap: anywhere;", styles)
-        self.assertIn("word-break: break-word;", styles)
+
+    def test_candidate_view_detail_opens_dedicated_formula_detail_page(self):
+        html = (UI_ROOT / "index.html").read_text(encoding="utf-8")
+        script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
+        styles = (UI_ROOT / "styles.css").read_text(encoding="utf-8")
+
+        self.assertIn('id="formulaDetailPage" class="app-view formula-detail-page"', html)
+        self.assertIn('id="backToFormulaList"', html)
+        self.assertIn('id="formulaDetailPageBody"', html)
+        self.assertIn('id="formulaDetailReviewPanel"', html)
+        self.assertIn("openFormulaDetailPage(formula, index)", script)
+        self.assertIn("renderFormulaDetailPage(formula, index)", script)
+        self.assertIn('setActiveView("formulaDetailPage")', script)
+        self.assertIn('score.querySelector(".view-detail").addEventListener("click"', script)
+        self.assertIn(".formula-detail-page.active", styles)
+        self.assertIn(".formula-detail-shell", styles)
+        self.assertIn(".formula-detail-review-panel", styles)
 
     def test_console_copy_is_not_mojibake(self):
         suspicious_fragments = ["閻", "缁", "閸", "瀹稿弶", "闁"]

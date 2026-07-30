@@ -48,7 +48,11 @@ public interface FormulaAiManagementService {
 
     KnowledgeStatusResponse getKnowledgeStatus();
 
+    Map getYuxiEntityNames();
+
     KnowledgeGovernanceResponse getKnowledgeGovernance();
+
+    Map getElementGraph(String elementId);
 
     EvidenceResponse getEvidence(String evidenceId);
 

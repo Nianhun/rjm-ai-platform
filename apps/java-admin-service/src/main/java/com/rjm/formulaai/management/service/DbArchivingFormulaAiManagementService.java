@@ -174,8 +174,18 @@ public class DbArchivingFormulaAiManagementService implements FormulaAiManagemen
     }
 
     @Override
+    public Map getYuxiEntityNames() {
+        return delegate.getYuxiEntityNames();
+    }
+
+    @Override
     public KnowledgeGovernanceResponse getKnowledgeGovernance() {
         return delegate.getKnowledgeGovernance();
+    }
+
+    @Override
+    public Map getElementGraph(String elementId) {
+        return delegate.getElementGraph(elementId);
     }
 
     @Override

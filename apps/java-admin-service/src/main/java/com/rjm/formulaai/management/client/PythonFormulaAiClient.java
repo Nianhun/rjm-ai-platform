@@ -15,6 +15,7 @@ import com.rjm.formulaai.management.dto.ProcurementRecommendationRequest;
 import com.rjm.formulaai.management.dto.ProcurementRecommendationResponse;
 import com.rjm.formulaai.management.dto.ScreeningListResponse;
 import com.rjm.formulaai.management.dto.ScreeningStoredResponse;
+import java.net.URI;
 import java.util.Map;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -70,8 +71,21 @@ public class PythonFormulaAiClient {
         return restTemplate.getForObject(baseUrl + "/knowledge/status", KnowledgeStatusResponse.class);
     }
 
+    public Map getYuxiEntityNames() {
+        return restTemplate.getForObject(baseUrl + "/knowledge/entity-names", Map.class);
+    }
+
     public KnowledgeGovernanceResponse getKnowledgeGovernance() {
         return restTemplate.getForObject(baseUrl + "/knowledge/governance", KnowledgeGovernanceResponse.class);
+    }
+
+    public Map getElementGraph(String elementId) {
+        URI uri = UriComponentsBuilder.fromHttpUrl(baseUrl)
+                .pathSegment("knowledge", "elements", elementId, "graph")
+                .build()
+                .encode()
+                .toUri();
+        return restTemplate.getForObject(uri, Map.class);
     }
 
     public EvidenceResponse getEvidence(String evidenceId) {

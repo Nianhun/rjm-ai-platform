@@ -146,6 +146,9 @@ class OpenAICompatibleFormulaAnalyzer:
                         "You are a cosmetic formulation R&D assistant. Answer formulators using only the supplied "
                         "Yuxi knowledge graph recall and conversation context. Return strict JSON only. If the graph "
                         "does not support a conclusion, say what is missing instead of guessing. "
+                        "When the user asks for a formula, return concrete formula_ingredients with display names, "
+                        "suggested concentrations, efficacy classes, and core effects. Do not use ingredient IDs as "
+                        "human-facing ingredient or formula names when display names are supplied. "
                         + LANGUAGE_POLICY
                     ),
                 },
@@ -156,6 +159,29 @@ class OpenAICompatibleFormulaAnalyzer:
                             "task": "Answer the formulator's question using Yuxi graph knowledge.",
                             "output_contract": {
                                 "answer": "Simplified Chinese prose; ingredient names remain English/INCI",
+                                "formula_ingredients": [
+                                    {
+                                        "ingredient_id": "must be supplied ingredient id when available",
+                                        "name": "ingredient display name",
+                                        "concentration": "suggested percentage such as 5% or 至100%",
+                                        "function_group": "Simplified Chinese efficacy class such as 抑黑, 还原, 保湿",
+                                        "core_effect": "Simplified Chinese effect summary",
+                                    }
+                                ],
+                                "function_groups": [
+                                    {
+                                        "name": "Simplified Chinese efficacy class",
+                                        "ingredient_ids": ["supplied ingredient ids"],
+                                    }
+                                ],
+                                "relation_edges": [
+                                    {
+                                        "source": "ingredient id or function group",
+                                        "target": "ingredient id or function group",
+                                        "label": "Simplified Chinese relation label",
+                                    }
+                                ],
+                                "core_path": ["Simplified Chinese numbered synthesis path"],
                                 "follow_up_questions": ["Simplified Chinese questions; ingredient names remain English/INCI"],
                                 "ingredient_ids": ["must be supplied ingredient id"],
                                 "evidence_ids": ["must be supplied evidence id"],
@@ -257,6 +283,10 @@ def normalize_ai_chat(result: dict[str, Any], ingredient_ids: list[str], evidenc
         "follow_up_questions": follow_up_questions,
         "ingredient_ids": _known_ids(result.get("ingredient_ids", []), set(ingredient_ids), "ingredient"),
         "evidence_ids": _known_ids(result.get("evidence_ids", []), set(evidence_ids), "evidence"),
+        "formula_ingredients": _dict_list(result.get("formula_ingredients", [])),
+        "function_groups": _dict_list(result.get("function_groups", [])),
+        "relation_edges": _dict_list(result.get("relation_edges", [])),
+        "core_path": _text_list(result.get("core_path", [])),
     }
 
 
@@ -270,13 +300,14 @@ def normalize_ai_formulas(
     formulas = payload.get("formulas")
     if not isinstance(formulas, list) or not formulas:
         raise RuntimeError("ai_provider_returned_no_formulas")
-    allowed_ingredient_ids = {item.id for item in knowledge.ingredients}
+    ingredient_by_id = {item.id: item for item in knowledge.ingredients}
+    allowed_ingredient_ids = set(ingredient_by_id)
     allowed_evidence_ids = {evidence.get("id") for evidence in knowledge.evidence_catalog if evidence.get("id")}
     normalized = []
     for index, formula in enumerate(formulas[:limit], start=1):
         if not isinstance(formula, dict):
             raise RuntimeError("ai_provider_formula_must_be_object")
-        ingredients = _normalize_ingredients(formula.get("ingredients"), allowed_ingredient_ids)
+        ingredients = _normalize_ingredients(formula.get("ingredients"), ingredient_by_id)
         evidence_ids = _normalize_evidence_ids(formula.get("evidence_ids"), allowed_evidence_ids)
         score = _normalize_score(formula.get("score"))
         normalized.append(
@@ -296,13 +327,14 @@ def normalize_ai_formulas(
     return normalized
 
 
-def _normalize_ingredients(value: Any, allowed_ingredient_ids: set[str]) -> list[dict[str, Any]]:
+def _normalize_ingredients(value: Any, ingredient_by_id: dict[str, Any]) -> list[dict[str, Any]]:
     if not isinstance(value, list) or not value:
         raise RuntimeError("ai_provider_formula_requires_ingredients")
     normalized = []
     for item in value:
         ingredient_id = str(item.get("ingredient_id") or "")
-        if ingredient_id not in allowed_ingredient_ids:
+        ingredient = ingredient_by_id.get(ingredient_id)
+        if ingredient is None:
             raise RuntimeError(f"ai_provider_used_unknown_ingredient:{ingredient_id}")
         role = str(item.get("role") or "").strip()
         if not role or not _contains_cjk(role):
@@ -310,6 +342,12 @@ def _normalize_ingredients(value: Any, allowed_ingredient_ids: set[str]) -> list
         normalized.append(
             {
                 "ingredient_id": ingredient_id,
+                "name": item.get("name") or ingredient.name_cn or ingredient.name_en or ingredient.inci_name or ingredient.id,
+                "name_cn": ingredient.name_cn,
+                "name_en": ingredient.name_en,
+                "inci_name": ingredient.inci_name,
+                "category": ingredient.category,
+                "evidence_ids": list(ingredient.evidence_ids),
                 "role": role,
                 "suggested_percent_min": float(item.get("suggested_percent_min")),
                 "suggested_percent_max": float(item.get("suggested_percent_max")),
@@ -374,6 +412,18 @@ def _chinese_text_list(value: Any) -> list[str]:
     if any(not _contains_cjk(item) for item in items):
         raise RuntimeError("ai_provider_text_must_be_simplified_chinese")
     return items
+
+
+def _text_list(value: Any) -> list[str]:
+    if not isinstance(value, list):
+        return []
+    return [str(item).strip() for item in value if str(item).strip()]
+
+
+def _dict_list(value: Any) -> list[dict[str, Any]]:
+    if not isinstance(value, list):
+        return []
+    return [dict(item) for item in value if isinstance(item, dict)]
 
 
 def _contains_cjk(value: str) -> bool:

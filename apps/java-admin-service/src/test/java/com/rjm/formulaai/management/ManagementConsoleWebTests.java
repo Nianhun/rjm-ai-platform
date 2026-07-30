@@ -25,7 +25,7 @@ class ManagementConsoleWebTests {
     void rootRedirectsToEngineerConsole() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/console/index.html"));
+                .andExpect(redirectedUrl("/console/"));
     }
 
     @Test
@@ -36,6 +36,17 @@ class ManagementConsoleWebTests {
                 .andExpect(header().string(HttpHeaders.CACHE_CONTROL, containsString("no-store")))
                 .andExpect(content().string(containsString("operationStatus")))
                 .andExpect(content().string(containsString("selectedFormulaSummary")));
+    }
+
+    @Test
+    void servesEngineerConsoleShellForDedicatedPageRoutes() throws Exception {
+        for (String route : new String[] {"/console/", "/console/formulas", "/console/chat", "/console/history", "/console/settings"}) {
+            mockMvc.perform(get(route))
+                    .andExpect(status().isOk())
+                    .andExpect(header().string(HttpHeaders.CONTENT_TYPE, containsString("text/html")))
+                    .andExpect(content().string(containsString("operationStatus")))
+                    .andExpect(content().string(containsString("selectedFormulaSummary")));
+        }
     }
 
     @Test

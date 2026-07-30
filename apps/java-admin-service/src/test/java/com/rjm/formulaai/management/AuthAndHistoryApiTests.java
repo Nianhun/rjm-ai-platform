@@ -49,6 +49,9 @@ class AuthAndHistoryApiTests {
         mockMvc.perform(get("/api/knowledge/status"))
                 .andExpect(status().isUnauthorized());
 
+        mockMvc.perform(get("/api/knowledge/elements/YUXI-ENT-GLYCERIN/graph"))
+                .andExpect(status().isUnauthorized());
+
         mockMvc.perform(post("/api/invites")
                         .header("Authorization", "Bearer " + token)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -72,6 +75,12 @@ class AuthAndHistoryApiTests {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"id\":\"CHAT-HISTORY-1\",\"message\":\"保湿乳液如何降低粘腻感？\",\"history\":[],\"context\":{}}"))
                 .andExpect(status().isOk());
+
+        mockMvc.perform(get("/api/knowledge/elements/YUXI-ENT-GLYCERIN/graph")
+                        .header("Authorization", "Bearer " + token))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.center.label").exists())
+                .andExpect(jsonPath("$.nodes.length()", greaterThanOrEqualTo(1)));
 
         mockMvc.perform(get("/api/history/formulas")
                         .header("Authorization", "Bearer " + token))

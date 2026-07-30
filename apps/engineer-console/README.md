@@ -30,7 +30,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\run_local_demo.ps1 -UseYuxiKn
 Then open:
 
 ```text
-http://127.0.0.1:8080/console/index.html
+http://127.0.0.1:8080/console/
 ```
 
 Direct file inspection is also possible:

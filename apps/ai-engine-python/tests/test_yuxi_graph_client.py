@@ -32,6 +32,49 @@ class FakeYuxiGateway:
         }
 
     def get_subgraph(self, kb_id, keyword, max_depth, max_nodes, exclude_chunk):
+        self.last_subgraph_request = {
+            "kb_id": kb_id,
+            "keyword": keyword,
+            "max_depth": max_depth,
+            "max_nodes": max_nodes,
+            "exclude_chunk": exclude_chunk,
+        }
+        if keyword == "Phenoxyethanol":
+            return {
+                "nodes": [
+                    {
+                        "id": "prod-mask",
+                        "type": "Entity",
+                        "label": "Product",
+                        "name": "Studio Ready Hot Perfecting Cream",
+                        "properties": {
+                            "entity_id": "prod-mask",
+                            "name": "Studio Ready Hot Perfecting Cream",
+                            "label": "Product",
+                        },
+                    },
+                    {
+                        "id": "ent-phenoxyethanol",
+                        "type": "Entity",
+                        "label": "Ingredient",
+                        "name": "Phenoxyethanol",
+                        "properties": {
+                            "entity_id": "ent-phenoxyethanol",
+                            "name": "Phenoxyethanol",
+                            "label": "Ingredient",
+                        },
+                    },
+                ],
+                "edges": [
+                    {
+                        "id": "contains-1",
+                        "source_id": "prod-mask",
+                        "target_id": "ent-phenoxyethanol",
+                        "type": "CONTAINS",
+                        "properties": {"relation_type": "CONTAINS"},
+                    }
+                ],
+            }
         return {
             "nodes": [
                 {
@@ -70,6 +113,13 @@ class FakeYuxiGateway:
             ],
         }
 
+    def list_entities(self, kb_id, label="Ingredient", limit=100000):
+        return [
+            {"entity_id": "0e2dbaf04e4ebaf378f5866fc0887323", "name": "Water", "label": "Ingredient"},
+            {"entity_id": "9e0989ede09e665c91365eeb437a3f98", "name": "Glycerin", "label": "Ingredient"},
+            {"entity_id": "dba175d813da6ec2320e668f799557e0", "name": "Phenoxyethanol", "label": "Ingredient"},
+        ]
+
 
 class YuxiGraphClientTest(unittest.TestCase):
     def test_status_uses_full_yuxi_graph_counts(self):
@@ -94,6 +144,29 @@ class YuxiGraphClientTest(unittest.TestCase):
         self.assertEqual(len(knowledge.relations), 1)
         self.assertIsInstance(knowledge.relations[0], IngredientRelation)
         self.assertEqual(knowledge.relations[0].relation_type, "synergy")
+
+    def test_entity_name_map_uses_yuxi_entity_names(self):
+        client = YuxiGraphClient(FakeYuxiGateway())
+
+        names = client.entity_name_map()
+
+        self.assertEqual(names["YUXI-0E2DBAF04E4EBAF378F5866FC0887323"], "Water")
+        self.assertEqual(names["YUXI-9E0989EDE09E665C91365EEB437A3F98"], "Glycerin")
+
+    def test_chat_recall_uses_mentioned_entity_and_keeps_product_edges(self):
+        gateway = FakeYuxiGateway()
+        client = YuxiGraphClient(gateway)
+
+        knowledge = client.recall_chat_knowledge("Phenoxyethanol 是什么？", max_nodes=10)
+
+        self.assertEqual(gateway.last_subgraph_request["keyword"], "Phenoxyethanol")
+        self.assertEqual(gateway.last_subgraph_request["max_depth"], 1)
+        self.assertTrue(gateway.last_subgraph_request["exclude_chunk"])
+        labels = [item.name_en for item in knowledge.ingredients]
+        self.assertIn("Phenoxyethanol", labels)
+        self.assertIn("Studio Ready Hot Perfecting Cream", labels)
+        self.assertEqual(len(knowledge.relations), 1)
+        self.assertEqual(knowledge.relations[0].relation_type, "CONTAINS")
 
 
 if __name__ == "__main__":

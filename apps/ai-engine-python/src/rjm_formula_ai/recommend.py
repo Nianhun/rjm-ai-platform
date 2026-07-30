@@ -51,6 +51,12 @@ def recommend_formulas(
                 "ingredients": [
                     {
                         "ingredient_id": item.id,
+                        "name": item.name_cn or item.name_en or item.inci_name or item.id,
+                        "name_cn": item.name_cn,
+                        "name_en": item.name_en,
+                        "inci_name": item.inci_name,
+                        "category": item.category,
+                        "evidence_ids": list(item.evidence_ids),
                         "role": "功效/辅助原料",
                         "suggested_percent_min": item.usage_range.min_percent,
                         "suggested_percent_max": item.usage_range.typical_percent,

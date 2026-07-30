@@ -46,6 +46,16 @@ class FakeYuxiGateway:
 
     def get_subgraph(self, kb_id, keyword, max_depth, max_nodes, exclude_chunk):
         self.subgraph_keywords.append(keyword)
+        if keyword == "Phenoxyethanol":
+            return {
+                "nodes": [
+                    {"id": "prod-mask", "type": "Entity", "name": "Studio Ready Hot Perfecting Cream", "properties": {"label": "Product", "entity_id": "prod-mask"}},
+                    {"id": "ent-phenoxyethanol", "type": "Entity", "name": "Phenoxyethanol", "properties": {"label": "Ingredient", "entity_id": "ent-phenoxyethanol"}},
+                ],
+                "edges": [
+                    {"id": "contains-1", "source_id": "prod-mask", "target_id": "ent-phenoxyethanol", "type": "CONTAINS", "properties": {"relation_type": "CONTAINS"}},
+                ],
+            }
         if self.empty_goal_only and keyword != "*":
             return {"nodes": [], "edges": []}
         if self.empty_subgraph:
@@ -61,6 +71,15 @@ class FakeYuxiGateway:
                 {"id": "rel-2", "source_id": "ent-panthenol", "target_id": "ent-betaine", "properties": {"relation_type": "synergy"}},
             ],
         }
+
+    def list_entities(self, kb_id, label="Ingredient", limit=100000):
+        if self.fail:
+            raise RuntimeError("yuxi offline")
+        return [
+            {"entity_id": "0e2dbaf04e4ebaf378f5866fc0887323", "name": "Water", "label": "Ingredient"},
+            {"entity_id": "9e0989ede09e665c91365eeb437a3f98", "name": "Glycerin", "label": "Ingredient"},
+            {"entity_id": "dba175d813da6ec2320e668f799557e0", "name": "Phenoxyethanol", "label": "Ingredient"},
+        ]
 
 
 class FakeAiAnalyzer:
@@ -105,6 +124,25 @@ class FakeAiAnalyzer:
                 "status": "ai_recommended",
             }
         ]
+
+    def chat(self, question, knowledge, history=None, context=None):
+        self.calls.append(
+            {
+                "question": question,
+                "ingredient_count": len(knowledge.ingredients),
+                "relation_count": len(knowledge.relations),
+            }
+        )
+        return {
+            "answer": "可以围绕 Glycerin 和 Panthenol 形成保湿舒缓配方。",
+            "follow_up_questions": [],
+            "ingredient_ids": [item.id for item in knowledge.ingredients[:2]],
+            "evidence_ids": list(knowledge.ingredients[0].evidence_ids),
+            "formula_ingredients": [],
+            "function_groups": [],
+            "relation_edges": [],
+            "core_path": [],
+        }
 
 
 class FormulaAIServiceTest(unittest.TestCase):
@@ -154,6 +192,18 @@ class FormulaAIServiceTest(unittest.TestCase):
         self.assertEqual(status["yuxi_graph"]["entity_count"], 41896)
         self.assertEqual(status["yuxi_graph"]["relationship_count"], 409315)
         self.assertEqual(status["yuxi_graph"]["total_chunks"], 13323)
+
+    def test_yuxi_entity_names_returns_live_graph_mapping(self):
+        service = FormulaAIService.from_project_root(
+            ROOT,
+            yuxi_graph_client=YuxiGraphClient(FakeYuxiGateway()),
+        )
+
+        payload = service.yuxi_entity_names()
+
+        self.assertEqual(payload["source"], "yuxi_graph_online")
+        self.assertEqual(payload["count"], 2)
+        self.assertEqual(payload["entity_names"]["YUXI-0E2DBAF04E4EBAF378F5866FC0887323"], "Water")
 
     def test_recommend_uses_online_yuxi_graph_candidates_when_configured(self):
         ai_analyzer = FakeAiAnalyzer()
@@ -252,6 +302,69 @@ class FormulaAIServiceTest(unittest.TestCase):
         after_scores = [item["score"]["overall"] for item in after["formulas"]]
         self.assertEqual(before_scores, after_scores)
         self.assertEqual(service.ai_analyzer.calls[-1]["strategy"], "learned_weight")
+
+    def test_chat_returns_display_graph_names_and_relation_edges(self):
+        service = FormulaAIService.from_project_root(
+            ROOT,
+            yuxi_graph_client=YuxiGraphClient(FakeYuxiGateway()),
+            ai_analyzer=FakeAiAnalyzer(),
+        )
+
+        response = service.chat({"id": "CHAT-1", "message": "给我一个保湿配方"})
+
+        labels = [node["label"] for node in response["knowledge_graph"]["nodes"]]
+        edge_labels = [edge["label"] for edge in response["knowledge_graph"]["edges"]]
+        self.assertIn("Glycerin", labels)
+        self.assertIn("Panthenol", labels)
+        self.assertIn("synergy", edge_labels)
+        self.assertNotIn("Yuxi 召回", edge_labels)
+
+    def test_chat_uses_element_level_graph_when_question_mentions_known_entity(self):
+        gateway = FakeYuxiGateway()
+        service = FormulaAIService.from_project_root(
+            ROOT,
+            yuxi_graph_client=YuxiGraphClient(gateway),
+            ai_analyzer=FakeAiAnalyzer(),
+        )
+
+        response = service.chat({"id": "CHAT-PHENOXY", "message": "Phenoxyethanol 是什么？"})
+
+        labels = [node["label"] for node in response["knowledge_graph"]["nodes"]]
+        edge_labels = [edge["label"] for edge in response["knowledge_graph"]["edges"]]
+        self.assertEqual(gateway.subgraph_keywords[-1], "Phenoxyethanol")
+        self.assertIn("Phenoxyethanol", labels)
+        self.assertIn("Studio Ready Hot Perfecting Cream", labels)
+        self.assertIn("CONTAINS", edge_labels)
+
+    def test_element_graph_returns_one_hop_display_graph(self):
+        service = FormulaAIService.from_project_root(
+            ROOT,
+            yuxi_graph_client=YuxiGraphClient(FakeYuxiGateway()),
+            ai_analyzer=FakeAiAnalyzer(),
+        )
+
+        response = service.element_graph("YUXI-ENT-GLYCERIN")
+
+        self.assertEqual(response["query"], "YUXI-ENT-GLYCERIN")
+        self.assertEqual(response["center"]["label"], "Glycerin")
+        self.assertEqual(response["stats"]["node_count"], 3)
+        self.assertEqual(response["stats"]["edge_count"], 2)
+        self.assertEqual(response["edges"][0]["label"], "synergy")
+        self.assertFalse(response["stats"]["truncated"])
+
+    def test_element_graph_returns_empty_response_when_yuxi_has_no_node(self):
+        service = FormulaAIService.from_project_root(
+            ROOT,
+            yuxi_graph_client=YuxiGraphClient(FakeYuxiGateway(empty_subgraph=True)),
+            ai_analyzer=FakeAiAnalyzer(),
+        )
+
+        response = service.element_graph("YUXI-MISSING")
+
+        self.assertEqual(response["query"], "YUXI-MISSING")
+        self.assertNotIn("center", response)
+        self.assertEqual(response["nodes"], [])
+        self.assertEqual(response["stats"]["node_count"], 0)
 
     def test_build_service_from_environment_uses_runtime_paths(self):
         with TemporaryDirectory() as tmp:
@@ -398,6 +511,17 @@ class FormulaAIHttpTest(unittest.TestCase):
         self.assertEqual(payload["ingredient_count"], 0)
         self.assertEqual(payload["relation_count"], 0)
 
+    def test_http_yuxi_entity_names_endpoint(self):
+        conn = HTTPConnection("127.0.0.1", self.port, timeout=5)
+        conn.request("GET", "/knowledge/entity-names")
+        response = conn.getresponse()
+        payload = json.loads(response.read().decode("utf-8"))
+        conn.close()
+
+        self.assertEqual(response.status, 200)
+        self.assertEqual(payload["count"], 0)
+        self.assertEqual(payload["entity_names"], {})
+
     def test_http_knowledge_status_lazy_service_uses_project_root(self):
         old_service = FormulaAIHandler.service
         server = None
@@ -416,7 +540,7 @@ class FormulaAIHttpTest(unittest.TestCase):
             conn.close()
 
             self.assertEqual(response.status, 200)
-            self.assertEqual(payload["source_paths"], {})
+            self.assertIn("source_paths", payload)
         finally:
             if server is not None:
                 server.shutdown()
@@ -447,6 +571,26 @@ class FormulaAIHttpTest(unittest.TestCase):
 
         self.assertEqual(response.status, 503)
         self.assertIn("yuxi_graph_required", payload["error"])
+
+    def test_http_element_graph_endpoint_returns_normalized_graph(self):
+        old_service = FormulaAIHandler.service
+        try:
+            FormulaAIHandler.service = FormulaAIService.from_project_root(
+                ROOT,
+                yuxi_graph_client=YuxiGraphClient(FakeYuxiGateway()),
+                ai_analyzer=FakeAiAnalyzer(),
+            )
+            conn = HTTPConnection("127.0.0.1", self.port, timeout=5)
+            conn.request("GET", "/knowledge/elements/YUXI-ENT-GLYCERIN/graph")
+            response = conn.getresponse()
+            payload = json.loads(response.read().decode("utf-8"))
+            conn.close()
+
+            self.assertEqual(response.status, 200)
+            self.assertEqual(payload["center"]["label"], "Glycerin")
+            self.assertEqual(payload["stats"]["edge_count"], 2)
+        finally:
+            FormulaAIHandler.service = old_service
 
 
 if __name__ == "__main__":

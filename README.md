@@ -84,7 +84,7 @@ On first run, copy `.env.local.example` to `.env.local` and set `RJM_YUXI_API_TO
 Open:
 
 ```text
-http://127.0.0.1:8080/console/index.html
+http://127.0.0.1:8080/console/
 ```
 
 Direct Python AI service:

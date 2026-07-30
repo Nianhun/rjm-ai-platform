@@ -147,6 +147,26 @@ class FormulaAIService:
             "evidence_prefix_counts": evidence_prefix_counts,
         }
 
+    def yuxi_entity_names(self) -> dict[str, Any]:
+        if self.yuxi_graph_client is None:
+            return {"entity_names": {}, "count": 0, "source": "yuxi_graph_unavailable"}
+        try:
+            self._last_yuxi_error = ""
+            entity_names = self.yuxi_graph_client.entity_name_map()
+            return {
+                "entity_names": entity_names,
+                "count": len(entity_names),
+                "source": "yuxi_graph_online",
+            }
+        except Exception as exc:
+            self._last_yuxi_error = str(exc)
+            return {
+                "entity_names": {},
+                "count": 0,
+                "source": "yuxi_graph_unavailable",
+                "error": str(exc),
+            }
+
     def _live_formula_knowledge(self, goal: str):
         if self.yuxi_graph_client is None:
             return None
@@ -319,17 +339,47 @@ class FormulaAIService:
             for item in [context.get("goal"), context.get("dosage_form"), question]
             if item
         )
-        live_knowledge = self._live_formula_knowledge(recall_query)
+        live_knowledge = self._live_chat_knowledge(recall_query)
         if live_knowledge is None:
             detail = f":{self._last_yuxi_error}" if self._last_yuxi_error else ""
             raise RuntimeError(f"yuxi_graph_required{detail}")
         result = self.ai_analyzer.chat(question, live_knowledge, payload.get("history") or [], context)
+        knowledge_graph = _chat_knowledge_graph(live_knowledge)
         return {
             "message_id": payload.get("id") or "",
             "knowledge_source": "yuxi_graph_online",
             "yuxi_graph": live_knowledge.graph_stats,
+            "knowledge_graph": knowledge_graph,
             **result,
         }
+
+    def element_graph(self, element_id: str, max_nodes: int = 56) -> dict[str, Any]:
+        query = str(element_id or "").strip()
+        if not query:
+            raise RuntimeError("element_id_required")
+        if self.yuxi_graph_client is None:
+            raise RuntimeError("yuxi_graph_required")
+        try:
+            self._last_yuxi_error = ""
+            return self.yuxi_graph_client.element_graph(query, max_nodes=max_nodes)
+        except Exception as exc:
+            self._last_yuxi_error = str(exc)
+            raise RuntimeError(f"yuxi_graph_required:{exc}") from exc
+
+    def _live_chat_knowledge(self, query: str):
+        if self.yuxi_graph_client is None:
+            return None
+        try:
+            self._last_yuxi_error = ""
+            getter = getattr(self.yuxi_graph_client, "recall_chat_knowledge", None)
+            knowledge = getter(query) if getter is not None else self.yuxi_graph_client.recall_formula_knowledge(query)
+            if not knowledge.ingredients:
+                self._last_yuxi_error = "empty_yuxi_chat_recall"
+                return None
+            return knowledge
+        except Exception as exc:
+            self._last_yuxi_error = str(exc)
+            return None
 
 
 def _default_evidence_path(project_root: Path) -> Path | None:
@@ -341,6 +391,40 @@ def _load_evidence_catalog(path: Path | None) -> list[dict[str, Any]]:
     if path is None or not path.exists():
         return []
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _chat_knowledge_graph(knowledge: Any) -> dict[str, Any]:
+    nodes = [
+        {
+            "id": item.id,
+            "label": item.name_cn or item.name_en or item.inci_name or item.id,
+            "type": item.category or "ingredient",
+            "description": str(item.properties.get("description") or ""),
+        }
+        for item in knowledge.ingredients[:24]
+    ]
+    allowed_ids = {node["id"] for node in nodes}
+    edges = [
+        {
+            "id": relation.id,
+            "source": relation.source_ingredient_id,
+            "target": relation.target_ingredient_id,
+            "label": relation.relation_type or "relation",
+            "type": relation.relation_type or "relation",
+            "description": relation.description,
+        }
+        for relation in knowledge.relations
+        if relation.source_ingredient_id in allowed_ids and relation.target_ingredient_id in allowed_ids
+    ]
+    return {
+        "nodes": nodes,
+        "edges": edges[:32],
+        "stats": {
+            "node_count": len(nodes),
+            "edge_count": min(len(edges), 32),
+            "truncated": len(knowledge.ingredients) > len(nodes) or len(edges) > 32,
+        },
+    }
 
 
 def _confidence_bucket(strength: float) -> str:

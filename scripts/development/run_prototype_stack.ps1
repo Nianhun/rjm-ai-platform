@@ -74,7 +74,7 @@ if ($SmokeOnly) {
     Write-Host "SmokeOnly: prototype stack configuration is parseable."
     Write-Host "Python AI health: http://${BindHost}:$PythonPort/health"
     Write-Host "Java management health: http://${BindHost}:$JavaPort/api/health"
-    Write-Host "Engineer console: http://${BindHost}:$JavaPort/console/index.html"
+    Write-Host "Engineer console: http://${BindHost}:$JavaPort/console/"
     Write-Host "Runtime logs: $runtimeDir"
     Write-Host "API token enabled: $([bool]$ApiToken)"
     Write-Host "Yuxi online graph: $([bool]$UseYuxiGraphOnline), API: $YuxiApiBase"
@@ -161,7 +161,7 @@ $javaProcess = Start-SanitizedProcess `
 
 Write-Host "Python AI PID: $($pythonProcess.Id), health: http://${BindHost}:$PythonPort/health"
 Write-Host "Java management PID: $($javaProcess.Id), health: http://${BindHost}:$JavaPort/api/health"
-Write-Host "Engineer console: http://${BindHost}:$JavaPort/console/index.html"
+Write-Host "Engineer console: http://${BindHost}:$JavaPort/console/"
 Write-Host "Runtime logs: $runtimeDir"
 Write-Host "Yuxi online graph: $([bool]$UseYuxiGraphOnline), API: $YuxiApiBase"
 Write-Host "API token header: X-RJM-API-Token"

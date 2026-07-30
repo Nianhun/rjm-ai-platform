@@ -7,9 +7,28 @@ const state = {
   compareMode: false,
   knowledgeLabel: "等待 Yuxi 知识库",
   chatHistory: [],
+  elementGraph: null,
+  selectedElementNodeId: "",
   currentUser: null,
   sessionToken: localStorage.getItem("rjm_session_token") || "",
+  yuxiEntityNamesLoaded: false,
 };
+
+const viewRoutes = {
+  workspaceCore: "/console/formulas",
+  chatPage: "/console/chat",
+  elementGraphPage: "/console/elements",
+  historyPage: "/console/history",
+  invitePage: "/console/invites",
+  experimentPage: "/console/experiments",
+  learningPage: "/console/learning",
+  procurementPage: "/console/procurement",
+  outputPage: "/console/output",
+  settingsPage: "/console/settings",
+  formulaDetailPage: "/console/formula-detail",
+};
+
+const routeViews = Object.fromEntries(Object.entries(viewRoutes).map(([viewId, route]) => [route, viewId]));
 
 const testCompatibilityLabels = {
   yuxiOnline: "Yuxi 知识库在线",
@@ -21,6 +40,36 @@ const strategyLabels = {
   baseline: "知识图谱 AI",
   learned_weight: "实验反馈加权",
   exploration: "低风险探索",
+};
+
+const ingredientNameByYuxiId = {
+  "YUXI-0E2DBAF04E4EBAF378F5866FC0887323": "Water",
+  "YUXI-9E0989EDE09E665C91365EEB437A3F98": "Glycerin",
+  "YUXI-0260B25EDFD72EA3CFEF0C4F39932414": "Butylene Glycol",
+  "YUXI-F6E8FED8AC2AAE885151288568079DC0": "Panthenol",
+  "YUXI-23A27B7400C84B5583C3E49EE90EA359": "Allantoin",
+  "YUXI-A094DBC5182F1B5C6C03D2780599F3AF": "Xanthan Gum",
+  "YUXI-A0F1011EC3C6A15ED4DB23D0BD8575A5": "Disodium EDTA",
+  "YUXI-DBA175D813DA6EC2320E668F799557E0": "Phenoxyethanol",
+  "YUXI-7966F64EE3A94C0C9B5B2DD5B77F11E4": "Methylpropanediol",
+  "YUXI-56D91A311E29A7E4C19BA0167AD648CE": "Centella Asiatica Extract",
+  "YUXI-E0E18E57E7F2A64CFD17260FEC351B0E": "Chamomilla Recutita (Matricaria) Flower Extract",
+  "YUXI-E21170EAA87925357BA1B27A44144CA1": "Glycyrrhiza Glabra (Licorice) Root Extract",
+  "YUXI-A0A6D421D90DD023F8DCC97E0475BE6B": "Camellia Sinensis Leaf Extract",
+  "YUXI-5CCBC89558449BB24C4D3D6942A04BEC": "Carbomer",
+  "YUXI-7C2C5DCAFAFC83FF22535EBBA73EF08F": "Arginine",
+  "YUXI-4FB999ECC72D3AC14A060C62CD35434E": "Panax Ginseng Seed Oil",
+  "YUXI-0D2E96CD6C76FC2DD9A73FCB148A934A": "Scutellaria Baicalensis Root Extract",
+  "YUXI-0D3EAA60C8787A1E8E22D456875598CD": "Rosmarinus Officinalis (Rosemary) Leaf Extract",
+  "YUXI-F9E3F4D2FBDE289F287DFDA813070FD6": "Ligularia Fishceri Leaf Extract",
+  "YUXI-95DCD3B9C5F53BD288AE43975C3324DA": "Rosa Davurica Bud Extract",
+  "YUXI-5EE29C44723877F6BFF76827CC79740D": "Dipotassium Glycyrrhizate",
+  "YUXI-F03B9298AE0E43E12442542B998E5F95": "Polygonum Cuspidatum Root Extract",
+  "YUXI-737C7BEA39726685EEE48FE81B678254": "Red Ginseng Extract",
+  "YUXI-74D24CE8B0494134BA064C00251208BE": "Cordyceps Sinensis Extract",
+  "YUXI-901B216CBBC169D760FD517C0308CA43": "Glycerin Polyacrylate",
+  "YUXI-7B0B446DC488702184B3A9CEFC4A3F9A": "Sodium Polyacrylate",
+  "YUXI-265E60F94073997CCDFDC6BB1C539F7F": "1,2-Hexanediol",
 };
 
 const els = {
@@ -39,6 +88,7 @@ const els = {
   loginButton: document.getElementById("loginButton"),
   registerButton: document.getElementById("registerButton"),
   sendCodeButton: document.getElementById("sendCodeButton"),
+  logoutButton: document.getElementById("logoutButton"),
   authStatus: document.getElementById("authStatus"),
   devCodeHint: document.getElementById("devCodeHint"),
   apiBase: document.getElementById("apiBase"),
@@ -65,6 +115,15 @@ const els = {
   selectedFormulaId: document.getElementById("selectedFormulaId"),
   selectedFormulaSummary: document.getElementById("selectedFormulaSummary"),
   formulaDetail: document.getElementById("formulaDetail"),
+  backToFormulaList: document.getElementById("backToFormulaList"),
+  formulaDetailPageTitle: document.getElementById("formulaDetailPageTitle"),
+  formulaDetailPageSummary: document.getElementById("formulaDetailPageSummary"),
+  formulaDetailPageRank: document.getElementById("formulaDetailPageRank"),
+  formulaDetailHeroTitle: document.getElementById("formulaDetailHeroTitle"),
+  formulaDetailHeroText: document.getElementById("formulaDetailHeroText"),
+  formulaDetailPageScore: document.getElementById("formulaDetailPageScore"),
+  formulaDetailPageBody: document.getElementById("formulaDetailPageBody"),
+  formulaDetailReviewPanel: document.getElementById("formulaDetailReviewPanel"),
   inspectorTitle: document.getElementById("inspectorTitle"),
   inspectorScore: document.getElementById("inspectorScore"),
   engineer: document.getElementById("engineer"),
@@ -77,6 +136,11 @@ const els = {
   chatMessages: document.getElementById("chatMessages"),
   chatInput: document.getElementById("chatInput"),
   sendChat: document.getElementById("sendChat"),
+  elementGraphInput: document.getElementById("elementGraphInput"),
+  loadElementGraph: document.getElementById("loadElementGraph"),
+  elementGraphCanvas: document.getElementById("elementGraphCanvas"),
+  elementGraphDetail: document.getElementById("elementGraphDetail"),
+  elementGraphStats: document.getElementById("elementGraphStats"),
   toggleParameterPanel: document.getElementById("toggleParameterPanel"),
   settingsRefreshKnowledge: document.getElementById("settingsRefreshKnowledge"),
   settingsIngredientCount: document.getElementById("settingsIngredientCount"),
@@ -103,9 +167,11 @@ function defaultApiBase() {
 
 els.apiBase.value = defaultApiBase();
 bindEvents();
+setActiveView(viewForCurrentRoute(), { replace: true });
 renderKnowledgeUnavailable("等待 Yuxi 知识库连接");
 renderFormulaInspector(null);
 writeOutput({}, "等待接口数据");
+renderCandidatePrompt();
 bootAuth();
 
 function bindEvents() {
@@ -114,6 +180,7 @@ function bindEvents() {
   els.loginButton?.addEventListener("click", login);
   els.registerButton?.addEventListener("click", register);
   els.sendCodeButton?.addEventListener("click", sendEmailCode);
+  els.logoutButton?.addEventListener("click", () => withActionStatus(els.logoutButton, "退出登录", logout));
   [els.loginEmail, els.loginPassword, els.registerEmail, els.registerPassword, els.registerInvite, els.registerCode].forEach((input) => {
     input?.addEventListener("blur", () => validateAuthField(input));
     input?.addEventListener("input", () => clearAuthError(input));
@@ -124,6 +191,7 @@ function bindEvents() {
   bindAction("refreshKnowledge", "刷新知识源", refreshKnowledgeStatus);
   bindAction("settingsRefreshKnowledge", "检测知识库连接", refreshKnowledgeStatus);
   bindAction("loadKnowledgeGovernance", "查看知识治理", loadKnowledgeGovernance);
+  bindAction("loadElementGraph", "解析元素图谱", loadElementGraph);
   bindAction("recommendButton", "推荐配方", recommendFormulas);
   bindAction("regenerateButton", "重新推荐", recommendFormulas);
   bindAction("submitScreening", "提交筛选", submitScreening);
@@ -137,18 +205,26 @@ function bindEvents() {
   bindAction("loadLearningExplanation", "查看学习解释", loadLearningExplanation);
   bindAction("loadLearnedWeights", "查看学习权重", loadLearnedWeights);
 
+  els.backToFormulaList?.addEventListener("click", () => setActiveView("workspaceCore"));
   document.getElementById("rejectFormula").addEventListener("click", () => quickScreen("reject"));
   document.getElementById("modifyFormula").addEventListener("click", () => quickScreen("modify"));
   document.getElementById("copyDebug").addEventListener("click", copyDebugOutput);
   document.getElementById("clearDebug").addEventListener("click", () => writeOutput({}, "已清空"));
   els.toggleParameterPanel.addEventListener("click", toggleParameterPanel);
   els.sendChat.addEventListener("click", () => withActionStatus(els.sendChat, "AI 对话", sendChatMessage));
+  els.elementGraphInput?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      els.loadElementGraph?.click();
+    }
+  });
   document.querySelectorAll(".inspector-tab").forEach((tab) => {
     tab.addEventListener("click", () => setInspectorTab(tab.dataset.tab));
   });
   document.querySelectorAll(".rail-item").forEach((item) => {
     item.addEventListener("click", () => navigateRail(item));
   });
+  window.addEventListener("popstate", () => setActiveView(viewForCurrentRoute(), { skipHistory: true }));
   els.strategy.addEventListener("change", () => {
     els.currentStrategyLabel.textContent = strategyLabel(els.strategy.value);
     els.boardStrategy.textContent = `${strategyLabel(els.strategy.value)} 策略`;
@@ -183,8 +259,7 @@ async function bootAuth() {
     await loadHistory();
     await loadInvites();
   } catch (error) {
-    state.sessionToken = "";
-    localStorage.removeItem("rjm_session_token");
+    clearSession();
     showAuthenticatedApp(false);
     showAuthStatus(error.message || "登录已过期，请重新登录。", "error");
   }
@@ -266,6 +341,29 @@ async function acceptSession(payload) {
   await loadInvites();
 }
 
+async function logout() {
+  const token = state.sessionToken;
+  try {
+    if (token) {
+      await requestJson("/api/auth/logout", { method: "POST" });
+    }
+  } catch (error) {
+    // Local session cleanup still lets the engineer switch accounts if the token already expired.
+  } finally {
+    clearSession();
+    showAuthenticatedApp(false);
+    setAuthMode("login");
+    els.loginPassword.value = "";
+    showAuthStatus("已退出登录，可以切换其他账号。", "success");
+  }
+}
+
+function clearSession() {
+  state.sessionToken = "";
+  state.currentUser = null;
+  localStorage.removeItem("rjm_session_token");
+}
+
 function validateAuthFields(inputs) {
   return inputs.map((input) => validateAuthField(input)).every(Boolean);
 }
@@ -334,8 +432,7 @@ async function requestJson(path, options = {}) {
   }
   if (!response.ok) {
     if (response.status === 401 || response.status === 403) {
-      state.sessionToken = "";
-      localStorage.removeItem("rjm_session_token");
+      clearSession();
       showAuthenticatedApp(false);
       throw new Error(payload.error || "请登录后再访问");
     }
@@ -385,6 +482,7 @@ async function refreshKnowledgeStatus() {
   try {
     const status = await requestJson("/api/knowledge/status");
     renderKnowledgeStatus(status, knowledgeConnectionLabel(status));
+    await refreshYuxiEntityNames();
     writeOutput(status, "知识源状态");
     setApiStatus("API 已连接", "success");
   } catch (error) {
@@ -393,6 +491,33 @@ async function refreshKnowledgeStatus() {
     setApiStatus("API 未启动", "warning");
     setActionStatus("无法连接 Java API 或 Yuxi 知识库。请启动在线知识库后刷新。", "offline");
   }
+}
+
+async function refreshYuxiEntityNames() {
+  try {
+    const payload = await requestJson("/api/knowledge/entity-names");
+    const changed = applyYuxiEntityNames(payload.entity_names || {});
+    state.yuxiEntityNamesLoaded = true;
+    if (changed && state.formulas.length) {
+      renderRecommendations({ formulas: state.formulas, strategy: els.strategy.value });
+    }
+  } catch (error) {
+    state.yuxiEntityNamesLoaded = false;
+  }
+}
+
+function applyYuxiEntityNames(entityNames) {
+  let changed = false;
+  Object.entries(entityNames || {}).forEach(([rawId, rawName]) => {
+    const id = normalizeYuxiPublicId(rawId);
+    const name = String(rawName || "").trim();
+    if (!id || !name || isYuxiInternalId(name)) return;
+    if (ingredientNameByYuxiId[id] !== name) {
+      ingredientNameByYuxiId[id] = name;
+      changed = true;
+    }
+  });
+  return changed;
 }
 
 async function loadKnowledgeGovernance() {
@@ -431,6 +556,9 @@ async function recommendFormulas() {
   };
   renderSkeletonCandidates();
   try {
+    if (!state.yuxiEntityNamesLoaded) {
+      await refreshYuxiEntityNames();
+    }
     const recommendation = await requestJson("/api/formulas/recommend", {
       method: "POST",
       body: JSON.stringify(payload),
@@ -608,6 +736,186 @@ async function sendChatMessage() {
   writeOutput(result, "AI 知识问答");
 }
 
+async function loadElementGraph() {
+  const elementId = requireField(els.elementGraphInput, "请输入元素名或 Yuxi ID");
+  renderElementGraphLoading(elementId);
+  const graph = await requestJson(`/api/knowledge/elements/${encodeURIComponent(elementId)}/graph`);
+  renderElementGraph(graph);
+  writeOutput(graph, "配方元素图谱");
+}
+
+function renderElementGraphLoading(elementId) {
+  if (els.elementGraphStats) els.elementGraphStats.textContent = "解析中";
+  if (els.elementGraphCanvas) {
+    els.elementGraphCanvas.className = "element-graph-canvas empty-state";
+    els.elementGraphCanvas.textContent = `正在从 Yuxi 知识图谱解析 ${elementId} 的一层关系...`;
+  }
+  if (els.elementGraphDetail) {
+    els.elementGraphDetail.className = "element-graph-detail empty-state";
+    els.elementGraphDetail.textContent = "等待图谱返回。";
+  }
+}
+
+function renderElementGraph(graph) {
+  state.elementGraph = normalizeElementGraph(graph);
+  const normalized = state.elementGraph;
+  const stats = normalized.stats || {};
+  if (els.elementGraphStats) {
+    els.elementGraphStats.textContent = `节点 ${stats.node_count ?? normalized.nodes.length} · 边 ${stats.edge_count ?? normalized.edges.length}`;
+  }
+  if (!els.elementGraphCanvas || !els.elementGraphDetail) return;
+  if (!normalized.nodes.length) {
+    els.elementGraphCanvas.className = "element-graph-canvas empty-state";
+    els.elementGraphCanvas.textContent = "未找到匹配元素，请换一个元素名或 Yuxi ID。";
+    els.elementGraphDetail.className = "element-graph-detail empty-state";
+    els.elementGraphDetail.textContent = "暂无节点详情。";
+    return;
+  }
+  els.elementGraphCanvas.className = "element-graph-canvas";
+  els.elementGraphCanvas.innerHTML = renderElementGraphSvg(normalized);
+  els.elementGraphCanvas.querySelectorAll("[data-element-node]").forEach((node) => {
+    node.addEventListener("click", () => selectElementGraphNode(node.dataset.elementNode));
+    node.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        selectElementGraphNode(node.dataset.elementNode);
+      }
+    });
+  });
+  selectElementGraphNode(normalized.center?.id || normalized.nodes[0]?.id);
+}
+
+function normalizeElementGraph(graph) {
+  const nodes = (graph?.nodes || []).slice(0, 56).map((node, index) => ({
+    id: String(node.id || node.entity_id || `node-${index}`),
+    label: node.label || node.name || node.display_name || node.id || `节点 ${index + 1}`,
+    type: node.type || node.kind || node.category || "element",
+    description: node.description || node.summary || "",
+    properties: node.properties || node.attributes || {},
+  }));
+  const centerInput = graph?.center || nodes[0] || null;
+  const centerId = centerInput ? String(centerInput.id || centerInput.entity_id || centerInput.label || centerInput.name || "") : "";
+  let center = nodes.find((node) => node.id === centerId);
+  if (!center && centerInput) {
+    center = {
+      id: String(centerInput.id || centerInput.entity_id || "center"),
+      label: centerInput.label || centerInput.name || centerInput.id || "中心元素",
+      type: centerInput.type || centerInput.kind || "center",
+      description: centerInput.description || "",
+      properties: centerInput.properties || {},
+    };
+    nodes.unshift(center);
+  }
+  const ids = new Set(nodes.map((node) => node.id));
+  const edges = (graph?.edges || []).slice(0, 80).map((edge, index) => ({
+    source: String(edge.source || edge.source_id || ""),
+    target: String(edge.target || edge.target_id || ""),
+    label: edge.label || edge.type || edge.relation_type || `关系 ${index + 1}`,
+  })).filter((edge) => ids.has(edge.source) && ids.has(edge.target));
+  return {
+    query: graph?.query || "",
+    center: center || nodes[0] || null,
+    nodes,
+    edges,
+    stats: graph?.stats || { node_count: nodes.length, edge_count: edges.length },
+  };
+}
+
+function renderElementGraphSvg(graph) {
+  const width = 920;
+  const height = 560;
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const centerId = graph.center?.id || graph.nodes[0]?.id;
+  const neighbors = graph.nodes.filter((node) => node.id !== centerId);
+  const placed = [
+    { ...(graph.nodes.find((node) => node.id === centerId) || graph.nodes[0]), x: centerX, y: centerY, center: true },
+    ...neighbors.map((node, index) => {
+      const angle = (index / Math.max(1, neighbors.length)) * Math.PI * 2 - Math.PI / 2;
+      const ringJitter = index % 3 === 0 ? 0 : index % 3 === 1 ? 24 : -18;
+      const radius = Math.min(220, Math.max(145, 118 + neighbors.length * 4)) + ringJitter;
+      return { ...node, x: centerX + Math.cos(angle) * radius, y: centerY + Math.sin(angle) * radius, center: false };
+    }),
+  ];
+  const byId = new Map(placed.map((node) => [node.id, node]));
+  const edgeMarkup = graph.edges.map((edge, index) => {
+    const source = byId.get(edge.source);
+    const target = byId.get(edge.target);
+    if (!source || !target) return "";
+    const midX = (source.x + target.x) / 2;
+    const midY = (source.y + target.y) / 2;
+    return `<g class="element-graph-edge" style="--edge-index:${index}">
+      <line x1="${source.x}" y1="${source.y}" x2="${target.x}" y2="${target.y}"></line>
+      <text x="${midX}" y="${midY - 6}">${escapeHtml(summaryText(edge.label, 12))}</text>
+    </g>`;
+  }).join("");
+  const nodeMarkup = placed.map((node, index) => {
+    const radius = node.center ? 34 : 15 + (index % 4);
+    return `<g class="element-graph-node ${node.center ? "center" : elementNodeClass(node)}" data-element-node="${escapeAttr(node.id)}" tabindex="0" role="button" aria-label="${escapeAttr(node.label)}" style="--node-index:${index}">
+      <circle cx="${node.x}" cy="${node.y}" r="${radius}"></circle>
+      <text x="${node.x}" y="${node.y + radius + 18}">${escapeHtml(summaryText(node.label, node.center ? 20 : 16))}</text>
+      <title>${escapeHtml(node.label)} · ${escapeHtml(node.type)}</title>
+    </g>`;
+  }).join("");
+  return `<svg class="element-graph-svg dynamic-graph" viewBox="0 0 ${width} ${height}" role="img" aria-label="配方元素一层知识图谱">${edgeMarkup}${nodeMarkup}</svg>`;
+}
+
+function selectElementGraphNode(nodeId) {
+  if (!state.elementGraph || !nodeId) return;
+  state.selectedElementNodeId = nodeId;
+  els.elementGraphCanvas?.querySelectorAll("[data-element-node]").forEach((node) => {
+    node.classList.toggle("selected", node.dataset.elementNode === nodeId);
+  });
+  const graph = state.elementGraph;
+  const node = graph.nodes.find((item) => item.id === nodeId) || graph.center;
+  if (!node || !els.elementGraphDetail) return;
+  const linkedEdges = graph.edges.filter((edge) => edge.source === node.id || edge.target === node.id);
+  els.elementGraphDetail.className = "element-graph-detail";
+  els.elementGraphDetail.innerHTML = `
+    <div class="element-detail-head">
+      <span class="element-node-type">${escapeHtml(node.type || "element")}</span>
+      <h3>${escapeHtml(node.label || node.id)}</h3>
+      <code>${escapeHtml(node.id)}</code>
+    </div>
+    <p>${escapeHtml(node.description || "暂无节点描述。")}</p>
+    <div class="element-detail-stats">
+      <span><strong>${linkedEdges.length}</strong> 直接关系</span>
+      <span><strong>${graph.nodes.length}</strong> 一层节点</span>
+      <span><strong>${graph.edges.length}</strong> 关系边</span>
+    </div>
+    ${renderElementRelations(node, linkedEdges, graph.nodes)}
+    ${renderElementProperties(node.properties)}
+  `;
+}
+
+function renderElementRelations(node, edges, nodes) {
+  if (!edges.length) return `<section class="element-detail-section"><h4>相关关系</h4><p>暂无直接关系。</p></section>`;
+  const byId = new Map(nodes.map((item) => [item.id, item]));
+  return `<section class="element-detail-section"><h4>相关关系</h4><ul>${edges.slice(0, 10).map((edge) => {
+    const otherId = edge.source === node.id ? edge.target : edge.source;
+    const other = byId.get(otherId);
+    return `<li><strong>${escapeHtml(edge.label)}</strong><span>${escapeHtml(other?.label || otherId)}</span></li>`;
+  }).join("")}</ul></section>`;
+}
+
+function renderElementProperties(properties) {
+  const entries = Object.entries(properties || {}).filter(([, value]) => value !== undefined && value !== null && value !== "").slice(0, 8);
+  if (!entries.length) return "";
+  return `<section class="element-detail-section"><h4>节点属性</h4><dl>${entries.map(([key, value]) => `<div><dt>${escapeHtml(key)}</dt><dd>${escapeHtml(Array.isArray(value) ? value.join(", ") : value)}</dd></div>`).join("")}</dl></section>`;
+}
+
+function elementNodeClass(node) {
+  const value = String(node.type || "").toLowerCase();
+  if (value.includes("formula")) return "formula";
+  if (value.includes("effect") || value.includes("function")) return "function";
+  if (value.includes("ingredient") || value.includes("material")) return "ingredient";
+  return `tone-${Math.abs(hashString(node.id || node.label)) % 5}`;
+}
+
+function hashString(value) {
+  return String(value || "").split("").reduce((hash, char) => ((hash << 5) - hash + char.charCodeAt(0)) | 0, 0);
+}
+
 async function loadHistory() {
   if (!state.sessionToken) return;
   const formulaHistory = await requestJson("/api/history/formulas");
@@ -742,7 +1050,7 @@ function renderRecommendations(recommendation) {
   els.knowledgeMode.textContent = state.knowledgeLabel;
 
   if (!state.formulas.length) {
-    els.formulaList.appendChild(renderEmptyState("暂无候选配方。请检查目标功效、禁用原料或 API 连接状态。"));
+    renderCandidatePrompt("暂无候选配方。请检查目标功效、禁用原料或 API 连接状态。");
     renderFormulaInspector(null);
     return;
   }
@@ -758,14 +1066,32 @@ function renderSkeletonCandidates() {
   for (let index = 0; index < 3; index += 1) {
     const node = document.createElement("div");
     node.className = "candidate-card";
-    node.innerHTML = `<div class="candidate-rank"><span class="rank-number">--</span></div><div class="candidate-main"><div class="empty-state">候选方案生成中...</div></div><div class="candidate-score"><div class="score-ring"><span>--</span></div></div>`;
+    node.innerHTML = `<div class="brand-loader" aria-hidden="true"></div><div class="candidate-main"><div class="empty-state">候选方案生成中...</div></div>`;
     els.formulaList.appendChild(node);
   }
+}
+
+function renderCandidatePrompt(message = "填写左侧目标功效与剂型后，系统会在这里生成候选配方、评分维度和证据链路。") {
+  els.formulaList.innerHTML = "";
+  const node = document.createElement("div");
+  node.className = "candidate-empty-prompt";
+  node.innerHTML = `
+    <strong>等待生成候选配方</strong>
+    <p>${escapeHtml(message)}</p>
+    <div>
+      <span>PDRN 修复</span>
+      <span>PN 支架结构</span>
+      <span>植物 PDRN</span>
+      <span>核酸系列</span>
+    </div>
+  `;
+  els.formulaList.appendChild(node);
 }
 
 function renderCandidateCard(formula, index, responseStrategy) {
   const article = document.createElement("article");
   const selected = state.selectedFormula?.id === formula.id;
+  const displayName = formulaDisplayName(formula, index);
   article.className = `candidate-card${selected ? " selected" : ""}${index === 0 ? " priority" : ""}`;
   article.dataset.formulaId = formula.id;
   article.tabIndex = 0;
@@ -787,7 +1113,7 @@ function renderCandidateCard(formula, index, responseStrategy) {
   main.className = "candidate-main";
   main.innerHTML = `
     <div class="candidate-title">
-      <h3 title="${escapeAttr(formula.id)}">${escapeHtml(formula.id)}</h3>
+      <h3 title="${escapeAttr(formula.id)}">${escapeHtml(displayName)}</h3>
       <span class="state-pill">${screeningLabel(formula.status)}</span>
       <span class="tag">${escapeHtml(strategyLabel(formula.strategy || responseStrategy || "knowledge_graph_ai"))}</span>
       <span class="${riskClass(formula)}">${riskLabel(formula)}</span>
@@ -797,7 +1123,7 @@ function renderCandidateCard(formula, index, responseStrategy) {
     <p class="candidate-reason">${escapeHtml(summaryText(formula.recommendation_reason || "暂无推荐理由", 76))}</p>
     <p class="candidate-risk">风险：${escapeHtml((formula.risk_notes || []).join("；") || "暂无风险提示，仍需实验与安全评估。")}</p>
   `;
-  main.appendChild(renderEvidenceList(formula.evidence_ids || []));
+  main.appendChild(renderFormulaEvidenceList(formula));
 
   const score = document.createElement("div");
   score.className = "candidate-score";
@@ -806,16 +1132,27 @@ function renderCandidateCard(formula, index, responseStrategy) {
   scoreEntries(formula).forEach(([label, value]) => micro.appendChild(scoreItem(label, value)));
   score.querySelector(".view-detail").addEventListener("click", (event) => {
     event.stopPropagation();
-    selectFormula(formula);
+    openFormulaDetailPage(formula, index);
   });
 
   article.append(rank, main, score);
   return article;
 }
 
+function openFormulaDetailPage(formula, index) {
+  selectFormula(formula);
+  renderFormulaDetailPage(formula, index);
+  setActiveView("formulaDetailPage");
+  setActionStatus(`正在查看 ${formulaDisplayName(formula, index)} 的完整配方详情。`, "success");
+}
+
 function selectFormula(formula) {
   state.selectedFormula = formula;
   renderFormulaInspector(formula);
+  const index = state.formulas.findIndex((item) => item.id === formula.id);
+  if (document.getElementById("formulaDetailPage")?.classList.contains("active")) {
+    renderFormulaDetailPage(formula, Math.max(0, index));
+  }
   updateWorkflowFormulaChips(formula);
   document.querySelectorAll(".candidate-card").forEach((card) => {
     const selected = card.dataset.formulaId === formula.id;
@@ -850,7 +1187,7 @@ function renderFormulaInspector(formula) {
 
   const rank = state.formulas.findIndex((item) => item.id === formula.id) + 1;
   els.selectedFormulaId.value = formula.id;
-  els.inspectorTitle.textContent = formula.id;
+  els.inspectorTitle.textContent = formulaDisplayName(formula, Math.max(0, rank - 1));
   els.inspectorScore.textContent = percent(formula.score?.overall);
   els.selectedRank.textContent = rank > 0 ? `排名 #${rank}` : "手动 ID";
   els.selectedFormulaSummary.textContent = `综合评分 ${percent(formula.score?.overall)} · ${screeningLabel(formula.status)} · ${riskLabel(formula)} · 推荐不能替代真实实验。`;
@@ -865,7 +1202,7 @@ function renderFormulaInspector(formula) {
 }
 
 function updateWorkflowFormulaChips(formula) {
-  const label = formula ? `当前配方 ${formula.id}` : "未选择配方";
+  const label = formula ? `当前配方 ${formulaDisplayName(formula)}` : "未选择配方";
   [els.experimentFormulaChip, els.learningFormulaChip, els.procurementFormulaChip].forEach((chip) => {
     if (chip) chip.textContent = label;
   });
@@ -906,8 +1243,104 @@ function renderInspectorEvidence(formula) {
   const node = document.createElement("div");
   node.className = "inspector-section";
   node.innerHTML = `<section class="info-block"><h3>证据来源</h3><p>证据用于追溯推荐依据，不表示已完成实验验证。</p></section>`;
-  node.appendChild(renderEvidenceList(formula.evidence_ids || [], true));
+  node.appendChild(renderFormulaEvidenceList(formula, true));
   return node;
+}
+
+function renderFormulaDetailPage(formula, index) {
+  if (!formula) {
+    els.formulaDetailPageTitle.textContent = "尚未选择配方";
+    els.formulaDetailPageSummary.textContent = "从候选配方列表进入后查看完整明细、评分和证据链路。";
+    els.formulaDetailPageRank.textContent = "未选择";
+    els.formulaDetailHeroTitle.textContent = "选择配方后查看详情";
+    els.formulaDetailHeroText.textContent = "完整配方信息会在这里展示。";
+    els.formulaDetailPageScore.className = "score-ring";
+    els.formulaDetailPageScore.setAttribute("style", "--score:0");
+    els.formulaDetailPageScore.innerHTML = "<span>--</span>";
+    els.formulaDetailPageBody.className = "formula-detail-page-body empty-state";
+    els.formulaDetailPageBody.textContent = "选择一套候选方案后查看详情。";
+    els.formulaDetailReviewPanel.className = "formula-detail-review-panel empty-state";
+    els.formulaDetailReviewPanel.textContent = "选择一套候选方案后进行工程师审核。";
+    return;
+  }
+
+  const displayName = formulaDisplayName(formula, index);
+  const evidenceCount = (formula.evidence_ids || []).length;
+  els.formulaDetailPageTitle.textContent = displayName;
+  els.formulaDetailPageSummary.textContent = `综合评分 ${percent(formula.score?.overall)} · ${screeningLabel(formula.status)} · ${riskLabel(formula)} · ${evidenceCount} 条证据`;
+  els.formulaDetailPageRank.textContent = `排名 #${index + 1}`;
+  els.formulaDetailHeroTitle.textContent = displayName;
+  els.formulaDetailHeroText.textContent = formula.recommendation_reason || "暂无推荐理由";
+  const scoreNumber = Math.max(0, Math.min(100, Math.round(Number(formula.score?.overall || 0) * 100)));
+  els.formulaDetailPageScore.className = "score-ring";
+  els.formulaDetailPageScore.setAttribute("style", `--score:${scoreNumber}`);
+  els.formulaDetailPageScore.innerHTML = `<span>${scoreNumber}%</span>`;
+  els.formulaDetailPageBody.className = "formula-detail-page-body fade-in";
+  els.formulaDetailPageBody.innerHTML = `
+    <section class="formula-detail-section formula-detail-metrics" aria-label="配方评分维度">
+      ${scoreEntries(formula).map(([label, value]) => `<div class="formula-detail-metric"><strong>${escapeHtml(label)}</strong><span>${percent(value)}</span><div class="score-bar" aria-hidden="true"><i style="width:${Math.max(0, Math.min(100, Math.round(Number(value || 0) * 100)))}%"></i></div></div>`).join("")}
+    </section>
+    <section class="formula-detail-section"><h3>配方明细</h3>${formulaTable(formula)}</section>
+    <section class="formula-detail-section"><h3>推荐理由</h3><p>${escapeHtml(formula.recommendation_reason || "暂无推荐理由")}</p></section>
+    <section class="formula-detail-section"><h3>风险提示</h3>${riskListHtml(formula)}</section>
+    <section class="formula-detail-section"><h3>证据链路</h3><p>证据用于追溯推荐依据，不表示已完成实验验证。</p><div class="detail-evidence-list"></div></section>
+  `;
+  els.formulaDetailPageBody.querySelector(".detail-evidence-list")?.appendChild(renderFormulaEvidenceList(formula, true));
+
+  renderFormulaDetailReviewPanel(formula);
+}
+
+function renderFormulaDetailReviewPanel(formula) {
+  els.formulaDetailReviewPanel.className = "formula-detail-review-panel fade-in";
+  els.formulaDetailReviewPanel.innerHTML = `
+    <div class="detail-review-head">
+      <p class="section-label">工程师审核</p>
+      <h3>${escapeHtml(formulaDisplayName(formula))}</h3>
+      <span>${escapeHtml(screeningLabel(formula.status))}</span>
+    </div>
+    <label for="detailEngineer">
+      <span>工程师</span>
+      <input id="detailEngineer" value="${escapeAttr(els.engineer.value)}" placeholder="请输入工程师姓名或工号">
+    </label>
+    <label for="detailDecision">
+      <span>筛选决定</span>
+      <select id="detailDecision">
+        <option value="keep"${els.decision.value === "keep" ? " selected" : ""}>保留</option>
+        <option value="modify"${els.decision.value === "modify" ? " selected" : ""}>要求修改</option>
+        <option value="reject"${els.decision.value === "reject" ? " selected" : ""}>剔除</option>
+      </select>
+    </label>
+    <label for="detailScreeningReason">
+      <span>审核意见</span>
+      <textarea id="detailScreeningReason" placeholder="请输入审核意见、实验关注点或修改依据">${escapeHtml(els.screeningReason.value)}</textarea>
+    </label>
+    <div class="detail-review-actions">
+      <button class="ghost-danger" type="button" data-detail-decision="reject">剔除</button>
+      <button class="secondary" type="button" data-detail-decision="modify">要求修改</button>
+      <button class="primary" type="button" data-detail-submit>保留并进入实验</button>
+    </div>
+  `;
+  bindFormulaDetailReviewActions();
+}
+
+function bindFormulaDetailReviewActions() {
+  els.formulaDetailReviewPanel.querySelectorAll("[data-detail-decision]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const decision = button.dataset.detailDecision;
+      els.formulaDetailReviewPanel.querySelector("#detailDecision").value = decision;
+      if (decision === "reject") els.formulaDetailReviewPanel.querySelector("#detailScreeningReason").value = "剔除：风险、证据或工程适配性不足，暂不进入实验。";
+      if (decision === "modify") els.formulaDetailReviewPanel.querySelector("#detailScreeningReason").value = "要求修改：请调整原料比例或降低风险后重新评估。";
+      submitFormulaDetailReview();
+    });
+  });
+  els.formulaDetailReviewPanel.querySelector("[data-detail-submit]")?.addEventListener("click", submitFormulaDetailReview);
+}
+
+function submitFormulaDetailReview() {
+  els.engineer.value = els.formulaDetailReviewPanel.querySelector("#detailEngineer")?.value || "";
+  els.decision.value = els.formulaDetailReviewPanel.querySelector("#detailDecision")?.value || "keep";
+  els.screeningReason.value = els.formulaDetailReviewPanel.querySelector("#detailScreeningReason")?.value || "";
+  document.getElementById("submitScreening").click();
 }
 
 function renderExperimentPanel() {
@@ -985,6 +1418,32 @@ function renderEvidenceList(evidenceIds, detailed = false) {
   return evidence;
 }
 
+function renderFormulaEvidenceList(formula, detailed = false) {
+  const evidenceIds = formula?.evidence_ids || [];
+  const evidence = document.createElement("div");
+  evidence.className = "evidence-list formula-evidence-list";
+  if (!evidenceIds.length) {
+    evidence.appendChild(emptyInline("暂无证据 ID"));
+    return evidence;
+  }
+  const labelByEvidenceId = formulaEvidenceLabelMap(formula);
+  evidenceIds.forEach((evidenceId) => {
+    const label = labelByEvidenceId.get(evidenceId) || evidenceId;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = detailed ? `${label} · 查看证据` : label;
+    button.title = `${label}\n${evidenceId}`;
+    button.setAttribute("aria-label", `查看证据 ${label}`);
+    button.dataset.evidenceId = evidenceId;
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      withActionStatus(button, "查看证据", () => loadEvidence(evidenceId));
+    });
+    evidence.appendChild(button);
+  });
+  return evidence;
+}
+
 function writeOutput(payload, title = "接口响应") {
   state.lastOutput = payload;
   els.actionOutput.textContent = JSON.stringify(payload, null, 2);
@@ -1033,7 +1492,7 @@ function renderStructuredCards(heading, cards) {
 }
 
 function renderFormulaTable(formulas, title) {
-  const rows = formulas.map((formula, index) => [`#${index + 1}`, formula.id, percent(formula.score?.overall), strategyLabel(formula.strategy || "-"), ingredientIds(formula).join("、"), (formula.risk_notes || []).join("；") || "暂无风险提示", `${(formula.evidence_ids || []).length} 条`]);
+  const rows = formulas.map((formula, index) => [`#${index + 1}`, formulaDisplayName(formula, index), percent(formula.score?.overall), strategyLabel(formula.strategy || "-"), ingredientDisplayNames(formula).join("、"), (formula.risk_notes || []).join("；") || "暂无风险提示", `${(formula.evidence_ids || []).length} 条`]);
   renderTable(title, ["排名", "配方", "综合分", "策略", "核心原料", "风险摘要", "证据"], rows);
 }
 
@@ -1196,10 +1655,8 @@ function quickScreen(decision) {
 }
 
 function navigateRail(item) {
-  document.querySelectorAll(".rail-item").forEach((button) => button.classList.remove("active"));
-  item.classList.add("active");
   if (item.dataset.view) {
-    setActiveView(item.dataset.view);
+    setActiveView(item.dataset.view, { route: item.dataset.route });
     return;
   }
   setActiveView("workspaceCore");
@@ -1211,10 +1668,42 @@ function navigateRail(item) {
   target?.focus?.();
 }
 
-function setActiveView(viewId) {
+function setActiveView(viewId, options = {}) {
+  const activeViewId = document.getElementById(viewId) ? viewId : "workspaceCore";
   document.querySelectorAll(".app-view").forEach((view) => {
-    view.classList.toggle("active", view.id === viewId);
+    view.classList.toggle("active", view.id === activeViewId);
   });
+  syncRailActive(activeViewId);
+  const route = options.route || viewRoutes[activeViewId] || viewRoutes.workspaceCore;
+  if (canUseConsoleRoutes() && !options.skipHistory && window.location.pathname !== route) {
+    if (options.replace) {
+      history.replaceState({ viewId: activeViewId }, "", route);
+    } else {
+      history.pushState({ viewId: activeViewId }, "", route);
+    }
+  }
+}
+
+function syncRailActive(viewId) {
+  document.querySelectorAll(".rail-item").forEach((button) => {
+    button.classList.toggle("active", button.dataset.view === viewId);
+  });
+}
+
+function viewForCurrentRoute() {
+  if (!canUseConsoleRoutes()) {
+    return "workspaceCore";
+  }
+  const path = window.location.pathname.replace(/\/$/, "");
+  if (!path || path === "/console" || path === "/console/index.html") {
+    return "workspaceCore";
+  }
+  return routeViews[path] || "workspaceCore";
+}
+
+function canUseConsoleRoutes() {
+  return (window.location.protocol === "http:" || window.location.protocol === "https:")
+    && window.location.pathname.startsWith("/console");
 }
 
 function toggleParameterPanel() {
@@ -1233,13 +1722,409 @@ function appendChatMessage(role, text, payload = null) {
     node.dataset.pending = "true";
   }
   const meta = payload ? chatMeta(payload) : "";
-  node.innerHTML = `<strong>${role === "user" ? "配方师" : "AI"}</strong><p>${escapeHtml(text)}</p>${meta}`;
+  const body = role === "assistant" && payload ? renderStructuredChatAnswer(text, payload) : `<p>${escapeHtml(text)}</p>`;
+  node.innerHTML = `<strong>${role === "user" ? "配方师" : "AI"}</strong>${body}${meta}`;
   els.chatMessages.appendChild(node);
+  node.querySelectorAll("[data-interactive-chat-graph]").forEach((target) => hydrateInteractiveChatGraph(target));
   els.chatMessages.scrollTop = els.chatMessages.scrollHeight;
 }
 
 function removePendingChatMessage() {
   els.chatMessages.querySelector('[data-pending="true"]')?.remove();
+}
+
+function renderStructuredChatAnswer(text, payload) {
+  const rows = extractFormulaRows(payload, text);
+  const graph = buildChatKnowledgeGraph(payload, rows);
+  const sections = [`<p>${escapeHtml(text)}</p>`];
+  if (rows.length) {
+    sections.push(renderChatFormulaTable(rows));
+    sections.push(renderChatFunctionGroups(rows));
+  }
+  if (graph.nodes.length > 1) {
+    sections.push(renderChatRelationMap(graph));
+    sections.push(renderChatCorePath(graph, payload));
+  }
+  return `<div class="structured-chat-answer">${sections.join("")}</div>`;
+}
+
+function extractFormulaRows(payload, text) {
+  const labelById = knowledgeGraphLabelMap(payload);
+  const structured = payload.formula_ingredients || payload.ingredients || payload.formula?.ingredients || payload.formulas?.[0]?.ingredients || [];
+  if (Array.isArray(structured) && structured.length) {
+    return structured.map((item) => ({
+      name: displayIngredientName(item.name || item.ingredient_name, item.ingredient_id || item.id, labelById),
+      concentration: item.concentration || item.percent || item.dosage || rangeText(item),
+      functionGroup: item.function_group || item.function || item.category || item.role || "核心成分",
+      role: item.core_effect || item.effect || item.reason || item.role || "-",
+      id: item.ingredient_id || item.id || item.name || "",
+    }));
+  }
+  const parsed = parseFormulaRowsFromText(text);
+  if (parsed.length) return parsed.map((row) => ({ ...row, name: displayIngredientName(row.name, row.id, labelById) }));
+  return knowledgeGraphRows(payload);
+}
+
+function parseFormulaRowsFromText(text) {
+  const rows = [];
+  const lines = String(text || "").split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+  for (const line of lines) {
+    const cells = line.split("|").map((cell) => cell.trim()).filter(Boolean);
+    if (cells.length >= 4 && !/^-+$/.test(cells.join("")) && !/成分/.test(cells[0])) {
+      rows.push({ name: cells[0], concentration: cells[1], functionGroup: cells[2], role: cells.slice(3).join(" / "), id: cells[0] });
+    }
+  }
+  return rows.slice(0, 12);
+}
+
+function buildChatKnowledgeGraph(payload, rows) {
+  const fallback = buildFormulaRelationshipGraph(payload, rows);
+  if (payload.knowledge_graph?.nodes?.length) {
+    const graph = normalizeChatKnowledgeGraph(payload.knowledge_graph);
+    if (graph.edges.length) return graph;
+    return fallback.edges.length ? fallback : graph;
+  }
+  if (fallback.nodes.length > 1) return fallback;
+  return { nodes: [], edges: [] };
+}
+
+function buildFormulaRelationshipGraph(payload, rows) {
+  const center = {
+    id: "formula-center",
+    label: payload.title || "美白精华配方",
+    group: "center",
+  };
+  const nodes = [center];
+  const edges = [];
+  const grouped = new Map();
+  rows.forEach((row, index) => {
+    const group = row.functionGroup || "核心成分";
+    if (!grouped.has(group)) {
+      const groupNode = { id: `group-${grouped.size}`, label: group, group: "function" };
+      grouped.set(group, groupNode);
+      nodes.push(groupNode);
+      edges.push({ source: center.id, target: groupNode.id, label: "功效分类" });
+    }
+    const ingredientNode = {
+      id: row.id || `ingredient-${index}`,
+      label: row.name,
+      group: "ingredient",
+      concentration: row.concentration,
+    };
+    nodes.push(ingredientNode);
+    edges.push({ source: grouped.get(group).id, target: ingredientNode.id, label: row.role || "证据关联" });
+  });
+  (payload.ingredient_ids || []).slice(0, 8).forEach((id) => {
+    if (nodes.some((node) => node.id === id || node.label === id)) return;
+    nodes.push({ id, label: id, group: "ingredient" });
+  });
+  (payload.relation_edges || []).slice(0, 12).forEach((edge) => {
+    const source = String(edge.source || "");
+    const target = String(edge.target || "");
+    if (!source || !target) return;
+    if (!nodes.some((node) => node.id === source)) nodes.push({ id: source, label: source, group: "function" });
+    if (!nodes.some((node) => node.id === target)) nodes.push({ id: target, label: target, group: "ingredient" });
+    edges.push({ source, target, label: edge.label || edge.type || "Yuxi 证据" });
+  });
+  return { nodes, edges };
+}
+
+function normalizeChatKnowledgeGraph(graph) {
+  return {
+    nodes: (graph.nodes || []).slice(0, 28).map((node, index) => ({
+      id: String(node.id || `node-${index}`),
+      label: node.label || node.name || node.id || `节点 ${index + 1}`,
+      group: index === 0 ? "center" : node.type || node.group || "ingredient",
+      description: node.description || "",
+    })),
+    edges: (graph.edges || []).slice(0, 48).map((edge, index) => ({
+      source: String(edge.source || edge.source_id || ""),
+      target: String(edge.target || edge.target_id || ""),
+      label: edge.label || edge.type || edge.relation_type || `关系 ${index + 1}`,
+    })).filter((edge) => edge.source && edge.target),
+  };
+}
+
+function knowledgeGraphLabelMap(payload) {
+  const map = new Map();
+  (payload.knowledge_graph?.nodes || []).forEach((node) => {
+    if (node.id && node.label) map.set(String(node.id), String(node.label));
+  });
+  return map;
+}
+
+function displayIngredientName(name, id, labelById) {
+  const value = String(name || "").trim();
+  if (value && !/^YUXI-[A-Z0-9-]+$/.test(value)) return value;
+  const label = labelById.get(String(id || value));
+  return label || value || String(id || "-");
+}
+
+function knowledgeGraphRows(payload) {
+  return (payload.knowledge_graph?.nodes || []).slice(0, 8).map((node) => ({
+    name: node.label || node.name || node.id,
+    concentration: "-",
+    functionGroup: node.type || "Yuxi 图谱",
+    role: node.description || "图谱召回成分",
+    id: node.id || node.label || "",
+  }));
+}
+
+function renderChatFormulaTable(rows) {
+  return `<section class="chat-answer-section"><h3>配方明细</h3><div class="chat-formula-table"><table><thead><tr><th>成分</th><th>浓度</th><th>功效分类</th><th>核心作用</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${escapeHtml(row.name)}</td><td>${escapeHtml(row.concentration)}</td><td>${escapeHtml(row.functionGroup)}</td><td>${escapeHtml(row.role)}</td></tr>`).join("")}</tbody></table></div></section>`;
+}
+
+function renderChatFunctionGroups(rows) {
+  const groups = new Map();
+  rows.forEach((row) => {
+    const group = row.functionGroup || "核心成分";
+    if (!groups.has(group)) groups.set(group, []);
+    groups.get(group).push(row);
+  });
+  return `<section class="chat-answer-section"><h3>成分功效关系</h3><div class="chat-function-graph">${Array.from(groups.entries()).map(([group, items], index) => `<div class="chat-function-row"><strong>${escapeHtml(group)}</strong><div>${items.map((item) => `<span class="function-chip chip-${index % 5}">${escapeHtml(item.name)}${item.concentration && item.concentration !== "-" ? ` (${escapeHtml(item.concentration)})` : ""}</span>`).join("")}</div></div>`).join("")}</div></section>`;
+}
+
+function renderChatRelationMap(graph) {
+  const graphId = `chat-graph-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  return `<section class="chat-answer-section"><h3>知识图谱关系</h3><div class="chat-relation-map interactive-chat-graph" data-interactive-chat-graph="${escapeAttr(graphId)}" data-graph="${escapeAttr(JSON.stringify(graph))}">
+    <div class="chat-graph-toolbar"><span>节点 ${graph.nodes.length} · 边 ${graph.edges.length}</span><button type="button" data-graph-fit>适配</button></div>
+    <svg viewBox="0 0 760 320" role="img" aria-label="Yuxi 知识图谱关系"><g class="chat-graph-stage"><g class="chat-graph-edges"></g><g class="chat-graph-labels"></g><g class="chat-graph-nodes"></g></g></svg>
+  </div></section>`;
+}
+
+function hydrateInteractiveChatGraph(root) {
+  if (!root || root.dataset.hydrated === "true") return;
+  root.dataset.hydrated = "true";
+  let graph;
+  try {
+    graph = JSON.parse(root.dataset.graph || "{}");
+  } catch (error) {
+    root.classList.add("empty-state");
+    root.textContent = "图谱数据解析失败。";
+    return;
+  }
+  const svg = root.querySelector("svg");
+  const stage = root.querySelector(".chat-graph-stage");
+  const edgeLayer = root.querySelector(".chat-graph-edges");
+  const labelLayer = root.querySelector(".chat-graph-labels");
+  const nodeLayer = root.querySelector(".chat-graph-nodes");
+  if (!svg || !stage || !edgeLayer || !labelLayer || !nodeLayer) return;
+
+  const width = 760;
+  const height = 320;
+  const nodes = forceLayoutNodes(graph.nodes || [], graph.edges || [], width, height);
+  const edges = (graph.edges || []).filter((edge) => nodes.some((node) => node.id === edge.source) && nodes.some((node) => node.id === edge.target));
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  let transform = { x: 0, y: 0, scale: 1 };
+  let activeNode = null;
+  let activePan = null;
+  let lastPointer = null;
+
+  function render() {
+    stage.setAttribute("transform", `translate(${transform.x} ${transform.y}) scale(${transform.scale})`);
+    edgeLayer.innerHTML = edges.map((edge, index) => {
+      const source = byId.get(edge.source);
+      const target = byId.get(edge.target);
+      return `<line class="chat-graph-edge" data-source="${escapeAttr(edge.source)}" data-target="${escapeAttr(edge.target)}" style="--edge-index:${index}" x1="${source.x}" y1="${source.y}" x2="${target.x}" y2="${target.y}"></line>`;
+    }).join("");
+    labelLayer.innerHTML = edges.map((edge) => {
+      const source = byId.get(edge.source);
+      const target = byId.get(edge.target);
+      return `<text class="chat-graph-edge-label" x="${(source.x + target.x) / 2}" y="${(source.y + target.y) / 2 - 6}">${escapeHtml(summaryText(edge.label, 10))}</text>`;
+    }).join("");
+    nodeLayer.innerHTML = nodes.map((node, index) => {
+      const radius = node.group === "center" ? 28 : node.group === "function" ? 18 : 15;
+      return `<g class="chat-graph-node ${chatGraphNodeClass(node)}" data-node-id="${escapeAttr(node.id)}" tabindex="0" role="button" aria-label="${escapeAttr(node.label)}" style="--node-index:${index}" transform="translate(${node.x} ${node.y})">
+        <circle r="${radius}"></circle>
+        <text y="${radius + 18}">${escapeHtml(summaryText(node.label, node.group === "center" ? 16 : 14))}</text>
+        <title>${escapeHtml(node.label)}</title>
+      </g>`;
+    }).join("");
+    bindGraphNodeEvents();
+  }
+
+  function updatePositions() {
+    edgeLayer.querySelectorAll("line").forEach((line) => {
+      const source = byId.get(line.dataset.source);
+      const target = byId.get(line.dataset.target);
+      if (!source || !target) return;
+      line.setAttribute("x1", source.x);
+      line.setAttribute("y1", source.y);
+      line.setAttribute("x2", target.x);
+      line.setAttribute("y2", target.y);
+    });
+    labelLayer.querySelectorAll("text").forEach((label, index) => {
+      const edge = edges[index];
+      const source = byId.get(edge.source);
+      const target = byId.get(edge.target);
+      label.setAttribute("x", (source.x + target.x) / 2);
+      label.setAttribute("y", (source.y + target.y) / 2 - 6);
+    });
+    nodeLayer.querySelectorAll("[data-node-id]").forEach((nodeEl) => {
+      const node = byId.get(nodeEl.dataset.nodeId);
+      if (node) nodeEl.setAttribute("transform", `translate(${node.x} ${node.y})`);
+    });
+  }
+
+  function bindGraphNodeEvents() {
+    nodeLayer.querySelectorAll("[data-node-id]").forEach((nodeEl) => {
+      nodeEl.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        activeNode = byId.get(nodeEl.dataset.nodeId);
+        lastPointer = pointerPoint(event, svg);
+        nodeEl.setPointerCapture(event.pointerId);
+        highlightChatGraphNode(root, activeNode?.id, edges);
+      });
+      nodeEl.addEventListener("click", () => highlightChatGraphNode(root, nodeEl.dataset.nodeId, edges));
+      nodeEl.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") highlightChatGraphNode(root, nodeEl.dataset.nodeId, edges);
+      });
+    });
+  }
+
+  svg.addEventListener("pointerdown", (event) => {
+    if (event.target.closest?.("[data-node-id]")) return;
+    activePan = pointerPoint(event, svg);
+    svg.setPointerCapture(event.pointerId);
+  });
+  svg.addEventListener("pointermove", (event) => {
+    const current = pointerPoint(event, svg);
+    if (activeNode && lastPointer) {
+      activeNode.x += (current.x - lastPointer.x) / transform.scale;
+      activeNode.y += (current.y - lastPointer.y) / transform.scale;
+      lastPointer = current;
+      updatePositions();
+      return;
+    }
+    if (activePan) {
+      transform.x += current.x - activePan.x;
+      transform.y += current.y - activePan.y;
+      activePan = current;
+      stage.setAttribute("transform", `translate(${transform.x} ${transform.y}) scale(${transform.scale})`);
+    }
+  });
+  svg.addEventListener("pointerup", () => {
+    activeNode = null;
+    activePan = null;
+    lastPointer = null;
+  });
+  svg.addEventListener("pointerleave", () => {
+    activeNode = null;
+    activePan = null;
+    lastPointer = null;
+  });
+  svg.addEventListener("wheel", (event) => {
+    event.preventDefault();
+    const direction = event.deltaY > 0 ? 0.9 : 1.1;
+    transform.scale = Math.max(0.55, Math.min(2.2, transform.scale * direction));
+    stage.setAttribute("transform", `translate(${transform.x} ${transform.y}) scale(${transform.scale})`);
+  }, { passive: false });
+  root.querySelector("[data-graph-fit]")?.addEventListener("click", () => {
+    transform = { x: 0, y: 0, scale: 1 };
+    stage.setAttribute("transform", "translate(0 0) scale(1)");
+  });
+  render();
+}
+
+function forceLayoutNodes(nodes, edges, width, height) {
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const normalized = nodes.slice(0, 32).map((node, index) => {
+    const angle = (index / Math.max(1, nodes.length)) * Math.PI * 2 - Math.PI / 2;
+    const isCenter = index === 0 || node.group === "center";
+    const radius = isCenter ? 0 : 92 + (index % 4) * 26;
+    return {
+      id: String(node.id || `node-${index}`),
+      label: node.label || node.name || node.id || `节点 ${index + 1}`,
+      group: isCenter ? "center" : node.group || node.type || "ingredient",
+      x: centerX + Math.cos(angle) * radius,
+      y: centerY + Math.sin(angle) * radius,
+    };
+  });
+  const byId = new Map(normalized.map((node) => [node.id, node]));
+  const links = edges.map((edge) => ({ source: byId.get(edge.source), target: byId.get(edge.target) })).filter((edge) => edge.source && edge.target);
+  for (let tick = 0; tick < 90; tick += 1) {
+    for (let i = 0; i < normalized.length; i += 1) {
+      for (let j = i + 1; j < normalized.length; j += 1) {
+        const a = normalized[i];
+        const b = normalized[j];
+        const dx = a.x - b.x || 0.1;
+        const dy = a.y - b.y || 0.1;
+        const distance = Math.max(24, Math.hypot(dx, dy));
+        const force = 520 / (distance * distance);
+        if (a.group !== "center") {
+          a.x += (dx / distance) * force;
+          a.y += (dy / distance) * force;
+        }
+        if (b.group !== "center") {
+          b.x -= (dx / distance) * force;
+          b.y -= (dy / distance) * force;
+        }
+      }
+    }
+    links.forEach((link) => {
+      const dx = link.target.x - link.source.x;
+      const dy = link.target.y - link.source.y;
+      const distance = Math.max(1, Math.hypot(dx, dy));
+      const desired = link.source.group === "center" || link.target.group === "center" ? 96 : 118;
+      const force = (distance - desired) * 0.018;
+      if (link.source.group !== "center") {
+        link.source.x += (dx / distance) * force;
+        link.source.y += (dy / distance) * force;
+      }
+      if (link.target.group !== "center") {
+        link.target.x -= (dx / distance) * force;
+        link.target.y -= (dy / distance) * force;
+      }
+    });
+    normalized.forEach((node) => {
+      if (node.group === "center") {
+        node.x = centerX;
+        node.y = centerY;
+      } else {
+        node.x = Math.max(54, Math.min(width - 54, node.x + (centerX - node.x) * 0.006));
+        node.y = Math.max(44, Math.min(height - 44, node.y + (centerY - node.y) * 0.006));
+      }
+    });
+  }
+  return normalized;
+}
+
+function pointerPoint(event, svg) {
+  const rect = svg.getBoundingClientRect();
+  return {
+    x: ((event.clientX - rect.left) / Math.max(1, rect.width)) * 760,
+    y: ((event.clientY - rect.top) / Math.max(1, rect.height)) * 320,
+  };
+}
+
+function highlightChatGraphNode(root, nodeId, edges) {
+  const related = new Set([nodeId]);
+  edges.forEach((edge) => {
+    if (edge.source === nodeId) related.add(edge.target);
+    if (edge.target === nodeId) related.add(edge.source);
+  });
+  root.querySelectorAll("[data-node-id]").forEach((node) => {
+    node.classList.toggle("selected", node.dataset.nodeId === nodeId);
+    node.classList.toggle("dimmed", !related.has(node.dataset.nodeId));
+  });
+  root.querySelectorAll(".chat-graph-edge").forEach((edge) => {
+    const active = edge.dataset.source === nodeId || edge.dataset.target === nodeId;
+    edge.classList.toggle("selected", active);
+    edge.classList.toggle("dimmed", !active);
+  });
+}
+
+function chatGraphNodeClass(node) {
+  const value = String(node?.group || "").toLowerCase();
+  if (value.includes("center")) return "center";
+  if (value.includes("function") || value.includes("effect") || value.includes("功效")) return "function";
+  return "ingredient";
+}
+
+function renderChatCorePath(graph, payload) {
+  const paths = (payload.core_path || []).length ? payload.core_path : graph.edges.slice(0, 4).map((edge, index) => `${index + 1}. ${edge.label}：${edge.source} → ${edge.target}`);
+  return `<section class="chat-answer-section"><h3>核心链路</h3><ol class="chat-core-path">${paths.map((path) => `<li>${escapeHtml(path)}</li>`).join("")}</ol></section>`;
 }
 
 function chatMeta(payload) {
@@ -1257,7 +2142,11 @@ function sortedFormulas(formulas) {
 }
 
 function renderIngredientRows(ingredients) {
-  return `<div class="ingredient-compact">${ingredients.map((item) => `<div class="ingredient-row"><span title="${escapeAttr(item.ingredient_id)}">${escapeHtml(item.role || item.ingredient_id)}</span><span>${escapeHtml(rangeText(item))}</span></div>`).join("")}</div>`;
+  return `<div class="ingredient-compact">${ingredients.map((item) => {
+    const name = ingredientDisplayName(item);
+    const identity = item.ingredient_id || name;
+    return `<div class="ingredient-row"><span title="${escapeAttr(identity)}">${escapeHtml(name)}</span><span>${escapeHtml(rangeText(item))}</span></div>`;
+  }).join("")}</div>`;
 }
 
 function renderScoreRing(value) {
@@ -1266,8 +2155,22 @@ function renderScoreRing(value) {
 }
 
 function formulaTable(formula) {
-  const rows = (formula.ingredients || []).map((item) => [item.ingredient_id, item.role || "-", rangeText(item), `${(formula.evidence_ids || []).length}`]);
-  return `<div class="mini-table-wrap"><table><thead><tr><th>原料</th><th>角色</th><th>建议比例</th><th>证据数</th></tr></thead><tbody>${rows.map((row) => `<tr>${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  const rows = (formula.ingredients || []).map((item) => {
+    const name = ingredientDisplayName(item);
+    const ingredientId = String(item.ingredient_id || "");
+    const evidence = evidenceIdsForIngredient(item);
+    return `<article class="formula-detail-row">
+      <div class="formula-ingredient-main">
+        <strong title="${escapeAttr(ingredientId || name)}">${escapeHtml(name)}</strong>
+      </div>
+      <span class="formula-role">${escapeHtml(item.role || "-")}</span>
+      <span class="formula-range">${escapeHtml(rangeText(item))}</span>
+      <div class="formula-evidence-refs" aria-label="对应 Yuxi 证据">
+        ${evidence.length ? evidence.map((id) => `<span title="${escapeAttr(id)}">${escapeHtml(compactEvidenceId(id))}</span>`).join("") : "<span>-</span>"}
+      </div>
+    </article>`;
+  }).join("");
+  return `<div class="formula-detail-list"><div class="formula-detail-head"><span>原料简称</span><span>角色</span><span>比例</span></div>${rows}</div>`;
 }
 
 function riskListHtml(formula) {
@@ -1331,6 +2234,97 @@ function rangeText(item) {
 
 function ingredientIds(formula) {
   return (formula.ingredients || []).map((item) => item.ingredient_id);
+}
+
+function ingredientDisplayNames(formula) {
+  return (formula.ingredients || []).map((item) => ingredientDisplayName(item));
+}
+
+function ingredientEvidenceText(item) {
+  const ids = evidenceIdsForIngredient(item);
+  if (!ids.length) return "-";
+  return ids.map((id) => `${ingredientDisplayName(item)}（${id}）`).join("；");
+}
+
+function formulaEvidenceLabelMap(formula) {
+  const map = new Map();
+  (formula?.ingredients || []).forEach((ingredient) => {
+    evidenceIdsForIngredient(ingredient).forEach((evidenceId) => {
+      map.set(evidenceId, ingredientDisplayName(ingredient));
+    });
+  });
+  return map;
+}
+
+function evidenceIdsForIngredient(item) {
+  if (Array.isArray(item?.evidence_ids) && item.evidence_ids.length) {
+    return item.evidence_ids;
+  }
+  const ingredientId = String(item?.ingredient_id || "");
+  if (ingredientId.startsWith("YUXI-")) {
+    return [`YUXI-GRAPH-${ingredientId.slice("YUXI-".length)}`];
+  }
+  return [];
+}
+
+function compactYuxiId(value) {
+  const id = String(value || "").trim();
+  if (!id) return "";
+  if (id.length <= 18) return id;
+  const prefix = id.startsWith("YUXI-") ? "YUXI" : id.slice(0, 4);
+  return `${prefix}-…${id.slice(-8)}`;
+}
+
+function compactEvidenceId(value) {
+  const id = String(value || "").trim();
+  if (!id) return "";
+  if (id.length <= 18) return id;
+  if (id.startsWith("YUXI-GRAPH-")) return `GRAPH-…${id.slice(-8)}`;
+  return `${id.slice(0, 6)}…${id.slice(-8)}`;
+}
+
+function ingredientDisplayName(item) {
+  const ingredientId = normalizeYuxiPublicId(item?.ingredient_id) || String(item?.ingredient_id || "").trim();
+  const candidates = [
+    ingredientNameByYuxiId[ingredientId],
+    item?.name,
+    item?.ingredient_name,
+    item?.display_name,
+    item?.name_en,
+    item?.inci_name,
+    item?.name_cn,
+  ];
+  const readable = candidates.map((value) => String(value || "").trim()).find((value) => value && !isYuxiInternalId(value));
+  return readable || compactYuxiId(ingredientId) || "-";
+}
+
+function formulaDisplayName(formula, index = 0) {
+  const explicit = formula?.name || formula?.title || formula?.formula_name || formula?.display_name;
+  if (explicit && !isYuxiInternalId(String(explicit))) {
+    return String(explicit);
+  }
+  const goal = formula?.goal || els.goal?.value?.trim() || "功效";
+  const form = formula?.dosage_form || els.dosageForm?.value?.trim() || "配方";
+  const topIngredient = (formula?.ingredients || [])
+    .map((item) => ingredientDisplayName(item))
+    .filter(Boolean)
+    .slice(0, 2)
+    .join(" + ");
+  const prefix = topIngredient && !isYuxiInternalId(topIngredient) ? `${topIngredient} ` : "";
+  return `${prefix}${goal}${form}方案 ${index + 1}`;
+}
+
+function isYuxiInternalId(value) {
+  return /^YUXI-[A-Z0-9-]+$/.test(String(value || "").trim());
+}
+
+function normalizeYuxiPublicId(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  if (!/^YUXI-/i.test(raw) && !/^[a-f0-9]{32}$/i.test(raw)) return "";
+  const body = raw.replace(/^YUXI-/i, "").toUpperCase();
+  if (!/^[A-Z0-9-]+$/.test(body)) return "";
+  return `YUXI-${body}`;
 }
 
 function screeningLabel(status) {
