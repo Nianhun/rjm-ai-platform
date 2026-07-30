@@ -8,15 +8,18 @@ RJM Formula AI is a local biomedical formula recommendation prototype. It combin
 apps/ai-engine-python        Python AI engine and tests
 apps/java-admin-service      Spring Boot management API
 apps/engineer-console        Static engineer workbench UI
+apps/yuxi-knowledge-platform Yuxi knowledge base, RAG, graph, and agent platform
 shared/api-contracts         OpenAPI contracts
 shared/schemas               JSON Schemas
 infrastructure/database      SQL schema drafts
 scripts                      Demo, development, integration, and DB runners
-data                         Samples, Yuxi imports, runtime state, outputs
+data                         Samples, Yuxi imports, knowledge-base seed data, runtime state, outputs
 docs                         Architecture, API, deployment, development, business docs
 ```
 
 Key business acceptance doc: `docs/business/release_acceptance.md`.
+
+Knowledge-base priority: start `apps/yuxi-knowledge-platform` first. It is the preferred knowledge base and knowledge graph foundation for document parsing, RAG retrieval, Milvus vector search, and Neo4j/Postgres-backed knowledge storage. Seed/source artifacts are preserved in `data/yuxi_knowledge_base_source/`, and the compact RJM import snapshot is preserved in `data/yuxi_import/`.
 
 Legacy paths are kept through compatibility directory links or wrapper scripts:
 
@@ -41,6 +44,22 @@ Important variables:
 - `RJM_API_TOKEN_ENABLED`, `RJM_API_TOKEN`
 
 ## Local Start
+
+Priority startup order:
+
+1. Start `apps/yuxi-knowledge-platform` first and use it as the knowledge base/RAG foundation.
+2. Start the Python AI engine with Yuxi graph access enabled.
+3. Start the Java management service and engineer console.
+
+Yuxi knowledge platform:
+
+```powershell
+cd F:\zky\RJM\apps\yuxi-knowledge-platform
+copy .env.template .env
+docker compose up -d
+```
+
+After Yuxi is available, configure `.env.local` in the repository root with `RJM_YUXI_API_BASE`, `RJM_YUXI_KB_ID`, and `RJM_YUXI_API_TOKEN` as needed.
 
 Run the release demo:
 
@@ -84,7 +103,15 @@ mvn spring-boot:run
 
 ## Docker
 
-No Dockerfile or Compose file is present in this repository yet. Docker validation is therefore not available until deployment artifacts are added.
+The Yuxi knowledge platform includes Docker Compose files:
+
+```powershell
+cd F:\zky\RJM\apps\yuxi-knowledge-platform
+docker compose config
+docker compose up -d
+```
+
+The RJM Python AI engine and Java management service still use local scripts in this repository unless separate deployment artifacts are added.
 
 ## Tests
 
@@ -117,5 +144,6 @@ powershell -ExecutionPolicy Bypass -File .\scripts\run_java_python_integration_s
 ## Common Issues
 
 - If `pytest` is unavailable, run the Python test files directly with the bundled Python runtime.
+- Start Yuxi first whenever possible. It is the preferred knowledge base for RAG, graph retrieval, and document parsing.
 - If Yuxi is not available, leave `RJM_YUXI_GRAPH_ENABLED=false`; the AI service falls back to local snapshot JSON.
 - If old commands reference `prototype`, `java-management`, `ui`, or `schemas`, they should continue working through compatibility paths.

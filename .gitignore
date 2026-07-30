@@ -29,3 +29,19 @@ venv/
 /java-management/database/
 /ui/engineer-console/
 /schemas/
+
+# Yuxi knowledge platform local runtime/dependency artifacts
+/apps/yuxi-knowledge-platform/.env
+/apps/yuxi-knowledge-platform/.env.*
+!/apps/yuxi-knowledge-platform/.env.template
+/apps/yuxi-knowledge-platform/.yuxi/
+/apps/yuxi-knowledge-platform/output/
+/apps/yuxi-knowledge-platform/docker/volumes/
+/apps/yuxi-knowledge-platform/**/node_modules/
+/apps/yuxi-knowledge-platform/**/dist/
+/apps/yuxi-knowledge-platform/**/__pycache__/
+/apps/yuxi-knowledge-platform/**/*.pyc
+/apps/yuxi-knowledge-platform/**/*.log
+/apps/yuxi-knowledge-platform/**/*.db
+/apps/yuxi-knowledge-platform/**/*.bak
+/apps/yuxi-knowledge-platform/**/.pytest_cache/
