@@ -8,6 +8,12 @@ param(
     [string]$YuxiApiBase = "http://127.0.0.1:5050",
     [string]$YuxiKbId = "",
     [string]$YuxiApiToken = "",
+    [string]$AiBaseUrl = "",
+    [string]$AiApiKey = "",
+    [string]$AiModel = "",
+    [string]$AiChatCompletionsPath = "",
+    [string]$AiHttpClient = "",
+    [string]$AiTimeoutSeconds = "",
     [string]$ApiToken
 )
 
@@ -48,10 +54,15 @@ function Start-SanitizedProcess {
     )
 
     $powershellExe = Join-Path $PSHOME "powershell.exe"
+    $startScript = [System.IO.Path]::ChangeExtension($OutLog, ".start.ps1")
+    @(
+        '$ErrorActionPreference = "Stop"',
+        $Command
+    ) | Set-Content -Path $startScript -Encoding UTF8
     Repair-DuplicatePathEnvironment
     return Start-Process `
         -FilePath $powershellExe `
-        -ArgumentList @("-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", $Command) `
+        -ArgumentList @("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", $startScript) `
         -WorkingDirectory $WorkingDirectory `
         -RedirectStandardOutput $OutLog `
         -RedirectStandardError $ErrLog `
@@ -71,6 +82,7 @@ if ($SmokeOnly) {
 }
 
 $pythonEnv = @(
+    "`$env:SSLKEYLOGFILE = `$null",
     "`$env:PYTHONPATH = '$root\apps\ai-engine-python\src'",
     "`$env:RJM_HTTP_HOST = '$BindHost'",
     "`$env:RJM_HTTP_PORT = '$PythonPort'",
@@ -88,6 +100,9 @@ if ($UseYuxiGraphOnline) {
     if ($YuxiApiToken) {
         $pythonEnv += "`$env:RJM_YUXI_API_TOKEN = '$YuxiApiToken'"
     }
+    if ($env:RJM_YUXI_TIMEOUT_SECONDS) {
+        $pythonEnv += "`$env:RJM_YUXI_TIMEOUT_SECONDS = '$env:RJM_YUXI_TIMEOUT_SECONDS'"
+    }
 }
 
 if ($UseYuxiKnowledge) {
@@ -95,6 +110,25 @@ if ($UseYuxiKnowledge) {
     $pythonEnv += "`$env:RJM_INGREDIENTS_PATH = '$root\data\yuxi_import\ingredients.yuxi.json'"
     $pythonEnv += "`$env:RJM_RELATIONS_PATH = '$root\data\yuxi_import\ingredient_relations.yuxi.json'"
     $pythonEnv += "`$env:RJM_EVIDENCE_PATH = '$root\data\yuxi_import\evidence.yuxi.json'"
+}
+
+if ($AiBaseUrl) {
+    $pythonEnv += "`$env:RJM_AI_BASE_URL = '$AiBaseUrl'"
+}
+if ($AiApiKey) {
+    $pythonEnv += "`$env:RJM_AI_API_KEY = '$AiApiKey'"
+}
+if ($AiModel) {
+    $pythonEnv += "`$env:RJM_AI_MODEL = '$AiModel'"
+}
+if ($AiChatCompletionsPath) {
+    $pythonEnv += "`$env:RJM_AI_CHAT_COMPLETIONS_PATH = '$AiChatCompletionsPath'"
+}
+if ($AiHttpClient) {
+    $pythonEnv += "`$env:RJM_AI_HTTP_CLIENT = '$AiHttpClient'"
+}
+if ($AiTimeoutSeconds) {
+    $pythonEnv += "`$env:RJM_AI_TIMEOUT_SECONDS = '$AiTimeoutSeconds'"
 }
 
 $pythonCommand = ($pythonEnv -join "; ") + "; & '$pythonExe' -m rjm_formula_ai.http_server"

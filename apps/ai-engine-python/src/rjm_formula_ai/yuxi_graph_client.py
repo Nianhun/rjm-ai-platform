@@ -109,7 +109,20 @@ class YuxiGraphClient:
             exclude_chunk=False,
         )
         ingredients = _ingredients_from_nodes(subgraph.get("nodes") or [], goal, max_ingredients)
-        relations = _relations_from_edges(subgraph.get("edges") or [], {item.properties["yuxi_entity_id"]: item.id for item in ingredients})
+        if not ingredients:
+            subgraph = self.gateway.get_subgraph(
+                status["kb_id"],
+                keyword="*",
+                max_depth=1,
+                max_nodes=max(max_ingredients * 4, 50),
+                exclude_chunk=False,
+            )
+        ingredients = _ingredients_from_nodes(subgraph.get("nodes") or [], goal, max_ingredients)
+        ingredient_id_by_graph_node_id: dict[str, str] = {}
+        for item in ingredients:
+            ingredient_id_by_graph_node_id[str(item.properties.get("yuxi_entity_id") or "")] = item.id
+            ingredient_id_by_graph_node_id[str(item.properties.get("yuxi_node_id") or "")] = item.id
+        relations = _relations_from_edges(subgraph.get("edges") or [], ingredient_id_by_graph_node_id)
         evidence = [_evidence_from_ingredient(item) for item in ingredients]
         return FormulaKnowledge(
             ingredients=ingredients,
@@ -132,7 +145,9 @@ def _ingredients_from_nodes(nodes: list[dict[str, Any]], goal: str, limit: int) 
     ingredients: list[Ingredient] = []
     seen: set[str] = set()
     for node in nodes:
-        if _node_type(node).lower() == "chunk":
+        node_type = _node_type(node).lower()
+        node_kind = _node_kind(node).lower()
+        if node_type == "chunk" or node_kind == "chunk" or (node_kind and node_kind != "ingredient"):
             continue
         name = _node_name(node)
         if not name:
@@ -144,6 +159,7 @@ def _ingredients_from_nodes(nodes: list[dict[str, Any]], goal: str, limit: int) 
         seen.add(ingredient_id)
         properties = dict(node.get("properties") or {})
         properties["yuxi_entity_id"] = entity_id or node.get("id") or name
+        properties["yuxi_node_id"] = str(node.get("id") or "")
         ingredients.append(
             Ingredient(
                 id=ingredient_id,
@@ -204,6 +220,12 @@ def _evidence_from_ingredient(ingredient: Ingredient) -> dict[str, Any]:
 
 def _node_type(node: dict[str, Any]) -> str:
     return str(node.get("type") or node.get("label") or (node.get("properties") or {}).get("label") or "")
+
+
+def _node_kind(node: dict[str, Any]) -> str:
+    properties = dict(node.get("properties") or {})
+    normalized = dict(node.get("normalized") or {})
+    return str(normalized.get("type") or properties.get("label") or node.get("type") or "")
 
 
 def _node_name(node: dict[str, Any]) -> str:

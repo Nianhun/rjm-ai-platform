@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(properties = "rjm.ai-service.mode=db")
+@SpringBootTest(properties = {"rjm.ai-service.mode=db", "rjm.auth.enabled=false"})
 @AutoConfigureMockMvc
 class LearningControllerTests {
     @Autowired

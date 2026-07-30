@@ -11,9 +11,15 @@ target/
 # Runtime outputs
 data/runtime/
 data/outputs/
+apps/java-admin-service/data/runtime/
 
 # Local environment
 .env
+.env.local
+
+# Local IDE/runtime
+.idea/
+venv/
 
 # Local Windows compatibility junctions created during restructuring
 /prototype/rjm_formula_ai/

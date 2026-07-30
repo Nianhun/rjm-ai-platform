@@ -4,10 +4,19 @@ spring:
 
 rjm:
   ai-service:
-    mode: mock
+    mode: python
   python-ai:
     base-url: http://127.0.0.1:8000
   security:
     api-token:
       enabled: false
       value: ""
+  auth:
+    enabled: true
+    bootstrap-invite-code: RJM-BOOTSTRAP
+  local-db:
+    enabled: true
+    url: jdbc:h2:file:./data/runtime/java-db/rjm_formula_ai;AUTO_SERVER=TRUE
+    username: sa
+    password:
+    schema-path: ../../infrastructure/database/java-management/schema.h2.sql

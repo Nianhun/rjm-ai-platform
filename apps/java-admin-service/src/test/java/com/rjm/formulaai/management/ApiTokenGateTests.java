@@ -14,7 +14,8 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest(properties = {
         "rjm.console.location=classpath:/test-console/",
         "rjm.security.api-token.enabled=true",
-        "rjm.security.api-token.value=dev-secret"
+        "rjm.security.api-token.value=dev-secret",
+        "rjm.auth.enabled=false"
 })
 @AutoConfigureMockMvc
 class ApiTokenGateTests {

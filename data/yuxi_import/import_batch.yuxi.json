@@ -1,6 +1,6 @@
 {
-  "batch_id": "YUXI-IMPORT-20260728T084637Z",
-  "imported_at": "2026-07-28T08:46:37.296826+00:00",
+  "batch_id": "YUXI-IMPORT-20260729T084919Z",
+  "imported_at": "2026-07-29T08:49:19.246050+00:00",
   "source_files": {
     "ingredients_full_csv": "F:\\zky\\Yuxi-main\\output\\ingredients_full.csv",
     "products_json": "F:\\zky\\Yuxi-main\\output\\products.json"

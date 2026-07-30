@@ -1,6 +1,8 @@
 package com.rjm.formulaai.management.client;
 
 import com.rjm.formulaai.management.dto.ExperimentFeedbackRequest;
+import com.rjm.formulaai.management.dto.AiChatRequest;
+import com.rjm.formulaai.management.dto.AiChatResponse;
 import com.rjm.formulaai.management.dto.EvidenceResponse;
 import com.rjm.formulaai.management.dto.FeedbackImpactReport;
 import com.rjm.formulaai.management.dto.FeedbackStoredResponse;
@@ -28,6 +30,10 @@ public class PythonFormulaAiClient {
 
     public FormulaRecommendationResponse recommendFormulas(FormulaRequest request) {
         return restTemplate.postForObject(baseUrl + "/recommend", request, FormulaRecommendationResponse.class);
+    }
+
+    public AiChatResponse chat(AiChatRequest request) {
+        return restTemplate.postForObject(baseUrl + "/chat", request, AiChatResponse.class);
     }
 
     public FeedbackStoredResponse recordExperimentFeedback(ExperimentFeedbackRequest request) {

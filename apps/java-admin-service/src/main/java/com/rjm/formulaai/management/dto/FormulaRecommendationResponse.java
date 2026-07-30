@@ -18,7 +18,7 @@ public class FormulaRecommendationResponse {
     public FormulaRecommendationResponse(String requestId, String goal, List<FormulaCandidate> formulas) {
         this.requestId = requestId;
         this.goal = goal;
-        this.strategy = "baseline";
+        this.strategy = "knowledge_graph_ai";
         this.formulas = formulas;
     }
 

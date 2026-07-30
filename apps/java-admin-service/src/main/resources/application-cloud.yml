@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${RJM_DATABASE_URL}
+    username: ${RJM_DATABASE_USERNAME}
+    password: ${RJM_DATABASE_PASSWORD}
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema.postgresql.sql
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+rjm:
+  ai-service:
+    mode: python
+  python-ai:
+    base-url: ${RJM_PYTHON_AI_BASE_URL:http://127.0.0.1:8000}
+  security:
+    api-token:
+      enabled: ${RJM_API_TOKEN_ENABLED:false}
+      value: ${RJM_API_TOKEN:}
+  auth:
+    enabled: true
+    bootstrap-invite-code: ${RJM_BOOTSTRAP_INVITE_CODE:RJM-BOOTSTRAP}
+  local-db:
+    enabled: false

@@ -23,7 +23,7 @@ class RecommendationStrategy(ABC):
 
 
 class BaselineRecommendationStrategy(RecommendationStrategy):
-    name = "baseline"
+    name = "knowledge_graph_ai"
 
     def recommend(
         self,
@@ -85,16 +85,17 @@ _STRATEGIES: dict[str, RecommendationStrategy] = {
         ExplorationRecommendationStrategy(),
     ]
 }
+_STRATEGIES["baseline"] = _STRATEGIES["knowledge_graph_ai"]
 
 
 def available_strategy_names() -> list[str]:
-    return list(_STRATEGIES.keys())
+    return [name for name in _STRATEGIES.keys() if name != "baseline"]
 
 
 def select_strategy(name: str | None) -> RecommendationStrategy:
     if not name:
-        return _STRATEGIES["baseline"]
-    return _STRATEGIES.get(name, _STRATEGIES["baseline"])
+        return _STRATEGIES["knowledge_graph_ai"]
+    return _STRATEGIES.get(name, _STRATEGIES["knowledge_graph_ai"])
 
 
 def _with_strategy(formula: dict, strategy_name: str) -> dict:

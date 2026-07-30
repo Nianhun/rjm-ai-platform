@@ -1,3 +1,65 @@
+create table if not exists app_user (
+  id bigserial primary key,
+  email text not null unique,
+  password_hash text not null,
+  created_at timestamp not null default current_timestamp
+);
+
+create table if not exists invite_code (
+  code text primary key,
+  created_by_email text,
+  used_by_email text,
+  used_at timestamp,
+  created_at timestamp not null default current_timestamp
+);
+
+create index if not exists idx_invite_code_created_by
+  on invite_code(created_by_email);
+
+create table if not exists email_verification_code (
+  email text primary key,
+  code text not null,
+  expires_at bigint not null,
+  created_at timestamp not null default current_timestamp
+);
+
+create table if not exists app_session (
+  token text primary key,
+  email text not null,
+  expires_at bigint not null,
+  created_at timestamp not null default current_timestamp
+);
+
+create index if not exists idx_app_session_email
+  on app_session(email);
+
+create table if not exists formula_request_history (
+  id bigserial primary key,
+  email text not null,
+  request_id text,
+  goal text,
+  dosage_form text,
+  request_json text not null default '{}',
+  response_json text not null default '{}',
+  created_at timestamp not null default current_timestamp
+);
+
+create index if not exists idx_formula_request_history_email
+  on formula_request_history(email, id);
+
+create table if not exists ai_chat_history (
+  id bigserial primary key,
+  email text not null,
+  message text not null,
+  answer text not null,
+  request_json text not null default '{}',
+  response_json text not null default '{}',
+  created_at timestamp not null default current_timestamp
+);
+
+create index if not exists idx_ai_chat_history_email
+  on ai_chat_history(email, id);
+
 create table if not exists formula_request (
   request_id text primary key,
   goal text not null,
@@ -5,11 +67,11 @@ create table if not exists formula_request (
   constraints_json text not null default '{}',
   requester text,
   source text not null default 'management_console',
-  created_at text not null default current_timestamp
+  created_at timestamp not null default current_timestamp
 );
 
 create table if not exists formula_candidate (
-  id integer primary key auto_increment,
+  id bigserial primary key,
   formula_id text not null,
   request_id text not null,
   goal text not null,
@@ -20,8 +82,7 @@ create table if not exists formula_candidate (
   risk_notes_json text not null default '[]',
   score_total real,
   score_json text not null default '{}',
-  created_at text not null default current_timestamp,
-  foreign key (request_id) references formula_request(request_id)
+  created_at timestamp not null default current_timestamp
 );
 
 create index if not exists idx_formula_candidate_formula_id
@@ -31,20 +92,20 @@ create index if not exists idx_formula_candidate_request_id
   on formula_candidate(request_id);
 
 create table if not exists formula_screening (
-  id integer primary key auto_increment,
+  id bigserial primary key,
   formula_id text not null,
   engineer text not null,
   decision text not null,
   reason text not null,
   modified_ingredients_json text not null default '[]',
-  created_at text not null default current_timestamp
+  created_at timestamp not null default current_timestamp
 );
 
 create index if not exists idx_formula_screening_formula_id
   on formula_screening(formula_id);
 
 create table if not exists experiment_feedback (
-  id integer primary key auto_increment,
+  id bigserial primary key,
   formula_id text not null,
   batch_no text not null,
   result text not null,
@@ -53,14 +114,14 @@ create table if not exists experiment_feedback (
   issues_json text not null default '[]',
   engineer_conclusion text,
   engineer text,
-  created_at text not null default current_timestamp
+  created_at timestamp not null default current_timestamp
 );
 
 create index if not exists idx_experiment_feedback_formula_id
   on experiment_feedback(formula_id);
 
 create table if not exists experiment_batch (
-  id integer primary key auto_increment,
+  id bigserial primary key,
   batch_no text not null unique,
   formula_id text not null,
   stage text not null,
@@ -69,14 +130,14 @@ create table if not exists experiment_batch (
   issues_json text not null default '[]',
   conclusion text,
   status text not null default 'planned',
-  created_at text not null default current_timestamp
+  created_at timestamp not null default current_timestamp
 );
 
 create index if not exists idx_experiment_batch_formula_id
   on experiment_batch(formula_id);
 
 create table if not exists learned_weight (
-  id integer primary key auto_increment,
+  id bigserial primary key,
   goal text not null,
   target_type text not null,
   target_key text not null,
@@ -84,7 +145,7 @@ create table if not exists learned_weight (
   evidence_count integer not null default 0,
   source text not null default 'experiment_feedback',
   calculation_note text,
-  updated_at text not null default current_timestamp
+  updated_at timestamp not null default current_timestamp
 );
 
 create unique index if not exists idx_learned_weight_unique_target
@@ -100,7 +161,7 @@ create table if not exists evidence_record (
   summary text,
   source_url text,
   metadata_json text not null default '{}',
-  imported_at text not null default current_timestamp
+  imported_at timestamp not null default current_timestamp
 );
 
 create table if not exists knowledge_import_batch (
@@ -112,16 +173,16 @@ create table if not exists knowledge_import_batch (
   relation_count integer not null default 0,
   evidence_count integer not null default 0,
   governance_notes_json text not null default '[]',
-  imported_at text not null default current_timestamp
+  imported_at timestamp not null default current_timestamp
 );
 
 create table if not exists ingredient_alias (
-  id integer primary key auto_increment,
+  id bigserial primary key,
   ingredient_id text not null,
   alias text not null,
   alias_type text not null default 'name',
   source text not null default 'yuxi',
-  created_at text not null default current_timestamp
+  created_at timestamp not null default current_timestamp
 );
 
 create unique index if not exists idx_ingredient_alias_unique
@@ -140,14 +201,14 @@ create table if not exists raw_material_sku (
   qualification_files_json text not null default '[]',
   sample_status text,
   quality_rating real,
-  updated_at text not null default current_timestamp
+  updated_at timestamp not null default current_timestamp
 );
 
 create index if not exists idx_raw_material_sku_ingredient_id
   on raw_material_sku(ingredient_id);
 
 create table if not exists procurement_recommendation (
-  id integer primary key auto_increment,
+  id bigserial primary key,
   formula_id text not null,
   ingredient_id text not null,
   sku_id text,
@@ -155,71 +216,8 @@ create table if not exists procurement_recommendation (
   status text not null,
   procurement_score real,
   recommendation_json text not null default '{}',
-  created_at text not null default current_timestamp,
-  foreign key (sku_id) references raw_material_sku(sku_id)
+  created_at timestamp not null default current_timestamp
 );
 
 create index if not exists idx_procurement_recommendation_formula_id
   on procurement_recommendation(formula_id);
-
-create table if not exists app_user (
-  id integer primary key auto_increment,
-  email text not null unique,
-  password_hash text not null,
-  created_at text not null default current_timestamp
-);
-
-create table if not exists invite_code (
-  code text primary key,
-  created_by_email text,
-  used_by_email text,
-  used_at text,
-  created_at text not null default current_timestamp
-);
-
-create index if not exists idx_invite_code_created_by
-  on invite_code(created_by_email);
-
-create table if not exists email_verification_code (
-  email text primary key,
-  code text not null,
-  expires_at bigint not null,
-  created_at text not null default current_timestamp
-);
-
-create table if not exists app_session (
-  token text primary key,
-  email text not null,
-  expires_at bigint not null,
-  created_at text not null default current_timestamp
-);
-
-create index if not exists idx_app_session_email
-  on app_session(email);
-
-create table if not exists formula_request_history (
-  id integer primary key auto_increment,
-  email text not null,
-  request_id text,
-  goal text,
-  dosage_form text,
-  request_json text not null default '{}',
-  response_json text not null default '{}',
-  created_at text not null default current_timestamp
-);
-
-create index if not exists idx_formula_request_history_email
-  on formula_request_history(email, id);
-
-create table if not exists ai_chat_history (
-  id integer primary key auto_increment,
-  email text not null,
-  message text not null,
-  answer text not null,
-  request_json text not null default '{}',
-  response_json text not null default '{}',
-  created_at text not null default current_timestamp
-);
-
-create index if not exists idx_ai_chat_history_email
-  on ai_chat_history(email, id);

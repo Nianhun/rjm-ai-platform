@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-@SpringBootTest
+@SpringBootTest(properties = {"rjm.ai-service.mode=mock", "rjm.auth.enabled=false"})
 @AutoConfigureMockMvc
 class ManagementApiMockMvcTests {
     @Autowired

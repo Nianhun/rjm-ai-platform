@@ -1,6 +1,8 @@
 package com.rjm.formulaai.management.service;
 
 import com.rjm.formulaai.management.dto.ExperimentFeedbackRequest;
+import com.rjm.formulaai.management.dto.AiChatRequest;
+import com.rjm.formulaai.management.dto.AiChatResponse;
 import com.rjm.formulaai.management.dto.ExperimentBatchListResponse;
 import com.rjm.formulaai.management.dto.ExperimentBatchRequest;
 import com.rjm.formulaai.management.dto.ExperimentBatchResponse;
@@ -39,7 +41,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 @Service
-@ConditionalOnProperty(prefix = "rjm.ai-service", name = "mode", havingValue = "mock", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "rjm.ai-service", name = "mode", havingValue = "mock")
 public class InMemoryFormulaAiManagementService implements FormulaAiManagementService {
     private final Map<String, List<ScreeningRecord>> screeningsByFormulaId = new ConcurrentHashMap<String, List<ScreeningRecord>>();
     private final Map<String, List<ExperimentBatchResponse>> batchesByFormulaId = new ConcurrentHashMap<String, List<ExperimentBatchResponse>>();
@@ -52,6 +54,15 @@ public class InMemoryFormulaAiManagementService implements FormulaAiManagementSe
         formulas.add(mockFormula("FORM-MOIST-002", request, BigDecimal.valueOf(0.814), Arrays.asList("ING-GLYCERIN", "ING-PANTHENOL", "ING-SODIUM-HYALURONATE")));
         formulas.add(mockFormula("FORM-MOIST-003", request, BigDecimal.valueOf(0.806), Arrays.asList("ING-GLYCERIN", "ING-BETAINE", "ING-PANTHENOL")));
         return new FormulaRecommendationResponse(request.getId(), request.getGoal(), formulas);
+    }
+
+    @Override
+    public AiChatResponse chat(AiChatRequest request) {
+        AiChatResponse response = new AiChatResponse();
+        response.setMessageId(request.getId());
+        response.setKnowledgeSource("mock_mode_disabled_for_production");
+        response.setAnswer("当前为 mock 测试模式，生产对话必须切换到 python 模式并连接 Yuxi 知识图谱与 AI provider。");
+        return response;
     }
 
     @Override

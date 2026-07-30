@@ -2,6 +2,8 @@ package com.rjm.formulaai.management.service;
 
 import com.rjm.formulaai.management.client.PythonFormulaAiClient;
 import com.rjm.formulaai.management.dto.ExperimentFeedbackRequest;
+import com.rjm.formulaai.management.dto.AiChatRequest;
+import com.rjm.formulaai.management.dto.AiChatResponse;
 import com.rjm.formulaai.management.dto.ExperimentBatchListResponse;
 import com.rjm.formulaai.management.dto.ExperimentBatchRequest;
 import com.rjm.formulaai.management.dto.ExperimentBatchResponse;
@@ -38,6 +40,11 @@ public class PythonDelegatingFormulaAiManagementService implements FormulaAiMana
     @Override
     public FormulaRecommendationResponse recommendFormulas(FormulaRequest request) {
         return client.recommendFormulas(request);
+    }
+
+    @Override
+    public AiChatResponse chat(AiChatRequest request) {
+        return client.chat(request);
     }
 
     @Override

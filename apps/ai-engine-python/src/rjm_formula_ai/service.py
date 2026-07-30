@@ -27,6 +27,7 @@ class FormulaAIService:
         screening_store: ScreeningStore | None = None,
         source_paths: dict[str, str] | None = None,
         yuxi_graph_client: YuxiGraphClient | None = None,
+        ai_analyzer: Any | None = None,
     ):
         self.ingredients = ingredients
         self.relations = relations
@@ -38,6 +39,7 @@ class FormulaAIService:
         self.screening_store = screening_store
         self.source_paths = source_paths or {}
         self.yuxi_graph_client = yuxi_graph_client
+        self.ai_analyzer = ai_analyzer
         self._last_yuxi_error = ""
 
     @classmethod
@@ -52,6 +54,7 @@ class FormulaAIService:
         feedback_path: Path | None = None,
         screening_path: Path | None = None,
         yuxi_graph_client: YuxiGraphClient | None = None,
+        ai_analyzer: Any | None = None,
     ) -> "FormulaAIService":
         feedback_store = FeedbackStore(feedback_path or project_root / "data" / "runtime" / "feedback_events.jsonl")
         screening_store = ScreeningStore(screening_path or project_root / "data" / "runtime" / "screening_events.jsonl")
@@ -81,6 +84,7 @@ class FormulaAIService:
                 "screening_path": str(screening_store.path),
             },
             yuxi_graph_client=yuxi_graph_client,
+            ai_analyzer=ai_analyzer,
         )
 
     def _relations_with_history(self) -> list[IngredientRelation]:
@@ -100,15 +104,22 @@ class FormulaAIService:
             dosage_form=request_payload.get("dosage_form", ""),
             constraints=dict(request_payload.get("constraints", {})),
         )
+        if self.yuxi_graph_client is None:
+            raise RuntimeError("yuxi_graph_required")
+        if self.ai_analyzer is None:
+            raise RuntimeError("ai_provider_required")
         live_knowledge = self._live_formula_knowledge(request.goal)
-        ingredients = live_knowledge.ingredients if live_knowledge is not None else self.ingredients
-        relations = live_knowledge.relations if live_knowledge is not None else self.relations
-        feedback_relations = apply_feedback_to_relations(relations, self._feedback_events())
+        if live_knowledge is None:
+            detail = f":{self._last_yuxi_error}" if self._last_yuxi_error else ""
+            raise RuntimeError(f"yuxi_graph_required{detail}")
         strategy = select_strategy(request.constraints.get("strategy"))
-        if strategy.name == "baseline":
-            formulas = strategy.recommend(request, ingredients, feedback_relations, [], limit=3)
-        else:
-            formulas = strategy.recommend(request, ingredients, relations, self._feedback_events(), limit=3)
+        formulas = self.ai_analyzer.recommend(
+            request,
+            live_knowledge,
+            self._feedback_events(),
+            strategy.name,
+            limit=3,
+        )
         if self.formula_store is not None:
             self.formula_store.append_many(request.id, request.goal, formulas)
         return {
@@ -121,19 +132,18 @@ class FormulaAIService:
         }
 
     def knowledge_status(self) -> dict[str, Any]:
-        evidence_prefix_counts: dict[str, int] = {}
-        for evidence_id in [eid for item in self.ingredients for eid in item.evidence_ids]:
-            prefix = evidence_id.split("-", 1)[0] if "-" in evidence_id else evidence_id
-            evidence_prefix_counts[prefix] = evidence_prefix_counts.get(prefix, 0) + 1
         yuxi_status = self._online_yuxi_graph_status()
+        yuxi_online = bool(yuxi_status.get("online"))
+        source_paths = {"yuxi_kb_id": yuxi_status.get("kb_id", "")} if yuxi_online else {}
+        evidence_prefix_counts = {"YUXI": yuxi_status.get("indexed_chunks", 0)} if yuxi_online else {}
         return {
-            "ingredient_count": len(self.ingredients),
-            "relation_count": len(self.relations),
-            "raw_material_sku_count": len(self.raw_material_skus),
-            "evidence_count": len(self.evidence_catalog),
-            "knowledge_source": "yuxi_graph_online" if yuxi_status.get("online") else self._snapshot_source_name(),
+            "ingredient_count": yuxi_status.get("entity_count", 0) if yuxi_online else 0,
+            "relation_count": yuxi_status.get("relationship_count", 0) if yuxi_online else 0,
+            "raw_material_sku_count": len(self.raw_material_skus) if yuxi_online else 0,
+            "evidence_count": yuxi_status.get("indexed_chunks", 0) if yuxi_online else 0,
+            "knowledge_source": "yuxi_graph_online" if yuxi_online else "yuxi_graph_unavailable",
             "yuxi_graph": yuxi_status,
-            "source_paths": dict(self.source_paths),
+            "source_paths": source_paths,
             "evidence_prefix_counts": evidence_prefix_counts,
         }
 
@@ -172,10 +182,20 @@ class FormulaAIService:
             "pending_chunks": 0,
         }
 
-    def _snapshot_source_name(self) -> str:
-        return "snapshot_fallback" if self.yuxi_graph_client is not None else "local_snapshot"
-
     def knowledge_governance(self) -> dict[str, Any]:
+        status = self.knowledge_status()
+        if status["knowledge_source"] != "yuxi_graph_online":
+            return {
+                **status,
+                "evidence_source_type_counts": {},
+                "relation_type_counts": {},
+                "relation_confidence_counts": {},
+                "ingredient_alias_count": 0,
+                "missing_evidence_ids": [],
+                "warning_count": 1,
+                "warnings": ["Yuxi graph is unavailable; production recommendation is disabled."],
+                "governance_notes": ["Connect Yuxi graph before generating any market-facing recommendation."],
+            }
         evidence_ids = set(self.evidence_by_id.keys())
         referenced_evidence_ids = {
             evidence_id
@@ -200,7 +220,7 @@ class FormulaAIService:
             warnings.append("Ingredient alias coverage is empty; standard ID matching depends on exact INCI/name fields.")
 
         return {
-            **self.knowledge_status(),
+            **status,
             "evidence_source_type_counts": dict(sorted(evidence_source_type_counts.items())),
             "relation_type_counts": dict(sorted(relation_type_counts.items())),
             "relation_confidence_counts": dict(sorted(relation_confidence_counts.items())),
@@ -260,13 +280,55 @@ class FormulaAIService:
             dosage_form=request_payload.get("dosage_form", ""),
             constraints=dict(request_payload.get("constraints", {})),
         )
+        if self.yuxi_graph_client is None:
+            raise RuntimeError("yuxi_graph_required")
+        if self.ai_analyzer is None:
+            raise RuntimeError("ai_provider_required")
+        live_knowledge = self._live_formula_knowledge(request.goal)
+        if live_knowledge is None:
+            detail = f":{self._last_yuxi_error}" if self._last_yuxi_error else ""
+            raise RuntimeError(f"yuxi_graph_required{detail}")
         strategy = select_strategy(payload.get("strategy") or request.constraints.get("strategy") or "learned_weight")
-        formulas = strategy.recommend(request, self.ingredients, self.relations, feedback_rows, limit=3)
+        formulas = self.ai_analyzer.recommend(
+            request,
+            live_knowledge,
+            feedback_rows,
+            strategy.name,
+            limit=3,
+        )
         return {
             "request_id": request.id,
             "goal": request.goal,
             "strategy": strategy.name,
+            "knowledge_source": "yuxi_graph_online",
+            "yuxi_graph": live_knowledge.graph_stats,
             "formulas": formulas,
+        }
+
+    def chat(self, payload: dict[str, Any]) -> dict[str, Any]:
+        if self.yuxi_graph_client is None:
+            raise RuntimeError("yuxi_graph_required")
+        if self.ai_analyzer is None:
+            raise RuntimeError("ai_provider_required")
+        question = str(payload.get("message") or "").strip()
+        if not question:
+            raise RuntimeError("chat_message_required")
+        context = dict(payload.get("context") or {})
+        recall_query = " ".join(
+            str(item)
+            for item in [context.get("goal"), context.get("dosage_form"), question]
+            if item
+        )
+        live_knowledge = self._live_formula_knowledge(recall_query)
+        if live_knowledge is None:
+            detail = f":{self._last_yuxi_error}" if self._last_yuxi_error else ""
+            raise RuntimeError(f"yuxi_graph_required{detail}")
+        result = self.ai_analyzer.chat(question, live_knowledge, payload.get("history") or [], context)
+        return {
+            "message_id": payload.get("id") or "",
+            "knowledge_source": "yuxi_graph_online",
+            "yuxi_graph": live_knowledge.graph_stats,
+            **result,
         }
 
 

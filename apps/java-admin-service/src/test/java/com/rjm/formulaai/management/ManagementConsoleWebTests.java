@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.test.web.servlet.MockMvc;
 
-@SpringBootTest(properties = "rjm.console.location=classpath:/test-console/")
+@SpringBootTest(properties = {"rjm.console.location=classpath:/test-console/", "rjm.auth.enabled=false"})
 @AutoConfigureMockMvc
 class ManagementConsoleWebTests {
     @Autowired

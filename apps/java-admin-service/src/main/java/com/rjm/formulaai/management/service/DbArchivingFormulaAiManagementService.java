@@ -1,6 +1,8 @@
 package com.rjm.formulaai.management.service;
 
 import com.rjm.formulaai.management.dto.ExperimentFeedbackRequest;
+import com.rjm.formulaai.management.dto.AiChatRequest;
+import com.rjm.formulaai.management.dto.AiChatResponse;
 import com.rjm.formulaai.management.dto.ExperimentBatchListResponse;
 import com.rjm.formulaai.management.dto.ExperimentBatchRequest;
 import com.rjm.formulaai.management.dto.ExperimentBatchResponse;
@@ -92,6 +94,11 @@ public class DbArchivingFormulaAiManagementService implements FormulaAiManagemen
         applyPassingFeedbackBoost(response);
         archiveRepository.saveRecommendation(response);
         return response;
+    }
+
+    @Override
+    public AiChatResponse chat(AiChatRequest request) {
+        return delegate.chat(request);
     }
 
     @Override

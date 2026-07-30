@@ -22,9 +22,11 @@ def _restore_env(name: str, value: str | None) -> None:
 
 
 class FakeYuxiGateway:
-    def __init__(self, fail=False, empty_subgraph=False):
+    def __init__(self, fail=False, empty_subgraph=False, empty_goal_only=False):
         self.fail = fail
         self.empty_subgraph = empty_subgraph
+        self.empty_goal_only = empty_goal_only
+        self.subgraph_keywords = []
 
     def list_graphs(self):
         if self.fail:
@@ -43,13 +45,16 @@ class FakeYuxiGateway:
         }
 
     def get_subgraph(self, kb_id, keyword, max_depth, max_nodes, exclude_chunk):
+        self.subgraph_keywords.append(keyword)
+        if self.empty_goal_only and keyword != "*":
+            return {"nodes": [], "edges": []}
         if self.empty_subgraph:
             return {"nodes": [], "edges": []}
         return {
             "nodes": [
-                {"id": "ent-glycerin", "type": "Entity", "name": "Glycerin", "properties": {"entity_id": "ent-glycerin", "description": "Humectant moisturizer"}},
-                {"id": "ent-panthenol", "type": "Entity", "name": "Panthenol", "properties": {"entity_id": "ent-panthenol", "description": "Barrier moisturizing active"}},
-                {"id": "ent-betaine", "type": "Entity", "name": "Betaine", "properties": {"entity_id": "ent-betaine", "description": "Moisturizing humectant"}},
+                {"id": "ent-glycerin", "type": "Entity", "name": "Glycerin", "properties": {"label": "Ingredient", "entity_id": "ent-glycerin", "description": "Humectant moisturizer"}},
+                {"id": "ent-panthenol", "type": "Entity", "name": "Panthenol", "properties": {"label": "Ingredient", "entity_id": "ent-panthenol", "description": "Barrier moisturizing active"}},
+                {"id": "ent-betaine", "type": "Entity", "name": "Betaine", "properties": {"label": "Ingredient", "entity_id": "ent-betaine", "description": "Moisturizing humectant"}},
             ],
             "edges": [
                 {"id": "rel-1", "source_id": "ent-glycerin", "target_id": "ent-panthenol", "properties": {"relation_type": "synergy"}},
@@ -58,12 +63,56 @@ class FakeYuxiGateway:
         }
 
 
+class FakeAiAnalyzer:
+    def __init__(self):
+        self.calls = []
+
+    def recommend(self, request, knowledge, feedback_events, strategy_name, limit=3):
+        self.calls.append(
+            {
+                "goal": request.goal,
+                "ingredient_count": len(knowledge.ingredients),
+                "relation_count": len(knowledge.relations),
+                "strategy": strategy_name,
+                "limit": limit,
+            }
+        )
+        return [
+            {
+                "id": "AI-YUXI-001",
+                "request_id": request.id,
+                "goal": request.goal,
+                "strategy": strategy_name,
+                "ingredients": [
+                    {
+                        "ingredient_id": knowledge.ingredients[0].id,
+                        "role": "humectant selected by AI from Yuxi graph evidence",
+                        "suggested_percent_min": 0.2,
+                        "suggested_percent_max": 1.0,
+                    }
+                ],
+                "recommendation_reason": "AI analyzed the Yuxi graph recall and selected evidence-backed candidates.",
+                "risk_notes": [],
+                "evidence_ids": list(knowledge.ingredients[0].evidence_ids),
+                "score": {
+                    "efficacy": 0.81,
+                    "stability": 0.72,
+                    "skin_feel": 0.7,
+                    "cost": 0.62,
+                    "supply": 0.58,
+                    "overall": 0.73,
+                },
+                "status": "ai_recommended",
+            }
+        ]
+
+
 class FormulaAIServiceTest(unittest.TestCase):
-    def test_recommend_returns_formula_candidates(self):
+    def test_recommend_requires_yuxi_graph_client_and_ai_analyzer(self):
         service = FormulaAIService.from_project_root(ROOT)
 
-        response = service.recommend(
-            {
+        with self.assertRaisesRegex(RuntimeError, "yuxi_graph_required"):
+            service.recommend({
                 "id": "REQ-MOIST-API-001",
                 "goal": "保湿",
                 "dosage_form": "乳液",
@@ -71,22 +120,25 @@ class FormulaAIServiceTest(unittest.TestCase):
                     "preferred_skin_feel": "清爽不粘",
                     "blocked_ingredient_ids": []
                 }
-            }
+            })
+
+        service_with_yuxi = FormulaAIService.from_project_root(
+            ROOT,
+            yuxi_graph_client=YuxiGraphClient(FakeYuxiGateway()),
         )
+        with self.assertRaisesRegex(RuntimeError, "ai_provider_required"):
+            service_with_yuxi.recommend({"id": "REQ-NO-AI", "goal": "保湿", "dosage_form": "乳液", "constraints": {}})
 
-        self.assertEqual(response["request_id"], "REQ-MOIST-API-001")
-        self.assertEqual(len(response["formulas"]), 3)
-        self.assertGreater(response["formulas"][0]["score"]["overall"], 0)
-
-    def test_knowledge_status_reports_loaded_source(self):
+    def test_knowledge_status_does_not_expose_local_snapshot_when_yuxi_is_unavailable(self):
         service = FormulaAIService.from_project_root(ROOT)
 
         status = service.knowledge_status()
 
-        self.assertEqual(status["ingredient_count"], 5)
-        self.assertEqual(status["relation_count"], 4)
-        self.assertIn("ingredients_path", status["source_paths"])
-        self.assertIn("DOC", status["evidence_prefix_counts"])
+        self.assertEqual(status["knowledge_source"], "yuxi_graph_unavailable")
+        self.assertEqual(status["ingredient_count"], 0)
+        self.assertEqual(status["relation_count"], 0)
+        self.assertEqual(status["source_paths"], {})
+        self.assertEqual(status["evidence_prefix_counts"], {})
 
     def test_knowledge_status_reports_online_yuxi_graph_when_configured(self):
         service = FormulaAIService.from_project_root(
@@ -97,65 +149,89 @@ class FormulaAIServiceTest(unittest.TestCase):
         status = service.knowledge_status()
 
         self.assertEqual(status["knowledge_source"], "yuxi_graph_online")
+        self.assertEqual(status["ingredient_count"], 41896)
+        self.assertEqual(status["relation_count"], 409315)
         self.assertEqual(status["yuxi_graph"]["entity_count"], 41896)
         self.assertEqual(status["yuxi_graph"]["relationship_count"], 409315)
         self.assertEqual(status["yuxi_graph"]["total_chunks"], 13323)
 
     def test_recommend_uses_online_yuxi_graph_candidates_when_configured(self):
+        ai_analyzer = FakeAiAnalyzer()
         service = FormulaAIService.from_project_root(
             ROOT,
             yuxi_graph_client=YuxiGraphClient(FakeYuxiGateway()),
+            ai_analyzer=ai_analyzer,
         )
 
         response = service.recommend({"id": "REQ-YUXI-ONLINE-001", "goal": "保湿", "dosage_form": "乳液", "constraints": {}})
 
         self.assertEqual(response["knowledge_source"], "yuxi_graph_online")
         self.assertEqual(response["yuxi_graph"]["entity_count"], 41896)
-        self.assertTrue(response["formulas"])
+        self.assertEqual(response["formulas"][0]["id"], "AI-YUXI-001")
+        self.assertEqual(ai_analyzer.calls[0]["ingredient_count"], 3)
+        self.assertEqual(ai_analyzer.calls[0]["relation_count"], 2)
         first_ids = [item["ingredient_id"] for item in response["formulas"][0]["ingredients"]]
         self.assertTrue(any(item.startswith("YUXI-ENT-") for item in first_ids))
 
-    def test_yuxi_graph_failure_falls_back_to_loaded_snapshot(self):
+    def test_recommend_uses_wildcard_yuxi_graph_recall_when_goal_node_is_missing(self):
+        gateway = FakeYuxiGateway(empty_goal_only=True)
+        ai_analyzer = FakeAiAnalyzer()
+        service = FormulaAIService.from_project_root(
+            ROOT,
+            yuxi_graph_client=YuxiGraphClient(gateway),
+            ai_analyzer=ai_analyzer,
+        )
+
+        response = service.recommend({"id": "REQ-YUXI-WILDCARD-001", "goal": "保湿", "dosage_form": "乳液", "constraints": {}})
+
+        self.assertEqual(gateway.subgraph_keywords, ["保湿", "*"])
+        self.assertEqual(response["formulas"][0]["id"], "AI-YUXI-001")
+        self.assertEqual(ai_analyzer.calls[0]["relation_count"], 2)
+
+    def test_yuxi_graph_failure_does_not_fall_back_to_loaded_snapshot(self):
         service = FormulaAIService.from_project_root(
             ROOT,
             yuxi_graph_client=YuxiGraphClient(FakeYuxiGateway(fail=True)),
+            ai_analyzer=FakeAiAnalyzer(),
         )
 
         status = service.knowledge_status()
-        response = service.recommend({"id": "REQ-YUXI-FALLBACK-001", "goal": "保湿", "dosage_form": "乳液", "constraints": {}})
 
-        self.assertEqual(status["knowledge_source"], "snapshot_fallback")
+        self.assertEqual(status["knowledge_source"], "yuxi_graph_unavailable")
         self.assertFalse(status["yuxi_graph"]["online"])
-        self.assertEqual(response["knowledge_source"], "snapshot_fallback")
-        self.assertEqual(len(response["formulas"]), 3)
+        with self.assertRaisesRegex(RuntimeError, "yuxi_graph_required"):
+            service.recommend({"id": "REQ-YUXI-FALLBACK-001", "goal": "保湿", "dosage_form": "乳液", "constraints": {}})
 
-    def test_yuxi_graph_empty_recall_falls_back_to_loaded_snapshot(self):
+    def test_yuxi_graph_empty_recall_does_not_fall_back_to_loaded_snapshot(self):
         service = FormulaAIService.from_project_root(
             ROOT,
             yuxi_graph_client=YuxiGraphClient(FakeYuxiGateway(empty_subgraph=True)),
+            ai_analyzer=FakeAiAnalyzer(),
         )
 
-        response = service.recommend({"id": "REQ-YUXI-EMPTY-001", "goal": "保湿", "dosage_form": "乳液", "constraints": {}})
-
-        self.assertEqual(response["knowledge_source"], "snapshot_fallback")
-        self.assertEqual(len(response["formulas"]), 3)
+        with self.assertRaisesRegex(RuntimeError, "yuxi_graph_required"):
+            service.recommend({"id": "REQ-YUXI-EMPTY-001", "goal": "保湿", "dosage_form": "乳液", "constraints": {}})
 
     def test_knowledge_governance_reports_traceability_quality(self):
         service = FormulaAIService.from_project_root(ROOT)
 
         governance = service.knowledge_governance()
 
-        self.assertEqual(governance["ingredient_count"], 5)
-        self.assertEqual(governance["relation_count"], 4)
-        self.assertIn("ingredient_profile", governance["evidence_source_type_counts"])
-        self.assertIn("synergy", governance["relation_type_counts"])
-        self.assertIn("medium", governance["relation_confidence_counts"])
+        self.assertEqual(governance["ingredient_count"], 0)
+        self.assertEqual(governance["relation_count"], 0)
+        self.assertEqual(governance["evidence_source_type_counts"], {})
+        self.assertEqual(governance["relation_type_counts"], {})
+        self.assertEqual(governance["relation_confidence_counts"], {})
         self.assertIn("missing_evidence_ids", governance)
         self.assertGreaterEqual(governance["warning_count"], 1)
         self.assertTrue(governance["governance_notes"])
 
-    def test_feedback_recommend_changes_at_least_one_score(self):
-        service = FormulaAIService.from_project_root(ROOT)
+    def test_feedback_recommend_uses_ai_with_yuxi_graph_and_feedback_context(self):
+        service = FormulaAIService.from_project_root(
+            ROOT,
+            yuxi_graph_client=YuxiGraphClient(FakeYuxiGateway()),
+            ai_analyzer=FakeAiAnalyzer(),
+        )
         before = service.recommend({"id": "REQ-MOIST-API-002", "goal": "保湿", "dosage_form": "乳液", "constraints": {}})
         after = service.feedback_recommend(
             {
@@ -174,7 +250,8 @@ class FormulaAIServiceTest(unittest.TestCase):
 
         before_scores = [item["score"]["overall"] for item in before["formulas"]]
         after_scores = [item["score"]["overall"] for item in after["formulas"]]
-        self.assertNotEqual(before_scores, after_scores)
+        self.assertEqual(before_scores, after_scores)
+        self.assertEqual(service.ai_analyzer.calls[-1]["strategy"], "learned_weight")
 
     def test_build_service_from_environment_uses_runtime_paths(self):
         with TemporaryDirectory() as tmp:
@@ -277,7 +354,7 @@ class FormulaAIHttpTest(unittest.TestCase):
         cls.server.server_close()
         cls.thread.join(timeout=2)
 
-    def test_http_recommend_endpoint(self):
+    def test_http_recommend_endpoint_requires_online_yuxi_and_ai(self):
         conn = HTTPConnection("127.0.0.1", self.port, timeout=5)
         body = json.dumps({"id": "REQ-MOIST-HTTP-001", "goal": "保湿", "dosage_form": "乳液", "constraints": {}})
         conn.request("POST", "/recommend", body=body.encode("utf-8"), headers={"Content-Type": "application/json"})
@@ -285,9 +362,30 @@ class FormulaAIHttpTest(unittest.TestCase):
         payload = json.loads(response.read().decode("utf-8"))
         conn.close()
 
-        self.assertEqual(response.status, 200)
-        self.assertEqual(payload["request_id"], "REQ-MOIST-HTTP-001")
-        self.assertEqual(len(payload["formulas"]), 3)
+        self.assertEqual(response.status, 503)
+        self.assertEqual(payload["error"], "yuxi_graph_required")
+
+    def test_http_recommend_endpoint_returns_ai_yuxi_candidates_when_configured(self):
+        old_service = FormulaAIHandler.service
+        try:
+            FormulaAIHandler.service = FormulaAIService.from_project_root(
+                ROOT,
+                yuxi_graph_client=YuxiGraphClient(FakeYuxiGateway()),
+                ai_analyzer=FakeAiAnalyzer(),
+            )
+            conn = HTTPConnection("127.0.0.1", self.port, timeout=5)
+            body = json.dumps({"id": "REQ-MOIST-HTTP-001", "goal": "保湿", "dosage_form": "乳液", "constraints": {}})
+            conn.request("POST", "/recommend", body=body.encode("utf-8"), headers={"Content-Type": "application/json"})
+            response = conn.getresponse()
+            payload = json.loads(response.read().decode("utf-8"))
+            conn.close()
+
+            self.assertEqual(response.status, 200)
+            self.assertEqual(payload["request_id"], "REQ-MOIST-HTTP-001")
+            self.assertEqual(payload["knowledge_source"], "yuxi_graph_online")
+            self.assertEqual(payload["formulas"][0]["id"], "AI-YUXI-001")
+        finally:
+            FormulaAIHandler.service = old_service
 
     def test_http_knowledge_status_endpoint(self):
         conn = HTTPConnection("127.0.0.1", self.port, timeout=5)
@@ -297,8 +395,35 @@ class FormulaAIHttpTest(unittest.TestCase):
         conn.close()
 
         self.assertEqual(response.status, 200)
-        self.assertEqual(payload["ingredient_count"], 5)
-        self.assertEqual(payload["relation_count"], 4)
+        self.assertEqual(payload["ingredient_count"], 0)
+        self.assertEqual(payload["relation_count"], 0)
+
+    def test_http_knowledge_status_lazy_service_uses_project_root(self):
+        old_service = FormulaAIHandler.service
+        server = None
+        thread = None
+        try:
+            FormulaAIHandler.service = None
+            server = run_server("127.0.0.1", 0)
+            port = server.server_address[1]
+            thread = threading.Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+
+            conn = HTTPConnection("127.0.0.1", port, timeout=5)
+            conn.request("GET", "/knowledge/status")
+            response = conn.getresponse()
+            payload = json.loads(response.read().decode("utf-8"))
+            conn.close()
+
+            self.assertEqual(response.status, 200)
+            self.assertEqual(payload["source_paths"], {})
+        finally:
+            if server is not None:
+                server.shutdown()
+                server.server_close()
+            if thread is not None:
+                thread.join(timeout=2)
+            FormulaAIHandler.service = old_service
 
     def test_http_knowledge_governance_endpoint(self):
         conn = HTTPConnection("127.0.0.1", self.port, timeout=5)
@@ -308,7 +433,7 @@ class FormulaAIHttpTest(unittest.TestCase):
         conn.close()
 
         self.assertEqual(response.status, 200)
-        self.assertEqual(payload["ingredient_count"], 5)
+        self.assertEqual(payload["ingredient_count"], 0)
         self.assertIn("relation_confidence_counts", payload)
         self.assertIn("warnings", payload)
 
@@ -320,10 +445,8 @@ class FormulaAIHttpTest(unittest.TestCase):
         payload = json.loads(response.read().decode("utf-8"))
         conn.close()
 
-        self.assertEqual(response.status, 200)
-        body = json.dumps({"id": "REQ-REPORT-HTTP-001", "goal": "保湿", "dosage_form": "乳液", "constraints": {}})
-        self.assertIn("feedback_count", payload)
-        self.assertEqual(len(payload["rows"]), 3)
+        self.assertEqual(response.status, 503)
+        self.assertIn("yuxi_graph_required", payload["error"])
 
 
 if __name__ == "__main__":

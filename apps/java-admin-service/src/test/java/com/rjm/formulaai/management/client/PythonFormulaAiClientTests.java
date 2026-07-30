@@ -7,6 +7,8 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 import com.rjm.formulaai.management.dto.FormulaRecommendationResponse;
+import com.rjm.formulaai.management.dto.AiChatRequest;
+import com.rjm.formulaai.management.dto.AiChatResponse;
 import com.rjm.formulaai.management.dto.FormulaRequest;
 import com.rjm.formulaai.management.dto.ExperimentFeedbackRequest;
 import com.rjm.formulaai.management.dto.EvidenceResponse;
@@ -35,6 +37,27 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 
 class PythonFormulaAiClientTests {
+    @Test
+    void chatPostsMessageToPythonChatEndpoint() {
+        RestClientFixture fixture = fixture();
+        PythonFormulaAiClient client = new PythonFormulaAiClient(fixture.restTemplate, "http://127.0.0.1:8000");
+        AiChatRequest request = new AiChatRequest();
+        request.setId("CHAT-JAVA-CLIENT");
+        request.setMessage("保湿乳液如何降低粘腻感？");
+
+        fixture.server.expect(requestTo("http://127.0.0.1:8000/chat"))
+                .andExpect(method(HttpMethod.POST))
+                .andExpect(content().json("{\"id\":\"CHAT-JAVA-CLIENT\",\"message\":\"保湿乳液如何降低粘腻感？\",\"history\":[],\"context\":{}}"))
+                .andRespond(withSuccess("{\"message_id\":\"CHAT-JAVA-CLIENT\",\"knowledge_source\":\"yuxi_graph_online\",\"answer\":\"优先调整油相和增稠体系。\",\"ingredient_ids\":[\"YUXI-ING\"],\"evidence_ids\":[\"YUXI-GRAPH-ING\"]}", MediaType.APPLICATION_JSON));
+
+        AiChatResponse response = client.chat(request);
+
+        assertEquals("CHAT-JAVA-CLIENT", response.getMessageId());
+        assertEquals("yuxi_graph_online", response.getKnowledgeSource());
+        assertEquals("优先调整油相和增稠体系。", response.getAnswer());
+        fixture.server.verify();
+    }
+
     @Test
     void recommendPostsSnakeCaseRequestToPythonService() {
         ObjectMapper objectMapper = new ObjectMapper();

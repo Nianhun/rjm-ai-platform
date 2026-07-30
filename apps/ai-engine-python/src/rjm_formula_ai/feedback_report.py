@@ -4,7 +4,6 @@ from pathlib import Path
 from typing import Any
 
 from .models import FormulaRequest
-from .recommend import recommend_formulas
 from .service import FormulaAIService
 
 
@@ -15,8 +14,20 @@ def build_feedback_impact_report(service: FormulaAIService, request_payload: dic
         dosage_form=request_payload.get("dosage_form", ""),
         constraints=dict(request_payload.get("constraints", {})),
     )
-    baseline = recommend_formulas(request, service.ingredients, service.relations, limit=3)
-    learned = service.recommend(request_payload)["formulas"]
+    baseline = service.feedback_recommend(
+        {
+            "request": request_payload,
+            "feedback": [],
+            "strategy": request.constraints.get("strategy") or "knowledge_graph_ai",
+        }
+    )["formulas"]
+    learned = service.feedback_recommend(
+        {
+            "request": request_payload,
+            "feedback": service._feedback_events(),
+            "strategy": request.constraints.get("strategy") or "learned_weight",
+        }
+    )["formulas"]
 
     baseline_by_id = _index_ranked_formulas(baseline)
     learned_by_id = _index_ranked_formulas(learned)

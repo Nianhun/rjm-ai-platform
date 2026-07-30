@@ -1,10 +1,12 @@
 ﻿import json
 import os
+import traceback
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, unquote, urlparse
 
+from .ai_provider import OpenAICompatibleFormulaAnalyzer
 from .feedback_report import build_feedback_impact_report
 from .service import FormulaAIService
 from .yuxi_graph_client import HttpYuxiGateway, YuxiGraphClient
@@ -53,6 +55,9 @@ class FormulaAIHandler(BaseHTTPRequestHandler):
             if self.path == "/recommend":
                 self._send_json(200, self._service().recommend(payload))
                 return
+            if self.path == "/chat":
+                self._send_json(200, self._service().chat(payload))
+                return
             if self.path == "/feedback/recommend":
                 self._send_json(200, self._service().feedback_recommend(payload))
                 return
@@ -73,13 +78,18 @@ class FormulaAIHandler(BaseHTTPRequestHandler):
             self._send_json(400, {"error": "missing_field", "field": str(exc).strip("'")})
         except json.JSONDecodeError:
             self._send_json(400, {"error": "invalid_json"})
+        except RuntimeError as exc:
+            self._send_json(503, {"error": str(exc)})
+        except Exception as exc:
+            traceback.print_exc()
+            self._send_json(500, {"error": "internal_error", "detail": str(exc)})
 
     def log_message(self, format: str, *args: Any) -> None:
         return
 
     def _service(self) -> FormulaAIService:
         if self.service is None:
-            project_root = Path(__file__).resolve().parents[3]
+            project_root = _project_root_from_module()
             self.__class__.service = build_service_from_environment(project_root)
         return self.service
 
@@ -106,6 +116,7 @@ def build_service_from_environment(project_root: Path) -> FormulaAIService:
     feedback_path = _optional_path(os.environ.get("RJM_FEEDBACK_PATH"))
     screening_path = _optional_path(os.environ.get("RJM_SCREENING_PATH"))
     yuxi_graph_client = _yuxi_graph_client_from_environment()
+    ai_analyzer = _ai_analyzer_from_environment()
     return FormulaAIService.from_project_root(
         project_root,
         ingredients_path=ingredients_path,
@@ -116,7 +127,15 @@ def build_service_from_environment(project_root: Path) -> FormulaAIService:
         feedback_path=feedback_path,
         screening_path=screening_path,
         yuxi_graph_client=yuxi_graph_client,
+        ai_analyzer=ai_analyzer,
     )
+
+
+def _project_root_from_module() -> Path:
+    for candidate in Path(__file__).resolve().parents:
+        if (candidate / "data").is_dir() and (candidate / "apps").is_dir():
+            return candidate
+    return Path(__file__).resolve().parents[4]
 
 
 def _optional_path(value: str | None) -> Path | None:
@@ -130,7 +149,27 @@ def _yuxi_graph_client_from_environment() -> YuxiGraphClient | None:
     base_url = os.environ.get("RJM_YUXI_API_BASE", "http://127.0.0.1:5050")
     token = os.environ.get("RJM_YUXI_API_TOKEN") or None
     kb_id = os.environ.get("RJM_YUXI_KB_ID") or None
-    return YuxiGraphClient(HttpYuxiGateway(base_url, token=token), kb_id=kb_id)
+    timeout_seconds = float(os.environ.get("RJM_YUXI_TIMEOUT_SECONDS", "20"))
+    return YuxiGraphClient(HttpYuxiGateway(base_url, token=token, timeout_seconds=timeout_seconds), kb_id=kb_id)
+
+
+def _ai_analyzer_from_environment() -> OpenAICompatibleFormulaAnalyzer | None:
+    base_url = os.environ.get("RJM_AI_BASE_URL")
+    api_key = os.environ.get("RJM_AI_API_KEY")
+    model = os.environ.get("RJM_AI_MODEL")
+    if not base_url or not api_key or not model:
+        return None
+    timeout_seconds = float(os.environ.get("RJM_AI_TIMEOUT_SECONDS", "30"))
+    chat_path = os.environ.get("RJM_AI_CHAT_COMPLETIONS_PATH", "/chat/completions")
+    http_client = os.environ.get("RJM_AI_HTTP_CLIENT", "python")
+    return OpenAICompatibleFormulaAnalyzer(
+        base_url,
+        api_key=api_key,
+        model=model,
+        timeout_seconds=timeout_seconds,
+        chat_completions_path=chat_path,
+        http_client=http_client,
+    )
 
 
 def server_config_from_environment() -> tuple[str, int]:
@@ -152,10 +191,11 @@ def main() -> None:
     print("GET /evidence/{evidence_id}")
     print("GET /formulas/{formula_id}")
     print("POST /recommend")
+    print("POST /chat")
     print("POST /feedback/recommend")
     print("POST /reports/feedback-impact")
     print("POST /screening")
-    print("GET /screening?formula_id=FORM-MOIST-001")
+    print("GET /screening?formula_id={formula_id}")
     server.serve_forever()
 
 

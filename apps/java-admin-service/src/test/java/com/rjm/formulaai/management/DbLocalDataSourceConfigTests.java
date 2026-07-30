@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(properties = {
         "rjm.ai-service.mode=db",
+        "rjm.auth.enabled=false",
         "rjm.local-db.enabled=true",
         "rjm.local-db.url=jdbc:h2:mem:rjm_local_config;DB_CLOSE_DELAY=-1",
         "rjm.local-db.schema-path=../../infrastructure/database/java-management/schema.h2.sql"

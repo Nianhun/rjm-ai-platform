@@ -24,7 +24,7 @@ public class FormulaCandidate {
         this.id = id;
         this.requestId = requestId;
         this.goal = goal;
-        this.strategy = "baseline";
+        this.strategy = "knowledge_graph_ai";
         this.ingredients = ingredients;
         this.recommendationReason = recommendationReason;
         this.riskNotes = riskNotes;

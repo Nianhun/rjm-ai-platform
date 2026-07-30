@@ -5,107 +5,42 @@ const state = {
   lastOutput: {},
   generatedAt: "",
   compareMode: false,
-  knowledgeLabel: "使用本地快照",
+  knowledgeLabel: "等待 Yuxi 知识库",
+  chatHistory: [],
+  currentUser: null,
+  sessionToken: localStorage.getItem("rjm_session_token") || "",
 };
 
 const testCompatibilityLabels = {
-  yuxiOnline: "Yuxi graph online",
-  currentIngredients: "Current recommendation ingredients",
+  yuxiOnline: "Yuxi 知识库在线",
+  currentIngredients: "当前推荐原料",
 };
 
-const offlineKnowledgeStatus = {
-  ingredient_count: 46,
-  relation_count: 316,
-  raw_material_sku_count: 5,
-  evidence_count: 92,
-  knowledge_source: "local_snapshot",
-  yuxi_graph: {
-    online: false,
-    entity_count: 0,
-    relationship_count: 0,
-    total_chunks: 0,
-    pending_chunks: 0,
-    indexed_chunks: 0,
-  },
-  source_paths: {
-    ingredients_path: "data/yuxi_import/ingredients.yuxi.json",
-    relations_path: "data/yuxi_import/ingredient_relations.yuxi.json",
-    raw_material_skus_path: "data/samples/raw_material_skus.json",
-    import_batch_path: "data/yuxi_import/import_batch.yuxi.json",
-  },
-  evidence_prefix_counts: { YUXI: 46 },
-};
-
-const offlineKnowledgeGovernance = {
-  ...offlineKnowledgeStatus,
-  evidence_source_type_counts: { ingredient_profile: 46, product_cooccurrence: 46 },
-  relation_type_counts: { synergy: 316 },
-  relation_confidence_counts: { medium: 316 },
-  ingredient_alias_count: 0,
-  missing_evidence_ids: [],
-  warning_count: 2,
-  warnings: [
-    "Yuxi 产品共现关系是推荐提示，不等同于实验验证协同。",
-    "原料别名覆盖仍需补充，生产使用前要统一 INCI、中文名和供应商命名。",
-  ],
-  governance_notes: [
-    "每次导入都应保留原始文件路径、输出文件和统计摘要。",
-    "实验反馈通过后再把关系权重升级为更高置信度。",
-  ],
-};
-
-const offlineRecommendation = {
-  request_id: "REQ-OFFLINE-MOIST",
-  goal: "保湿",
-  strategy: "baseline",
-  knowledge_source: "local_snapshot",
-  formulas: [
-    {
-      id: "FORM-MOIST-001",
-      strategy: "baseline",
-      score: { overall: 0.886, efficacy: 1.0, stability: 0.7, skin_feel: 0.8, cost: 0.75, supply: 0.75 },
-      ingredients: [
-        { ingredient_id: "ING-BETAINE", role: "肤感调节/保湿", suggested_percent_min: 1, suggested_percent_max: 3 },
-        { ingredient_id: "ING-PANTHENOL", role: "屏障修护辅助", suggested_percent_min: 0.5, suggested_percent_max: 2 },
-        { ingredient_id: "ING-SODIUM-HYALURONATE", role: "成膜保湿", suggested_percent_min: 0.01, suggested_percent_max: 0.1 },
-      ],
-      recommendation_reason: "功效匹配清晰，原料协同关系与常见用量范围支持进入小试，优先验证肤感和透明质酸钠溶解窗口。",
-      risk_notes: ["小试关注透明质酸钠溶解和肤感", "共现关系不是实验验证协同"],
-      evidence_ids: ["DOC-MOIST-002", "DOC-MOIST-003", "DOC-MOIST-004"],
-      status: "ai_recommended",
-    },
-    {
-      id: "FORM-MOIST-002",
-      strategy: "baseline",
-      score: { overall: 0.814, efficacy: 1.0, stability: 0.7, skin_feel: 0.72, cost: 0.75, supply: 0.75 },
-      ingredients: [
-        { ingredient_id: "ING-GLYCERIN", role: "基础保湿剂", suggested_percent_min: 1, suggested_percent_max: 5 },
-        { ingredient_id: "ING-PANTHENOL", role: "舒缓修护辅助", suggested_percent_min: 0.5, suggested_percent_max: 2 },
-        { ingredient_id: "ING-SODIUM-HYALURONATE", role: "成膜保湿", suggested_percent_min: 0.01, suggested_percent_max: 0.1 },
-      ],
-      recommendation_reason: "经典保湿组合，供应链友好；建议确认甘油上限对清爽肤感的影响。",
-      risk_notes: ["高甘油用量可能粘腻"],
-      evidence_ids: ["DOC-MOIST-001", "DOC-MOIST-002", "DOC-MOIST-003"],
-      status: "ai_recommended",
-    },
-    {
-      id: "FORM-MOIST-003",
-      strategy: "baseline",
-      score: { overall: 0.792, efficacy: 0.88, stability: 0.74, skin_feel: 0.82, cost: 0.78, supply: 0.71 },
-      ingredients: [
-        { ingredient_id: "ING-TREHALOSE", role: "水相保湿", suggested_percent_min: 0.5, suggested_percent_max: 2 },
-        { ingredient_id: "ING-BETAINE", role: "肤感调节", suggested_percent_min: 1, suggested_percent_max: 3 },
-        { ingredient_id: "ING-ALLANTOIN", role: "舒缓辅助", suggested_percent_min: 0.1, suggested_percent_max: 0.3 },
-      ],
-      recommendation_reason: "偏探索的低刺激组合，适合在稳定性窗口和肤感反馈明确后决定是否推进。",
-      risk_notes: ["需要确认尿囊素溶解窗口", "供应记录可能不完整"],
-      evidence_ids: ["DOC-MOIST-002", "YUXI-ING-BETAINE"],
-      status: "ai_recommended",
-    },
-  ],
+const strategyLabels = {
+  knowledge_graph_ai: "知识图谱 AI",
+  baseline: "知识图谱 AI",
+  learned_weight: "实验反馈加权",
+  exploration: "低风险探索",
 };
 
 const els = {
+  authShell: document.getElementById("authShell"),
+  appShell: document.getElementById("appShell"),
+  showLogin: document.getElementById("showLogin"),
+  showRegister: document.getElementById("showRegister"),
+  loginForm: document.getElementById("loginForm"),
+  registerForm: document.getElementById("registerForm"),
+  loginEmail: document.getElementById("loginEmail"),
+  loginPassword: document.getElementById("loginPassword"),
+  registerEmail: document.getElementById("registerEmail"),
+  registerPassword: document.getElementById("registerPassword"),
+  registerInvite: document.getElementById("registerInvite"),
+  registerCode: document.getElementById("registerCode"),
+  loginButton: document.getElementById("loginButton"),
+  registerButton: document.getElementById("registerButton"),
+  sendCodeButton: document.getElementById("sendCodeButton"),
+  authStatus: document.getElementById("authStatus"),
+  devCodeHint: document.getElementById("devCodeHint"),
   apiBase: document.getElementById("apiBase"),
   apiToken: document.getElementById("apiToken"),
   connectionState: document.getElementById("connectionState"),
@@ -139,6 +74,24 @@ const els = {
   structuredOutput: document.getElementById("structuredOutput"),
   outputSummary: document.getElementById("outputSummary"),
   actionOutput: document.getElementById("actionOutput"),
+  chatMessages: document.getElementById("chatMessages"),
+  chatInput: document.getElementById("chatInput"),
+  sendChat: document.getElementById("sendChat"),
+  toggleParameterPanel: document.getElementById("toggleParameterPanel"),
+  settingsRefreshKnowledge: document.getElementById("settingsRefreshKnowledge"),
+  settingsIngredientCount: document.getElementById("settingsIngredientCount"),
+  settingsRelationCount: document.getElementById("settingsRelationCount"),
+  settingsKnowledgeSource: document.getElementById("settingsKnowledgeSource"),
+  experimentFormulaChip: document.getElementById("experimentFormulaChip"),
+  learningFormulaChip: document.getElementById("learningFormulaChip"),
+  procurementFormulaChip: document.getElementById("procurementFormulaChip"),
+  experimentOutput: document.getElementById("experimentOutput"),
+  learningOutput: document.getElementById("learningOutput"),
+  procurementOutput: document.getElementById("procurementOutput"),
+  currentUserLabel: document.getElementById("currentUserLabel"),
+  formulaHistoryList: document.getElementById("formulaHistoryList"),
+  chatHistoryList: document.getElementById("chatHistoryList"),
+  inviteList: document.getElementById("inviteList"),
 };
 
 function defaultApiBase() {
@@ -150,22 +103,29 @@ function defaultApiBase() {
 
 els.apiBase.value = defaultApiBase();
 bindEvents();
-renderKnowledgeStatus(offlineKnowledgeStatus, "离线样例");
-renderRecommendations(offlineRecommendation);
-writeOutput(offlineRecommendation, "离线推荐样例");
-refreshKnowledgeStatus();
+renderKnowledgeUnavailable("等待 Yuxi 知识库连接");
+renderFormulaInspector(null);
+writeOutput({}, "等待接口数据");
+bootAuth();
 
 function bindEvents() {
+  els.showLogin?.addEventListener("click", () => setAuthMode("login"));
+  els.showRegister?.addEventListener("click", () => setAuthMode("register"));
+  els.loginButton?.addEventListener("click", login);
+  els.registerButton?.addEventListener("click", register);
+  els.sendCodeButton?.addEventListener("click", sendEmailCode);
+  [els.loginEmail, els.loginPassword, els.registerEmail, els.registerPassword, els.registerInvite, els.registerCode].forEach((input) => {
+    input?.addEventListener("blur", () => validateAuthField(input));
+    input?.addEventListener("input", () => clearAuthError(input));
+  });
+  bindAction("refreshHistory", "刷新历史记录", loadHistory);
+  bindAction("createInviteButton", "生成邀请码", createInvite);
+  bindAction("refreshInvites", "刷新邀请码", loadInvites);
   bindAction("refreshKnowledge", "刷新知识源", refreshKnowledgeStatus);
+  bindAction("settingsRefreshKnowledge", "检测知识库连接", refreshKnowledgeStatus);
   bindAction("loadKnowledgeGovernance", "查看知识治理", loadKnowledgeGovernance);
   bindAction("recommendButton", "推荐配方", recommendFormulas);
   bindAction("regenerateButton", "重新推荐", recommendFormulas);
-  bindAction("loadOffline", "载入离线样例", () => {
-    renderKnowledgeStatus(offlineKnowledgeStatus, "离线样例");
-    renderRecommendations(offlineRecommendation);
-    writeOutput(offlineRecommendation, "离线推荐样例");
-    setApiStatus("API 离线", "warning");
-  });
   bindAction("submitScreening", "提交筛选", submitScreening);
   bindAction("submitFeedback", "记录实验反馈", submitFeedback);
   bindAction("createExperimentBatch", "创建实验批次", createExperimentBatch);
@@ -181,6 +141,8 @@ function bindEvents() {
   document.getElementById("modifyFormula").addEventListener("click", () => quickScreen("modify"));
   document.getElementById("copyDebug").addEventListener("click", copyDebugOutput);
   document.getElementById("clearDebug").addEventListener("click", () => writeOutput({}, "已清空"));
+  els.toggleParameterPanel.addEventListener("click", toggleParameterPanel);
+  els.sendChat.addEventListener("click", () => withActionStatus(els.sendChat, "AI 对话", sendChatMessage));
   document.querySelectorAll(".inspector-tab").forEach((tab) => {
     tab.addEventListener("click", () => setInspectorTab(tab.dataset.tab));
   });
@@ -188,8 +150,8 @@ function bindEvents() {
     item.addEventListener("click", () => navigateRail(item));
   });
   els.strategy.addEventListener("change", () => {
-    els.currentStrategyLabel.textContent = els.strategy.value;
-    els.boardStrategy.textContent = `${els.strategy.value} 策略`;
+    els.currentStrategyLabel.textContent = strategyLabel(els.strategy.value);
+    els.boardStrategy.textContent = `${strategyLabel(els.strategy.value)} 策略`;
   });
   els.sortMode.addEventListener("change", () => renderRecommendations({ formulas: state.formulas, strategy: els.currentStrategyLabel.textContent }));
   els.compareModeButton.addEventListener("click", () => {
@@ -207,6 +169,146 @@ function bindAction(id, label, action) {
   }
 }
 
+async function bootAuth() {
+  showAuthenticatedApp(false);
+  if (!state.sessionToken) {
+    showAuthStatus("请登录后访问系统。", "idle");
+    return;
+  }
+  try {
+    const me = await requestJson("/api/auth/me");
+    state.currentUser = me.email;
+    showAuthenticatedApp(true);
+    await refreshKnowledgeStatus();
+    await loadHistory();
+    await loadInvites();
+  } catch (error) {
+    state.sessionToken = "";
+    localStorage.removeItem("rjm_session_token");
+    showAuthenticatedApp(false);
+    showAuthStatus(error.message || "登录已过期，请重新登录。", "error");
+  }
+}
+
+function showAuthenticatedApp(authenticated) {
+  els.authShell?.classList.toggle("hidden", authenticated);
+  els.appShell?.classList.toggle("is-auth-hidden", !authenticated);
+  if (els.currentUserLabel) {
+    els.currentUserLabel.textContent = authenticated && state.currentUser ? `当前账号：${state.currentUser}` : "未登录";
+  }
+}
+
+function setAuthMode(mode) {
+  const login = mode === "login";
+  els.showLogin?.classList.toggle("active", login);
+  els.showRegister?.classList.toggle("active", !login);
+  els.loginForm?.classList.toggle("active", login);
+  els.registerForm?.classList.toggle("active", !login);
+  showAuthStatus("", "idle");
+}
+
+async function login() {
+  try {
+    if (!validateAuthFields([els.loginEmail, els.loginPassword])) return;
+    showAuthStatus("登录中...", "loading");
+    const payload = await requestJson("/api/auth/login", {
+      method: "POST",
+      body: JSON.stringify({ email: els.loginEmail.value.trim(), password: els.loginPassword.value }),
+    });
+    await acceptSession(payload);
+  } catch (error) {
+    showAuthStatus(error.message, "error");
+  }
+}
+
+async function register() {
+  try {
+    if (!validateAuthFields([els.registerEmail, els.registerPassword, els.registerInvite, els.registerCode])) return;
+    showAuthStatus("注册中...", "loading");
+    const payload = await requestJson("/api/auth/register", {
+      method: "POST",
+      body: JSON.stringify({
+        email: els.registerEmail.value.trim(),
+        password: els.registerPassword.value,
+        invite_code: els.registerInvite.value.trim(),
+        verification_code: els.registerCode.value.trim(),
+      }),
+    });
+    await acceptSession(payload);
+  } catch (error) {
+    showAuthStatus(error.message, "error");
+  }
+}
+
+async function sendEmailCode() {
+  try {
+    if (!validateAuthFields([els.registerEmail])) return;
+    showAuthStatus("发送验证码中...", "loading");
+    const payload = await requestJson("/api/auth/email-code", {
+      method: "POST",
+      body: JSON.stringify({ email: els.registerEmail.value.trim() }),
+    });
+    els.devCodeHint.textContent = payload.dev_code ? `本地开发验证码：${payload.dev_code}` : "验证码已发送，请查收邮箱。";
+    showAuthStatus("验证码已发送。", "success");
+  } catch (error) {
+    showAuthStatus(error.message, "error");
+  }
+}
+
+async function acceptSession(payload) {
+  state.sessionToken = payload.token;
+  state.currentUser = payload.email;
+  localStorage.setItem("rjm_session_token", state.sessionToken);
+  showAuthenticatedApp(true);
+  showAuthStatus("", "idle");
+  await refreshKnowledgeStatus();
+  await loadHistory();
+  await loadInvites();
+}
+
+function validateAuthFields(inputs) {
+  return inputs.map((input) => validateAuthField(input)).every(Boolean);
+}
+
+function validateAuthField(input) {
+  if (!input) return true;
+  const value = input.value.trim();
+  let message = "";
+  if ((input.id === "loginEmail" || input.id === "registerEmail") && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)) {
+    message = "账号必须使用邮箱。";
+  }
+  if ((input.id === "loginPassword" || input.id === "registerPassword") && !value) {
+    message = "请输入密码。";
+  }
+  if (input.id === "registerPassword" && !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/.test(value)) {
+    message = "密码至少 6 位，并且必须包含英文大写、小写和数字。";
+  }
+  if (input.id === "registerInvite" && !value) {
+    message = "请输入一次性邀请码。";
+  }
+  if (input.id === "registerCode" && !/^\d{6}$/.test(value)) {
+    message = "请输入 6 位邮箱验证码。";
+  }
+  setAuthFieldError(input, message);
+  return !message;
+}
+
+function clearAuthError(input) {
+  setAuthFieldError(input, "");
+}
+
+function setAuthFieldError(input, message) {
+  const error = document.querySelector(`[data-error-for="${input.id}"]`);
+  if (error) error.textContent = message;
+  input.classList.toggle("invalid", Boolean(message));
+}
+
+function showAuthStatus(message, tone = "idle") {
+  if (!els.authStatus) return;
+  els.authStatus.textContent = message;
+  els.authStatus.dataset.tone = tone;
+}
+
 function apiBase() {
   return els.apiBase.value.replace(/\/$/, "");
 }
@@ -216,6 +318,9 @@ async function requestJson(path, options = {}) {
   const token = els.apiToken?.value.trim();
   if (token) {
     headers["X-RJM-API-Token"] = token;
+  }
+  if (state.sessionToken) {
+    headers.Authorization = `Bearer ${state.sessionToken}`;
   }
   const response = await fetch(`${apiBase()}${path}`, { ...options, headers });
   const text = await response.text();
@@ -229,7 +334,13 @@ async function requestJson(path, options = {}) {
   }
   if (!response.ok) {
     if (response.status === 401 || response.status === 403) {
-      throw new Error("Token 未配置或验证失败，请检查 X-RJM-API-Token。");
+      state.sessionToken = "";
+      localStorage.removeItem("rjm_session_token");
+      showAuthenticatedApp(false);
+      throw new Error(payload.error || "请登录后再访问");
+    }
+    if (response.status === 404 && path.startsWith("/api/auth/")) {
+      throw new Error("当前 Java 服务尚未加载登录接口，请重启 Java Admin 服务后刷新页面。");
     }
     throw new Error(payload.error || payload.message || `HTTP ${response.status}`);
   }
@@ -237,9 +348,13 @@ async function requestJson(path, options = {}) {
 }
 
 async function withActionStatus(button, label, action) {
+  const isIconButton = button.classList.contains("icon-button");
   const originalText = button.textContent;
   button.disabled = true;
-  button.textContent = "处理中...";
+  button.setAttribute("aria-busy", "true");
+  if (!isIconButton) {
+    button.textContent = "处理中...";
+  }
   setActionStatus(`${label}中`, "loading");
   try {
     await action();
@@ -249,7 +364,10 @@ async function withActionStatus(button, label, action) {
     writeOutput({ error: error.message }, "请求失败");
   } finally {
     button.disabled = false;
-    button.textContent = originalText;
+    button.removeAttribute("aria-busy");
+    if (!isIconButton) {
+      button.textContent = originalText;
+    }
   }
 }
 
@@ -270,10 +388,10 @@ async function refreshKnowledgeStatus() {
     writeOutput(status, "知识源状态");
     setApiStatus("API 已连接", "success");
   } catch (error) {
-    renderKnowledgeStatus(offlineKnowledgeStatus, "离线样例");
-    writeOutput({ error: error.message, fallback: "已显示离线知识源样例" }, "API 未启动，已显示离线样例");
+    renderKnowledgeUnavailable("Yuxi 知识库未连接");
+    writeOutput({ error: error.message }, "知识库不可用");
     setApiStatus("API 未启动", "warning");
-    setActionStatus("无法连接 Java API，当前使用离线样例；直接打开页面仍可演示推荐闭环。", "offline");
+    setActionStatus("无法连接 Java API 或 Yuxi 知识库。请启动在线知识库后刷新。", "offline");
   }
 }
 
@@ -284,9 +402,9 @@ async function loadKnowledgeGovernance() {
     writeOutput(governance, "知识治理摘要");
     setApiStatus("API 已连接", "success");
   } catch (error) {
-    renderKnowledgeStatus(offlineKnowledgeGovernance, "离线治理样例");
-    writeOutput({ error: error.message, fallback: "已显示离线知识治理样例", governance: offlineKnowledgeGovernance }, "离线知识治理样例");
-    setApiStatus("API 离线", "warning");
+    renderKnowledgeUnavailable("Yuxi 知识库未连接");
+    writeOutput({ error: error.message }, "知识治理不可用");
+    setApiStatus("知识库不可用", "warning");
   }
 }
 
@@ -295,17 +413,16 @@ function knowledgeConnectionLabel(status) {
   if (yuxiGraph.online) {
     return testCompatibilityLabels.yuxiOnline;
   }
-  if (status.knowledge_source === "snapshot_fallback") {
-    return "Yuxi offline: snapshot fallback";
-  }
-  return "Java API connected";
+  return "Yuxi 知识库未连接";
 }
 
 async function recommendFormulas() {
+  const goal = requireField(els.goal, "请输入目标功效");
+  const dosageForm = requireField(els.dosageForm, "请输入剂型");
   const payload = {
     id: `REQ-UI-${Date.now()}`,
-    goal: els.goal.value.trim() || "保湿",
-    dosage_form: els.dosageForm.value.trim() || "乳液",
+    goal,
+    dosage_form: dosageForm,
     constraints: {
       preferred_skin_feel: els.skinFeel.value.trim(),
       strategy: els.strategy.value,
@@ -322,17 +439,20 @@ async function recommendFormulas() {
     writeOutput(recommendation, "推荐结果");
     setApiStatus("API 已连接", "success");
   } catch (error) {
-    renderRecommendations(offlineRecommendation);
-    writeOutput({ error: error.message, fallback: "已显示离线推荐样例" }, "API 请求失败，回退离线推荐");
-    setApiStatus("API 离线", "warning");
-    setActionStatus("API 请求失败，已回退到离线推荐样例。", "offline");
+    renderRecommendations({ formulas: [], strategy: els.strategy.value });
+    writeOutput({ error: error.message }, "推荐请求失败");
+    setApiStatus("知识库不可用", "warning");
+    setActionStatus("推荐失败。请确认 Java API 与在线 Yuxi 知识库均已连接。", "offline");
   }
 }
 
 async function submitScreening() {
   const formulaId = currentFormulaId();
+  if (!formulaId) {
+    throw new Error("请先生成并选择配方");
+  }
   const payload = {
-    engineer: els.engineer.value.trim() || "formula_engineer",
+    engineer: requireField(els.engineer, "请输入工程师姓名或工号"),
     decision: els.decision.value,
     reason: els.screeningReason.value.trim(),
     modified_ingredients: [],
@@ -347,6 +467,9 @@ async function submitScreening() {
 async function submitFeedback() {
   const formula = state.selectedFormula || state.formulas[0];
   const formulaId = currentFormulaId();
+  if (!formulaId || !formula) {
+    throw new Error("请先生成并选择配方");
+  }
   const payload = {
     formula_id: formulaId,
     batch_no: `BATCH-UI-${Date.now()}`,
@@ -354,7 +477,7 @@ async function submitFeedback() {
     ingredient_ids: (formula?.ingredients || []).map((item) => item.ingredient_id),
     metrics: { stability: "pass", moisturizing_score: 0.86 },
     issues: [],
-    engineer: els.engineer.value.trim() || "lab_engineer",
+    engineer: requireField(els.engineer, "请输入工程师姓名或工号"),
     engineer_conclusion: "小试通过，进入下一轮优化。该结论仅代表本批次实验反馈。",
   };
   const result = await requestJson("/api/experiments/feedback", {
@@ -366,11 +489,14 @@ async function submitFeedback() {
 
 async function createExperimentBatch() {
   const formulaId = currentFormulaId();
+  if (!formulaId) {
+    throw new Error("请先生成并选择配方");
+  }
   const payload = {
     batch_no: `BATCH-UI-${Date.now()}`,
     formula_id: formulaId,
     stage: "lab_trial",
-    owner: els.engineer.value.trim() || "lab_engineer",
+    owner: requireField(els.engineer, "请输入工程师姓名或工号"),
     metrics: { target_hydration_after_2h: 30, target_stability_hours: 48 },
     issues: [],
     conclusion: "已创建小试批次，等待实验反馈。",
@@ -390,10 +516,12 @@ async function loadExperimentBatches() {
 }
 
 async function loadFeedbackImpact() {
+  const goal = requireField(els.goal, "请输入目标功效");
+  const dosageForm = requireField(els.dosageForm, "请输入剂型");
   const payload = {
     id: `REQ-REPORT-UI-${Date.now()}`,
-    goal: els.goal.value.trim() || "保湿",
-    dosage_form: els.dosageForm.value.trim() || "乳液",
+    goal,
+    dosage_form: dosageForm,
     constraints: { strategy: els.strategy.value },
   };
   const result = await requestJson("/api/reports/feedback-impact", {
@@ -440,26 +568,146 @@ async function requestProcurementSample() {
 
 async function loadLearningExplanation() {
   const formulaId = currentFormulaId();
-  const goal = els.goal.value.trim() || "保湿";
+  if (!formulaId) {
+    throw new Error("请先生成并选择配方");
+  }
+  const goal = requireField(els.goal, "请输入目标功效");
   const result = await requestJson(`/api/formulas/${formulaId}/explanation?goal=${encodeURIComponent(goal)}`);
   writeOutput(result, "学习解释");
 }
 
 async function loadLearnedWeights() {
-  const goal = els.goal.value.trim() || "保湿";
+  const goal = requireField(els.goal, "请输入目标功效");
   const result = await requestJson(`/api/learning/weights?goal=${encodeURIComponent(goal)}`);
   writeOutput(result, "学习权重");
 }
 
+async function sendChatMessage() {
+  const message = requireField(els.chatInput, "请输入要咨询 AI 的配方问题");
+  els.chatInput.value = "";
+  appendChatMessage("user", message);
+  appendChatMessage("assistant", "AI 正在读取 Yuxi 知识图谱并分析...");
+  const payload = {
+    id: `CHAT-UI-${Date.now()}`,
+    message,
+    history: state.chatHistory.slice(-10),
+    context: {
+      goal: els.goal.value.trim(),
+      dosage_form: els.dosageForm.value.trim(),
+      selected_formula: state.selectedFormula,
+    },
+  };
+  const result = await requestJson("/api/ai/chat", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+  removePendingChatMessage();
+  appendChatMessage("assistant", result.answer, result);
+  state.chatHistory.push({ role: "user", content: message });
+  state.chatHistory.push({ role: "assistant", content: result.answer });
+  writeOutput(result, "AI 知识问答");
+}
+
+async function loadHistory() {
+  if (!state.sessionToken) return;
+  const formulaHistory = await requestJson("/api/history/formulas");
+  const chatTaskHistory = await requestJson("/api/history/chats");
+  renderFormulaHistory(formulaHistory.items || []);
+  renderChatTaskHistory(chatTaskHistory.items || []);
+}
+
+async function loadInvites() {
+  if (!state.sessionToken) return;
+  const payload = await requestJson("/api/invites");
+  renderInvites(payload.items || []);
+}
+
+async function createInvite() {
+  const payload = await requestJson("/api/invites", { method: "POST", body: JSON.stringify({}) });
+  await loadInvites();
+  writeOutput(payload, "邀请码已生成");
+}
+
+function renderFormulaHistory(items) {
+  if (!els.formulaHistoryList) return;
+  if (!items.length) {
+    els.formulaHistoryList.textContent = "暂无配方任务记录";
+    return;
+  }
+  els.formulaHistoryList.innerHTML = items.map((item) => {
+    const count = item.response_json?.formulas?.length ?? 0;
+    return `<article class="history-item">
+      <strong>${escapeHtml(item.goal || "未命名目标")}</strong>
+      <span>${escapeHtml(item.dosage_form || "-")} · ${count} 套候选 · ${escapeHtml(item.created_at || "")}</span>
+      <button type="button" data-history-request="${escapeAttr(item.request_id || "")}">查看响应</button>
+    </article>`;
+  }).join("");
+  els.formulaHistoryList.querySelectorAll("[data-history-request]").forEach((button, index) => {
+    button.addEventListener("click", () => {
+      writeOutput(items[index].response_json || items[index], "配方任务历史响应");
+      navigateToOutput();
+    });
+  });
+}
+
+function renderChatTaskHistory(items) {
+  if (!els.chatHistoryList) return;
+  if (!items.length) {
+    els.chatHistoryList.textContent = "暂无对话记录";
+    return;
+  }
+  els.chatHistoryList.innerHTML = items.map((item, index) => {
+    return `<article class="history-item">
+      <strong>${escapeHtml(summaryText(item.message || "未命名问题", 42))}</strong>
+      <span>${escapeHtml(summaryText(item.answer || "-", 96))}</span>
+      <button type="button" data-chat-history="${index}">查看对话</button>
+    </article>`;
+  }).join("");
+  els.chatHistoryList.querySelectorAll("[data-chat-history]").forEach((button, index) => {
+    button.addEventListener("click", () => {
+      writeOutput(items[index].response_json || items[index], "AI 对话历史响应");
+      navigateToOutput();
+    });
+  });
+}
+
+function renderInvites(items) {
+  if (!els.inviteList) return;
+  if (els.currentUserLabel) {
+    els.currentUserLabel.textContent = state.currentUser ? `当前账号：${state.currentUser}` : "未登录";
+  }
+  if (!items.length) {
+    els.inviteList.textContent = "暂无邀请码";
+    return;
+  }
+  els.inviteList.innerHTML = items.map((item) => `<article class="invite-item ${item.used ? "used" : ""}">
+    <strong>${escapeHtml(item.code)}</strong>
+    <span>${item.used ? `已使用：${escapeHtml(item.used_by_email || "-")}` : "未使用"}</span>
+    <small>创建时间：${escapeHtml(item.created_at || "-")}${item.used_at ? ` · 使用时间：${escapeHtml(item.used_at)}` : ""}</small>
+  </article>`).join("");
+}
+
+function navigateToOutput() {
+  document.querySelectorAll(".rail-item").forEach((button) => button.classList.toggle("active", button.dataset.view === "outputPage"));
+  setActiveView("outputPage");
+}
+
 function renderKnowledgeStatus(status, label) {
   const yuxiGraph = status.yuxi_graph || {};
-  state.knowledgeLabel = yuxiGraph.online ? "使用 Yuxi Graph" : status.knowledge_source === "snapshot_fallback" ? "使用快照回退" : "使用本地快照";
+  if (!yuxiGraph.online) {
+    renderKnowledgeUnavailable("Yuxi 知识库未连接");
+    return;
+  }
+  state.knowledgeLabel = "使用 Yuxi 知识图谱";
   els.connectionState.textContent = label;
-  els.connectionState.dataset.kind = yuxiGraph.online ? "online" : (label.includes("离线") || label.includes("offline") ? "warning" : "success");
-  els.ingredientCount.textContent = formatNumber(yuxiGraph.online ? (yuxiGraph.entity_count ?? 0) : (status.ingredient_count ?? 0));
-  els.relationCount.textContent = formatNumber(yuxiGraph.online ? (yuxiGraph.relationship_count ?? 0) : (status.relation_count ?? 0));
-  els.evidenceSummary.textContent = evidenceSummary(status.evidence_prefix_counts || {});
-  els.currentStrategyLabel.textContent = els.strategy.value;
+  els.connectionState.dataset.kind = "online";
+  els.ingredientCount.textContent = formatNumber(yuxiGraph.entity_count ?? 0);
+  els.relationCount.textContent = formatNumber(yuxiGraph.relationship_count ?? 0);
+  els.settingsIngredientCount.textContent = formatNumber(yuxiGraph.entity_count ?? 0);
+  els.settingsRelationCount.textContent = formatNumber(yuxiGraph.relationship_count ?? 0);
+  els.settingsKnowledgeSource.textContent = knowledgeSourceText(status.knowledge_source);
+  els.evidenceSummary.textContent = `分块 ${formatNumber(yuxiGraph.indexed_chunks ?? 0)}/${formatNumber(yuxiGraph.total_chunks ?? 0)}`;
+  els.currentStrategyLabel.textContent = strategyLabel(els.strategy.value);
   els.knowledgeMode.textContent = state.knowledgeLabel;
   if ((status.warnings || []).length) {
     renderStructuredCards("知识治理提示", [
@@ -469,14 +717,27 @@ function renderKnowledgeStatus(status, label) {
   }
 }
 
+function renderKnowledgeUnavailable(label) {
+  state.knowledgeLabel = "Yuxi 知识库未连接";
+  els.connectionState.textContent = label;
+  els.connectionState.dataset.kind = "warning";
+  els.ingredientCount.textContent = "--";
+  els.relationCount.textContent = "--";
+  els.settingsIngredientCount.textContent = "--";
+  els.settingsRelationCount.textContent = "--";
+  els.settingsKnowledgeSource.textContent = "Yuxi 知识库未连接";
+  els.evidenceSummary.textContent = "等待 Yuxi";
+  els.knowledgeMode.textContent = state.knowledgeLabel;
+}
+
 function renderRecommendations(recommendation) {
   state.formulas = sortedFormulas(recommendation.formulas || []);
   state.selectedFormula = state.formulas.find((item) => item.id === state.selectedFormula?.id) || state.formulas[0] || null;
   state.generatedAt = new Date().toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" });
   els.formulaList.innerHTML = "";
   els.candidateCount.textContent = `${state.formulas.length} 套候选`;
-  els.boardStrategy.textContent = `${recommendation.strategy || els.strategy.value} 策略`;
-  els.currentStrategyLabel.textContent = recommendation.strategy || els.strategy.value;
+  els.boardStrategy.textContent = `${strategyLabel(recommendation.strategy || els.strategy.value)} 策略`;
+  els.currentStrategyLabel.textContent = strategyLabel(recommendation.strategy || els.strategy.value);
   els.generatedAt.textContent = `生成 ${state.generatedAt}`;
   els.knowledgeMode.textContent = state.knowledgeLabel;
 
@@ -506,6 +767,7 @@ function renderCandidateCard(formula, index, responseStrategy) {
   const article = document.createElement("article");
   const selected = state.selectedFormula?.id === formula.id;
   article.className = `candidate-card${selected ? " selected" : ""}${index === 0 ? " priority" : ""}`;
+  article.dataset.formulaId = formula.id;
   article.tabIndex = 0;
   article.setAttribute("role", "button");
   article.setAttribute("aria-pressed", selected ? "true" : "false");
@@ -527,7 +789,7 @@ function renderCandidateCard(formula, index, responseStrategy) {
     <div class="candidate-title">
       <h3 title="${escapeAttr(formula.id)}">${escapeHtml(formula.id)}</h3>
       <span class="state-pill">${screeningLabel(formula.status)}</span>
-      <span class="tag">${escapeHtml(formula.strategy || responseStrategy || "baseline")}</span>
+      <span class="tag">${escapeHtml(strategyLabel(formula.strategy || responseStrategy || "knowledge_graph_ai"))}</span>
       <span class="${riskClass(formula)}">${riskLabel(formula)}</span>
       <span class="tag">${(formula.evidence_ids || []).length} 条证据</span>
     </div>
@@ -554,9 +816,11 @@ function renderCandidateCard(formula, index, responseStrategy) {
 function selectFormula(formula) {
   state.selectedFormula = formula;
   renderFormulaInspector(formula);
+  updateWorkflowFormulaChips(formula);
   document.querySelectorAll(".candidate-card").forEach((card) => {
-    card.classList.toggle("selected", card.textContent.includes(formula.id));
-    card.setAttribute("aria-pressed", card.textContent.includes(formula.id) ? "true" : "false");
+    const selected = card.dataset.formulaId === formula.id;
+    card.classList.toggle("selected", selected);
+    card.setAttribute("aria-pressed", selected ? "true" : "false");
   });
 }
 
@@ -580,6 +844,7 @@ function renderFormulaInspector(formula) {
     els.selectedFormulaSummary.textContent = "尚未选择配方";
     els.formulaDetail.classList.add("empty-state");
     els.formulaDetail.textContent = "选择一套候选方案后查看详情。";
+    updateWorkflowFormulaChips(null);
     return;
   }
 
@@ -587,7 +852,7 @@ function renderFormulaInspector(formula) {
   els.selectedFormulaId.value = formula.id;
   els.inspectorTitle.textContent = formula.id;
   els.inspectorScore.textContent = percent(formula.score?.overall);
-  els.selectedRank.textContent = rank > 0 ? `Rank #${rank}` : "手动 ID";
+  els.selectedRank.textContent = rank > 0 ? `排名 #${rank}` : "手动 ID";
   els.selectedFormulaSummary.textContent = `综合评分 ${percent(formula.score?.overall)} · ${screeningLabel(formula.status)} · ${riskLabel(formula)} · 推荐不能替代真实实验。`;
   updateSelectedFormulaSummary(formula);
 
@@ -595,11 +860,15 @@ function renderFormulaInspector(formula) {
     overview: renderInspectorOverview,
     formula: renderInspectorFormula,
     evidence: renderInspectorEvidence,
-    experiment: renderExperimentPanel,
-    learning: renderLearningPanel,
-    procurement: renderProcurementPanel,
   };
   els.formulaDetail.appendChild((renderers[state.activeTab] || renderInspectorOverview)(formula));
+}
+
+function updateWorkflowFormulaChips(formula) {
+  const label = formula ? `当前配方 ${formula.id}` : "未选择配方";
+  [els.experimentFormulaChip, els.learningFormulaChip, els.procurementFormulaChip].forEach((chip) => {
+    if (chip) chip.textContent = label;
+  });
 }
 
 function updateSelectedFormulaSummary(formula) {
@@ -618,7 +887,7 @@ function renderInspectorOverview(formula) {
     <section class="info-block"><h3>关键优势</h3><ul class="plain-list">
       <li>综合评分 ${percent(formula.score?.overall)}，适合进入工程师复核。</li>
       <li>包含 ${(formula.ingredients || []).length} 个核心原料，证据入口 ${(formula.evidence_ids || []).length} 条。</li>
-      <li>当前策略：${escapeHtml(formula.strategy || els.strategy.value)}。</li>
+      <li>当前策略：${escapeHtml(strategyLabel(formula.strategy || els.strategy.value))}。</li>
     </ul></section>
     <section class="info-block"><h3>风险提示</h3>${riskListHtml(formula)}</section>
     <section class="info-block"><h3>下一步建议</h3><p>先保留并创建小试批次，记录肤感、稳定性和功效指标；通过后再观察学习权重与采购状态。</p></section>
@@ -721,6 +990,7 @@ function writeOutput(payload, title = "接口响应") {
   els.actionOutput.textContent = JSON.stringify(payload, null, 2);
   els.outputSummary.textContent = title;
   renderStructuredOutput(payload, title);
+  updateWorkflowPageOutput(payload, title);
 }
 
 function renderStructuredOutput(payload, title) {
@@ -763,7 +1033,7 @@ function renderStructuredCards(heading, cards) {
 }
 
 function renderFormulaTable(formulas, title) {
-  const rows = formulas.map((formula, index) => [`#${index + 1}`, formula.id, percent(formula.score?.overall), formula.strategy || "-", ingredientIds(formula).join("、"), (formula.risk_notes || []).join("；") || "暂无风险提示", `${(formula.evidence_ids || []).length} 条`]);
+  const rows = formulas.map((formula, index) => [`#${index + 1}`, formula.id, percent(formula.score?.overall), strategyLabel(formula.strategy || "-"), ingredientIds(formula).join("、"), (formula.risk_notes || []).join("；") || "暂无风险提示", `${(formula.evidence_ids || []).length} 条`]);
   renderTable(title, ["排名", "配方", "综合分", "策略", "核心原料", "风险摘要", "证据"], rows);
 }
 
@@ -828,6 +1098,96 @@ function renderTable(title, headers, rows) {
   els.structuredOutput.appendChild(wrap);
 }
 
+function updateWorkflowPageOutput(payload, title) {
+  const target = workflowTargetForTitle(title);
+  if (!target) return;
+  renderWorkflowPayload(target, payload, title);
+}
+
+function workflowTargetForTitle(title) {
+  if (/实验|批次|筛选/.test(title)) return els.experimentOutput;
+  if (/学习|反馈影响|排名变化/.test(title)) return els.learningOutput;
+  if (/采购|样品|SKU/.test(title)) return els.procurementOutput;
+  return null;
+}
+
+function renderWorkflowPayload(target, payload, title) {
+  target.classList.remove("empty-state");
+  target.innerHTML = `<h3>${escapeHtml(title)}</h3>`;
+  if (!payload || Object.keys(payload).length === 0) {
+    target.classList.add("empty-state");
+    target.textContent = "暂无业务数据。";
+    return;
+  }
+  if (payload.error) {
+    renderWorkflowCards(target, [{ title: "处理失败", body: humanError(payload), tone: "danger" }, { title: "处理建议", body: errorHint(payload) }]);
+    return;
+  }
+  if (Array.isArray(payload.batches)) {
+    const rows = payload.batches.map((batch) => [batch.batch_no, batch.formula_id, batch.stage, batch.status || "-", batch.owner, batch.conclusion || "-"]);
+    renderWorkflowCards(target, [{ title: "批次数量", body: `${rows.length} 条` }, { title: "当前配方", body: payload.formula_id || currentFormulaId() || "-" }]);
+    renderWorkflowTable(target, ["批次", "配方", "阶段", "状态", "负责人", "结论"], rows);
+    return;
+  }
+  if (Array.isArray(payload.items)) {
+    const rows = payload.items.map((item) => {
+      const sku = item.recommended_skus?.[0] || {};
+      return [item.ingredient_id, procurementStatusText(item.status), sku.sku_id || "-", sku.supplier_id || "-", priceText(sku.price), sku.moq_kg ?? "-", sku.lead_time_days ?? "-"];
+    });
+    renderWorkflowCards(target, [{ title: "原料项", body: `${rows.length} 条` }, { title: "当前配方", body: payload.formula_id || currentFormulaId() || "-" }]);
+    renderWorkflowTable(target, ["原料", "状态", "SKU", "供应商", "价格", "MOQ kg", "交期 天"], rows);
+    return;
+  }
+  if (Array.isArray(payload.rows)) {
+    const rows = payload.rows.map((row) => [row.formula_id, row.baseline_rank ?? "-", row.learned_rank ?? "-", percent(row.baseline_score), percent(row.learned_score), signedPercent(row.score_delta)]);
+    renderWorkflowCards(target, [{ title: "反馈记录", body: `${payload.feedback_count ?? rows.length} 条` }, { title: "目标功效", body: payload.goal || els.goal.value || "-" }]);
+    renderWorkflowTable(target, ["配方", "原排名", "学习后排名", "原分数", "学习后分数", "变化"], rows);
+    return;
+  }
+  if (Array.isArray(payload.weights) || Array.isArray(payload.influences)) {
+    const weights = payload.weights || payload.influences || [];
+    const rows = weights.map((row) => [row.target_type, row.target_key, signedPercent(row.weight), row.evidence_count ?? 0, row.source || "-"]);
+    renderWorkflowCards(target, [{ title: "权重项", body: `${rows.length} 条` }, { title: "目标功效", body: payload.goal || els.goal.value || "-" }]);
+    renderWorkflowTable(target, ["对象", "键", "权重", "证据数", "来源"], rows);
+    return;
+  }
+  if (payload.stored !== undefined || payload.updated !== undefined) {
+    renderWorkflowCards(target, [
+      { title: payload.stored || payload.updated ? "状态" : "状态", body: operationResultText(payload), tone: payload.stored || payload.updated ? "success" : "warning" },
+    ]);
+    return;
+  }
+  renderWorkflowCards(target, Object.entries(payload).slice(0, 8).map(([key, value]) => ({ title: key, body: typeof value === "object" ? JSON.stringify(value) : String(value) })));
+}
+
+function renderWorkflowCards(target, cards) {
+  const wrap = document.createElement("div");
+  wrap.className = "workflow-summary";
+  cards.forEach((card) => {
+    const node = document.createElement("section");
+    node.className = `workflow-card ${card.tone || ""}`.trim();
+    node.innerHTML = `<span>${escapeHtml(card.title)}</span><strong>${escapeHtml(card.body || "-")}</strong>`;
+    wrap.appendChild(node);
+  });
+  target.appendChild(wrap);
+}
+
+function renderWorkflowTable(target, headers, rows) {
+  if (!rows.length) {
+    const empty = document.createElement("p");
+    empty.className = "workflow-empty";
+    empty.textContent = "暂无记录。";
+    target.appendChild(empty);
+    return;
+  }
+  const wrap = document.createElement("div");
+  wrap.className = "data-table-wrap workflow-table";
+  const table = document.createElement("table");
+  table.innerHTML = `<thead><tr>${headers.map((header) => `<th scope="col">${escapeHtml(header)}</th>`).join("")}</tr></thead><tbody>${rows.map((row) => `<tr>${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`).join("")}</tbody>`;
+  wrap.appendChild(table);
+  target.appendChild(wrap);
+}
+
 function quickScreen(decision) {
   els.decision.value = decision;
   if (decision === "reject") els.screeningReason.value = "剔除：风险、证据或工程适配性不足，暂不进入实验。";
@@ -838,13 +1198,55 @@ function quickScreen(decision) {
 function navigateRail(item) {
   document.querySelectorAll(".rail-item").forEach((button) => button.classList.remove("active"));
   item.classList.add("active");
+  if (item.dataset.view) {
+    setActiveView(item.dataset.view);
+    return;
+  }
+  setActiveView("workspaceCore");
   const target = document.getElementById(item.dataset.target);
   if (target?.classList.contains("inspector-tab")) {
     setInspectorTab(target.dataset.tab);
-    document.querySelector(".inspector")?.scrollIntoView({ behavior: "smooth", block: "start" });
     return;
   }
-  target?.scrollIntoView({ behavior: "smooth", block: "start" });
+  target?.focus?.();
+}
+
+function setActiveView(viewId) {
+  document.querySelectorAll(".app-view").forEach((view) => {
+    view.classList.toggle("active", view.id === viewId);
+  });
+}
+
+function toggleParameterPanel() {
+  const workspace = document.getElementById("workspaceCore");
+  const collapsed = workspace.classList.toggle("parameter-collapsed");
+  els.toggleParameterPanel.setAttribute("aria-expanded", String(!collapsed));
+  els.toggleParameterPanel.setAttribute("aria-label", collapsed ? "展开配方任务栏" : "收起配方任务栏");
+  els.toggleParameterPanel.title = collapsed ? "展开配方任务栏" : "收起配方任务栏";
+  els.toggleParameterPanel.querySelector("span").textContent = collapsed ? "›" : "‹";
+}
+
+function appendChatMessage(role, text, payload = null) {
+  const node = document.createElement("div");
+  node.className = `chat-message ${role}`;
+  if (text.includes("AI 正在读取")) {
+    node.dataset.pending = "true";
+  }
+  const meta = payload ? chatMeta(payload) : "";
+  node.innerHTML = `<strong>${role === "user" ? "配方师" : "AI"}</strong><p>${escapeHtml(text)}</p>${meta}`;
+  els.chatMessages.appendChild(node);
+  els.chatMessages.scrollTop = els.chatMessages.scrollHeight;
+}
+
+function removePendingChatMessage() {
+  els.chatMessages.querySelector('[data-pending="true"]')?.remove();
+}
+
+function chatMeta(payload) {
+  const evidence = (payload.evidence_ids || []).slice(0, 8).map((id) => `<span>${escapeHtml(id)}</span>`).join("");
+  const ingredients = (payload.ingredient_ids || []).slice(0, 8).map((id) => `<span>${escapeHtml(id)}</span>`).join("");
+  const graph = payload.yuxi_graph || {};
+  return `<div class="chat-meta"><span>${escapeHtml(payload.knowledge_source || "Yuxi")}</span><span>${formatNumber(graph.entity_count || 0)} 实体</span><span>${formatNumber(graph.relationship_count || 0)} 关系</span></div><div class="chat-tags">${ingredients}${evidence}</div>`;
 }
 
 function sortedFormulas(formulas) {
@@ -886,7 +1288,7 @@ function scoreItem(label, value) {
 }
 
 function currentFormulaId() {
-  return els.selectedFormulaId.value.trim() || state.selectedFormula?.id || "FORM-MOIST-001";
+  return els.selectedFormulaId.value.trim() || state.selectedFormula?.id || "";
 }
 
 function currentIngredientId() {
@@ -896,6 +1298,15 @@ function currentIngredientId() {
 
 function splitCsv(value) {
   return value.split(",").map((item) => item.trim()).filter(Boolean);
+}
+
+function requireField(input, message) {
+  const value = input.value.trim();
+  if (!value) {
+    input.focus();
+    throw new Error(message);
+  }
+  return value;
 }
 
 function percent(value) {
@@ -940,6 +1351,18 @@ function procurementStatusText(status) {
   return { matched: "已匹配", sample_requested: "已申请样品", sample_received: "样品已到", approved: "已批准", rejected: "已拒绝", missing_supplier: "供应缺口" }[status] || status || "-";
 }
 
+function strategyLabel(value) {
+  return strategyLabels[value] || value || "知识图谱 AI";
+}
+
+function knowledgeSourceText(value) {
+  return {
+    yuxi_graph_online: "Yuxi 在线知识图谱",
+    yuxi_graph: "Yuxi 知识图谱",
+    ai_provider: "AI 分析服务",
+  }[value] || value || "Yuxi 在线知识图谱";
+}
+
 function priceText(price) {
   return price?.amount_per_kg === undefined ? "-" : `${price.currency || "CNY"} ${price.amount_per_kg}/kg`;
 }
@@ -956,8 +1379,7 @@ function humanError(payload) {
 
 function errorHint(payload) {
   if (payload.error?.includes("Token")) return "检查 API Token 输入框，Token 不会写入调试 JSON。";
-  if (payload.fallback) return payload.fallback;
-  return "确认 Java 管理服务已启动，或载入离线样例继续演示。";
+  return "确认 Java 管理服务和在线 Yuxi 知识库均已启动。";
 }
 
 function renderEmptyState(message) {

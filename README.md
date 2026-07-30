@@ -54,6 +54,14 @@ Start the local Python AI + Java management + engineer console stack:
 powershell -ExecutionPolicy Bypass -File .\scripts\run_prototype_stack.ps1 -UseYuxiKnowledge
 ```
 
+Start the local stack with the online Yuxi graph settings loaded from `.env.local`:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\start_online_stack.ps1
+```
+
+On first run, copy `.env.local.example` to `.env.local` and set `RJM_YUXI_API_TOKEN` if the Yuxi API requires authentication. `.env.local` is ignored by git.
+
 Open:
 
 ```text

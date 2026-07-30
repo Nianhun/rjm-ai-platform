@@ -1,6 +1,8 @@
 package com.rjm.formulaai.management.service;
 
 import com.rjm.formulaai.management.dto.ExperimentFeedbackRequest;
+import com.rjm.formulaai.management.dto.AiChatRequest;
+import com.rjm.formulaai.management.dto.AiChatResponse;
 import com.rjm.formulaai.management.dto.ExperimentBatchListResponse;
 import com.rjm.formulaai.management.dto.ExperimentBatchRequest;
 import com.rjm.formulaai.management.dto.ExperimentBatchResponse;
@@ -23,6 +25,8 @@ import java.util.Map;
 
 public interface FormulaAiManagementService {
     FormulaRecommendationResponse recommendFormulas(FormulaRequest request);
+
+    AiChatResponse chat(AiChatRequest request);
 
     ScreeningStoredResponse recordFormulaScreening(String formulaId, FormulaScreeningRequest request);
 

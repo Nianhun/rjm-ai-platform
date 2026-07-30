@@ -58,7 +58,7 @@ class JavaManagementSkeletonTest(unittest.TestCase):
         self.assertIn("run_java_python_integration_smoke.ps1", (JAVA_ROOT / "README.md").read_text(encoding="utf-8"))
         config = (JAVA_ROOT / "src/main/resources/application.yml").read_text(encoding="utf-8")
         self.assertIn("property-naming-strategy: SNAKE_CASE", config)
-        self.assertIn("mode: mock", config)
+        self.assertIn("mode: python", config)
 
 
 if __name__ == "__main__":
