@@ -113,12 +113,13 @@ class FormulaAIService:
             detail = f":{self._last_yuxi_error}" if self._last_yuxi_error else ""
             raise RuntimeError(f"yuxi_graph_required{detail}")
         strategy = select_strategy(request.constraints.get("strategy"))
+        candidate_count = _candidate_count_from_constraints(request.constraints)
         formulas = self.ai_analyzer.recommend(
             request,
             live_knowledge,
             self._feedback_events(),
             strategy.name,
-            limit=3,
+            limit=candidate_count,
         )
         if self.formula_store is not None:
             self.formula_store.append_many(request.id, request.goal, formulas)
@@ -309,12 +310,13 @@ class FormulaAIService:
             detail = f":{self._last_yuxi_error}" if self._last_yuxi_error else ""
             raise RuntimeError(f"yuxi_graph_required{detail}")
         strategy = select_strategy(payload.get("strategy") or request.constraints.get("strategy") or "learned_weight")
+        candidate_count = _candidate_count_from_constraints(request.constraints)
         formulas = self.ai_analyzer.recommend(
             request,
             live_knowledge,
             feedback_rows,
             strategy.name,
-            limit=3,
+            limit=candidate_count,
         )
         return {
             "request_id": request.id,
@@ -385,6 +387,14 @@ class FormulaAIService:
 def _default_evidence_path(project_root: Path) -> Path | None:
     path = project_root / "data" / "yuxi_import" / "evidence.yuxi.json"
     return path if path.exists() else None
+
+
+def _candidate_count_from_constraints(constraints: dict[str, Any]) -> int:
+    try:
+        count = int(constraints.get("candidate_count", 3))
+    except (TypeError, ValueError):
+        return 3
+    return max(1, min(count, 5))
 
 
 def _load_evidence_catalog(path: Path | None) -> list[dict[str, Any]]:

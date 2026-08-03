@@ -223,6 +223,23 @@ class FormulaAIServiceTest(unittest.TestCase):
         first_ids = [item["ingredient_id"] for item in response["formulas"][0]["ingredients"]]
         self.assertTrue(any(item.startswith("YUXI-ENT-") for item in first_ids))
 
+    def test_recommend_forwards_requested_candidate_count_to_ai_analyzer(self):
+        ai_analyzer = FakeAiAnalyzer()
+        service = FormulaAIService.from_project_root(
+            ROOT,
+            yuxi_graph_client=YuxiGraphClient(FakeYuxiGateway()),
+            ai_analyzer=ai_analyzer,
+        )
+
+        service.recommend({
+            "id": "REQ-YUXI-COUNT-001",
+            "goal": "保湿",
+            "dosage_form": "乳液",
+            "constraints": {"candidate_count": 5},
+        })
+
+        self.assertEqual(ai_analyzer.calls[0]["limit"], 5)
+
     def test_recommend_uses_wildcard_yuxi_graph_recall_when_goal_node_is_missing(self):
         gateway = FakeYuxiGateway(empty_goal_only=True)
         ai_analyzer = FakeAiAnalyzer()

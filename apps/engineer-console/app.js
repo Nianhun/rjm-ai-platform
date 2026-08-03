@@ -30,6 +30,8 @@ const viewRoutes = {
 
 const routeViews = Object.fromEntries(Object.entries(viewRoutes).map(([viewId, route]) => [route, viewId]));
 
+let actionStatusTimer = null;
+
 const testCompatibilityLabels = {
   yuxiOnline: "Yuxi 知识库在线",
   currentIngredients: "当前推荐原料",
@@ -103,6 +105,7 @@ const els = {
   dosageForm: document.getElementById("dosageForm"),
   skinFeel: document.getElementById("skinFeel"),
   strategy: document.getElementById("strategy"),
+  candidateCountInput: document.getElementById("candidateCountInput"),
   blockedIngredients: document.getElementById("blockedIngredients"),
   formulaList: document.getElementById("formulaList"),
   candidateCount: document.getElementById("candidateCount"),
@@ -469,8 +472,19 @@ async function withActionStatus(button, label, action) {
 }
 
 function setActionStatus(message, tone = "idle") {
+  if (actionStatusTimer) clearTimeout(actionStatusTimer);
   els.operationStatus.textContent = message;
   els.operationStatus.dataset.tone = tone;
+  els.operationStatus.classList.remove("hiding");
+  els.operationStatus.classList.add("visible");
+  actionStatusTimer = setTimeout(() => {
+    els.operationStatus.classList.add("hiding");
+    els.operationStatus.classList.remove("visible");
+    actionStatusTimer = setTimeout(() => {
+      els.operationStatus.classList.remove("hiding");
+      actionStatusTimer = null;
+    }, 200);
+  }, 3200);
 }
 
 function setApiStatus(label, kind = "neutral") {
@@ -551,10 +565,11 @@ async function recommendFormulas() {
     constraints: {
       preferred_skin_feel: els.skinFeel.value.trim(),
       strategy: els.strategy.value,
+      candidate_count: Number(els.candidateCountInput.value),
       blocked_ingredient_ids: splitCsv(els.blockedIngredients.value),
     },
   };
-  renderSkeletonCandidates();
+  renderSkeletonCandidates(payload.constraints.candidate_count);
   try {
     if (!state.yuxiEntityNamesLoaded) {
       await refreshYuxiEntityNames();
@@ -1061,9 +1076,9 @@ function renderRecommendations(recommendation) {
   renderFormulaInspector(state.selectedFormula);
 }
 
-function renderSkeletonCandidates() {
+function renderSkeletonCandidates(count = 3) {
   els.formulaList.innerHTML = "";
-  for (let index = 0; index < 3; index += 1) {
+  for (let index = 0; index < count; index += 1) {
     const node = document.createElement("div");
     node.className = "candidate-card";
     node.innerHTML = `<div class="brand-loader" aria-hidden="true"></div><div class="candidate-main"><div class="empty-state">候选方案生成中...</div></div>`;

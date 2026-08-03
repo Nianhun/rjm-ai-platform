@@ -36,7 +36,9 @@ class EngineerConsoleUiTest(unittest.TestCase):
         self.assertIn('id="createExperimentBatch"', html)
         self.assertIn('id="loadExperimentBatches"', html)
         self.assertIn('id="strategy"', html)
+        self.assertIn('id="candidateCountInput"', html)
         self.assertIn("strategy: els.strategy.value", script)
+        self.assertIn("candidate_count: Number(els.candidateCountInput.value)", script)
 
     def test_console_does_not_present_local_snapshot_as_product_state(self):
         html = (UI_ROOT / "index.html").read_text(encoding="utf-8")
@@ -87,6 +89,33 @@ class EngineerConsoleUiTest(unittest.TestCase):
         self.assertIn(".operation-status", styles)
         self.assertIn(".formula-summary", styles)
 
+    def test_operation_status_appears_as_top_right_toast(self):
+        styles = (UI_ROOT / "styles.css").read_text(encoding="utf-8")
+
+        operation_status = styles.split(".operation-status {", 1)[1].split("}", 1)[0]
+        self.assertIn("position: fixed;", operation_status)
+        self.assertIn("right: var(--space-5);", operation_status)
+        self.assertIn("top: calc(var(--topbar-height) + var(--space-4));", operation_status)
+        self.assertIn("z-index: 80;", operation_status)
+        self.assertIn("border: 1px solid rgba(24, 86, 240, 0.14);", operation_status)
+        self.assertIn("border-radius: var(--radius-1);", operation_status)
+        self.assertIn("box-shadow: 0 18px 44px rgba(7, 29, 58, 0.18);", operation_status)
+        self.assertNotIn("margin:", operation_status)
+        self.assertNotIn("var(--radius-sm)", operation_status)
+        self.assertIn(".operation-status.visible", styles)
+        self.assertIn(".operation-status.hiding", styles)
+        self.assertIn(".operation-status[data-tone=\"success\"]", styles)
+        self.assertIn("background: linear-gradient(135deg, rgba(240, 253, 244, 0.98), rgba(255, 255, 255, 0.96));", styles)
+
+    def test_operation_status_auto_hides_after_toast_duration(self):
+        script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
+
+        self.assertIn("let actionStatusTimer = null;", script)
+        self.assertIn("clearTimeout(actionStatusTimer)", script)
+        self.assertIn('els.operationStatus.classList.add("visible")', script)
+        self.assertIn('els.operationStatus.classList.add("hiding")', script)
+        self.assertIn("actionStatusTimer = setTimeout", script)
+
     def test_console_initializes_candidate_empty_prompt(self):
         script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
         styles = (UI_ROOT / "styles.css").read_text(encoding="utf-8")
@@ -103,11 +132,20 @@ class EngineerConsoleUiTest(unittest.TestCase):
     def test_loading_candidate_cards_hide_score_loader_images(self):
         script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
 
-        skeleton = script.split("function renderSkeletonCandidates()", 1)[1].split("function renderCandidatePrompt", 1)[0]
+        skeleton = script.split("function renderSkeletonCandidates(count = 3)", 1)[1].split("function renderCandidatePrompt", 1)[0]
         self.assertIn('<div class="brand-loader" aria-hidden="true"></div>', skeleton)
         self.assertIn("候选方案生成中...", skeleton)
         self.assertNotIn("brand-loader small", skeleton)
         self.assertNotIn("candidate-score", skeleton)
+
+    def test_loading_candidate_cards_follow_selected_candidate_count(self):
+        script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
+
+        self.assertIn("renderSkeletonCandidates(payload.constraints.candidate_count)", script)
+        self.assertIn("function renderSkeletonCandidates(count = 3)", script)
+        skeleton = script.split("function renderSkeletonCandidates(count = 3)", 1)[1].split("function renderCandidatePrompt", 1)[0]
+        self.assertIn("index < count", skeleton)
+        self.assertNotIn("index < 3", skeleton)
 
     def test_console_preserves_header_icon_buttons_during_actions(self):
         script = (UI_ROOT / "app.js").read_text(encoding="utf-8")
